@@ -21,9 +21,6 @@ h6 {
     font-weight: 700;
 }
 
-#loginmodal {
-    display: none;
-}
 
 #navbarid {
     display: none;
@@ -41,6 +38,17 @@ h6 {
     display: none;
 }
 
+#carouselbtn {
+     text-align: center;
+     vertical-align: middle;
+     padding:10px;
+}
+
+.background-choice {
+    background: #18181F;
+    padding-top: 10px;
+}
+
 .topnav {
     font-size: 14px; 
 }
@@ -48,6 +56,10 @@ h6 {
 .lead {
     font-size: 18px;
     font-weight: 400;
+}
+
+.img-full {
+    min-width: 100%;
 }
 
 .intro-header {

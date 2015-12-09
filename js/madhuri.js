@@ -20,7 +20,13 @@ function initiateLoginModal() {
 
 function removeLandingPage() {
 	hideme("landingpageid");
-	unhideme("navbarid");
 	unhideme("aboutid");
+}
+
+function RemoveCarosuel() {
+	console.log("RemoveCarosuel called");
+	hidme("aboutid");
+	unhideme("navbarid");
+	unhideme("searchid");
 	unhideme("footerid");
 }
