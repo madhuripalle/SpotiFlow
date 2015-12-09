@@ -1,26 +1,21 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Landing Page](http://startbootstrap.com/template-overviews/landing-page/)
+# SpotiFlow - Groove to the Flow!
 
-[Landing Page](http://startbootstrap.com/template-overviews/landing-page/) is a multipurpose landing page template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+## About
 
-## Getting Started
+This application was made as for a final project as a part of the course COMS4170 - User Interface Design at Columbia University, Fall 2015. It uses the Spotify and Spotify EchoNest API to allow users to search for music and output their playlist in the form of an output flow for their particular event.
 
-To use this template, choose one of the following options to get started:
-* Download the latest release on Start Bootstrap
-* Fork this repository on GitHub
+## Collaborators
 
-## Bugs and Issues
+Madhuri Palle - msp2167@columbia.edu
+Morgan Thompson - mzt2102@columbia.edu
+Jizhe Zhou - jz2688@columbia.edu
+Rishina Tah - rt2545@columbia.edu
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/IronSummitMedia/startbootstrap-landing-page/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/landing-page/).
+## Special Thanks To:
 
-## Creator
-
-Start Bootstrap was created by and is maintained by **David Miller**, Managing Parter at [Iron Summit Media Strategies](http://www.ironsummitmedia.com/).
-
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+[The landing page template (Bootstrap)](http://startbootstrap.com/template-overviews/landing-page/)
+[Spotify API](https://developer.spotify.com/web-api/)
+[EchoNest API](http://developer.echonest.com)
 
 ## Copyright and License
-
-Copyright 2013-2015 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-landing-page/blob/gh-pages/LICENSE) license.
+Copyright Team Intuition - Columbia University
