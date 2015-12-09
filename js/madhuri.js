@@ -25,8 +25,44 @@ function removeLandingPage() {
 
 function RemoveCarosuel() {
 	console.log("RemoveCarosuel called");
-	hidme("aboutid");
+	hideme("aboutid");
 	unhideme("navbarid");
 	unhideme("searchid");
 	unhideme("footerid");
+}
+
+function callBP() {
+	unhideme("BrowsePlaylists");
+	hideme("BrowseAlbums");
+	hideme("BrowseTracks");
+}
+
+function callBA() {
+	hideme("BrowsePlaylists");
+	unhideme("BrowseAlbums");
+	hideme("BrowseTracks");
+}
+
+function callBT() {
+	hideme("BrowsePlaylists");
+	hideme("BrowseAlbums");
+	unhideme("BrowseTracks");
+}
+
+function callPB() {
+	hideme("SearchPM");
+	hideme("SearchPF");
+	unhideme("SearchPB");
+}
+
+function callPF() {
+	hideme("SearchPM");
+	unhideme("SearchPF");
+	hideme("SearchPB");
+}
+
+function callPM() {
+	unhideme("SearchPM");
+	hideme("SearchPF");
+	hideme("SearchPB");
 }
