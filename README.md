@@ -6,10 +6,10 @@ This application was made as for a final project as a part of the course COMS417
 
 ## Collaborators
 
-Madhuri Palle - msp2167@columbia.edu
-Morgan Thompson - mzt2102@columbia.edu
-Jizhe Zhou - jz2688@columbia.edu
-Rishina Tah - rt2545@columbia.edu
+Madhuri Palle - msp2167@columbia.edu <br />
+Morgan Thompson - mzt2102@columbia.edu <br />
+Jizhe Zhou - jz2688@columbia.edu <br />
+Rishina Tah - rt2545@columbia.edu <br />
 
 ## Special Thanks To:
 
