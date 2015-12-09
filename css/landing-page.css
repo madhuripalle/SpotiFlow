@@ -21,6 +21,26 @@ h6 {
     font-weight: 700;
 }
 
+#loginmodal {
+    display: none;
+}
+
+#navbarid {
+    display: none;
+}
+
+#aboutid {
+    display: none;
+}
+
+#searchid {
+    display: none;
+}
+
+#footerid {
+    display: none;
+}
+
 .topnav {
     font-size: 14px; 
 }
