@@ -13,9 +13,9 @@ Rishina Tah - rt2545@columbia.edu <br />
 
 ## Special Thanks To:
 
-[The landing page template (Bootstrap)](http://startbootstrap.com/template-overviews/landing-page/)
-[Spotify API](https://developer.spotify.com/web-api/)
-[EchoNest API](http://developer.echonest.com)
+[The landing page template (Bootstrap)](http://startbootstrap.com/template-overviews/landing-page/) <br />
+[Spotify API](https://developer.spotify.com/web-api/) <br />
+[EchoNest API](http://developer.echonest.com) <br />
 
 ## Copyright and License
 Copyright Team Intuition - Columbia University
