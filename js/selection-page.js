@@ -31,12 +31,13 @@ $('#attrpriorityid input[type=checkbox]').change(function(){
 $('#nextpage').on('click',function(e){
 	e.preventDefault();
 
+	var duration_time;
 	if($('#durationbtn').bootstrapSwitch('state')){
 		if($('#hourid option:selected').val()==0 && $('#minuteid option:selected').val()==0 && $('#secondid option:selected').val()==0){
 			alert("Please select the playlist duration!");
 		}
 		else{
-			var duration_time = computeDuration();
+			duration_time = computeDuration();
 			// console.log(total_time);
 			if(duration_time>duration_thresh){
 				var msg=confirm("Your duration is beyond the total time in your collection. Select Yes to add more tracks/playlists. Select No to reset your duration.");
@@ -44,12 +45,40 @@ $('#nextpage').on('click',function(e){
 					//jump to the browser to let the users select more in their collection.
 				}else{
 					//let user to reset his duration.
+					return;
 				}
 			}
 		}
 	}
 	else{
 		//No requirement for the duration. 
+	}
+
+	if($('#attrpriorityid input[type=checkbox]:checked').length>0){
+		//The users have select the priority.
+		var attr_item=[];
+		var attr_num = $('#attrpriorityid input[type=checkbox]:checked').length;
+		var $this = $('#attrpriorityid input[type=checkbox]:checked');
+		for(var i=0; i<attr_num; i++){
+			attr_item[i]=$this[i].value;
+			// console.log(attr_item[i]);
+		}
+		if(!$('#dromedaryflow').prop('disabled')){
+			//Dromedary flow
+			priorityDromedary(attr_item);
+		}
+		else if(!$('#descendflow').prop('disabled')){
+			//Descending incline flow
+			priorityDescend(attr_item);
+		}
+		else if(!$('#ascendflow').prop('disabled')){
+			//Ascending incline flow
+			priorityAscend(attr_item);
+		}
+		else{
+			//Something else.
+		}
+
 	}
 
 });
@@ -167,6 +196,18 @@ function enableAll() {
 		// $('.priorder').prop('disabled',true);
 	}
 	$('#chooseagain').hide();
+}
+
+function priorityDromedary() {
+	//Use the selected attributes to compute the dromedary flow.
+}
+
+function priorityDescend() {
+	//Use the selected attributes to compute the descending flow.
+}
+
+function priorityAscend(){
+	//Use the selected attributes to compute the ascending flow.
 }
 
 
