@@ -159,10 +159,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="row">
-                        <h2>Search Page</h2>
-                    </div>
-                    <div class="row">
+                    <div class="row" style="padding-top: 10%">
                         <ul class="nav nav-pills nav-stacked col-md-4">
                             <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
                             <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
@@ -178,7 +175,7 @@
                                 <div class="tab-content centerdiv">
                                     <div class="tab-pane fade in active" id="playlists_search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Playlists..">
+                                            <input type="text" class="form-control" placeholder="Search for Playlists.." id="playlist_text">
                                             <span class="input-group-btn">
                                                 <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
@@ -198,7 +195,7 @@
                                 <div class="tab-content centerdiv">
                                     <div class="tab-pane fade in active" id="albums_search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Albums..">
+                                            <input type="text" class="form-control" placeholder="Search for Albums.." id="album_text">
                                             <span class="input-group-btn">
                                                 <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
@@ -218,7 +215,7 @@
                                 <div class="tab-content centerdiv">
                                     <div class="tab-pane fade in active" id="tracks_search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Tracks..">
+                                            <input type="text" class="form-control" placeholder="Search for Tracks.." id="track_text">
                                             <span class="input-group-btn">
                                                 <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
@@ -227,8 +224,8 @@
                                     <div class="tab-pane fade" id="tracks_featured">
                                         <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
                                     </div>
-                                </div>
-                            </div>
+                                </div> 
+                            </div><!--end of last tab content -->
                         </div><!-- tab content outer div-->
                     </div>
 
@@ -305,12 +302,10 @@
                                 </ul>
                             </nav>
                         </div>
-                    </div><!--/row-->
+                    </div><!--/row Showresults-->
 
-
-                </div>
-            </div>
-        </div>
+            </div> <!--column md-8 -->
+        </div> <!--outer row for all search functionality -->
     </div>
 </div>
 
