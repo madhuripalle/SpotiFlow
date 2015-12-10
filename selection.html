@@ -109,43 +109,54 @@
 
                 <div id="prioritysectionid">
                     <div>
-                        <h4>Priorize the attributes: </h4>
+                        <h4 class="text-muted">Priorize the attributes: </h4>
                     </div>
                     
-                    <div class="checkbox" id="attrpriorityid">
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Tempo
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Energy
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Speechiness
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Acousticness
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Instrumentalness
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Loudness
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Danceability
-                        </label></ul>
-                        <ul><label>
-                            <input type="checkbox" value="">
-                            Popularity
-                        </label></ul>
+                    <div class="col-md-6">
+                        <div class="checkbox" id="attrpriorityid">
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="tempo" disabled>
+                                Tempo
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="energy" disabled>
+                                Energy
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="speechiness" disabled>
+                                Speechiness
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="acousticness" disabled>
+                                Acousticness
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                                Instrumentalness
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="loudness" disabled>
+                                Loudness
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="danceability" disabled>
+                                Danceability
+                            </label></ul>
+                            <ul><label>
+                                <input class="attr" type="checkbox" value="popularity" disabled>
+                                Popularity
+                            </label></ul>
+                        </div>
+                        <!-- <div>
+                            <button class="btn btn-info btn-xs active priorder" disabled>Choose In Order</button>
+                        </div> -->
                     </div>
+
+                    <div class="col-md-6" id="priorityresult">
+                    </div>
+
+                    
+                    
                 </div>
 
               </div>
@@ -153,8 +164,9 @@
               <!-- Flow Selector -->
               <div class="col-md-4">
                 <h3 class="text-primary">Setting Playlist Flow</h3>
+
                 <div id="designflowid">
-                    <div>
+                    <div id="flowtitle">
                             <span style="font-size:18px">Designer Flows</span>
                             <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span>  
                     </div>
@@ -168,18 +180,20 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-xs active" id="bactrianflow">Bactrian</button>
+                            <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-xs active" id="cocktailflow">Cocktail</button>
+                            <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button>
                         </div>
 
                     </div>
                 </div>
 
                 <div id="customflowid">
-                    <div>
-                        <h4>Custom Flows</h4>
+                    <div id="flowtitle">
+                        <!-- <h4>Custom Flows</h4> -->
+                        <span style="font-size:18px">Custom Flows</span>
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span>
                     </div>
                     <div class="row">
                         <div class="col-md-4" id="dromedaryimg">
@@ -194,20 +208,20 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-xs active" id="dromedaryflow">Dromedary</button>
+                            <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-xs active" id="descendflow">Descending</button>
+                            <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-xs active" id="ascendflow">Ascending</button>
+                            <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button>
                         </div>
 
                     </div>
 
-                    <div class="row" id="customselect">
+                    <!-- <div class="row" id="customselect">
                         <div class="col-md-4">
-                            <select class="form-control" id="dromedaryselect">
+                            <select class="form-control drome" id="dromedaryselect">
                                 <option value="">Select</option>
                                 <option value="tempo">Tempo</option>
                                 <option value="energy">Energy</option>
@@ -220,7 +234,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" id="descendselect">
+                            <select class="form-control descend" id="descendselect">
                                 <option value="">Select</option>
                                 <option value="tempo">Tempo</option>
                                 <option value="energy">Energy</option>
@@ -233,7 +247,7 @@
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" id="ascendselect">
+                            <select class="form-control ascend" id="ascendselect">
                                 <option value="">Select</option>
                                 <option value="tempo">Tempo</option>
                                 <option value="energy">Energy</option>
@@ -245,12 +259,17 @@
                                 <option value="popularity">Popularity</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
+                </div>
+
+                <div style="display:none" id="chooseagain">
+                    <button type="button" class="btn btn-info btn-xs active" onclick="enableAll()">Choose Again</button>
                 </div>
 
                 <div id="pageid">
                     <span class="btn btn-default btn-sm" id="prepage">Previous</span><span class="btn btn-default btn-sm" id="nextpage">Next</span>
                 </div>
+
 
               </div>
             </div>

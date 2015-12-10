@@ -20,3 +20,16 @@
 	margin-top: 5px;
 	height: 20px;
 }
+
+#chooseagain {
+	margin-top:10px;
+}
+
+.priorityresult {
+	display: none;
+}
+
+#flowtitle {
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
