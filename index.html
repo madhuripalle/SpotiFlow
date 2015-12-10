@@ -170,9 +170,9 @@
                         </ul>
                         <div class="tab-content col-md-8">
                             <div class="tab-pane fade in active" id="tab_playlists">
-                                <ul class="nav nav-tabs tabbable">
+                                <ul class="nav nav-tabs tabbable playlists">
                                     <li class="active"><a data-toggle="tab" href="#playlists_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#playlists_search">My Albums</a></li>
+                                    <li><a data-toggle="tab" href="#playlists_search">My Playlists</a></li>
                                     <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
                                 </ul>
                                 <div class="tab-content centerdiv">
@@ -180,17 +180,17 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search for Playlists..">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Search</button>
+                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="playlists_featured">
-                                        <a class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tab_albums">
-                                <ul class="nav nav-tabs tabbable">
+                                <ul class="nav nav-tabs tabbable albums">
                                     <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
                                     <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
                                     <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
@@ -200,19 +200,19 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search for Albums..">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Search</button>
+                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="albums_featured">
-                                        <a class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tab_tracks">
-                                <ul class="nav nav-tabs tabbable">
+                                <ul class="nav nav-tabs tabbable tracks">
                                     <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#tracks_search">My Albums</a></li>
+                                    <li><a data-toggle="tab" href="#tracks_search">My Tracks</a></li>
                                     <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
                                 </ul>
                                 <div class="tab-content centerdiv">
@@ -220,52 +220,127 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search for Tracks..">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Search</button>
+                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tracks_featured">
-                                        <a class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
+                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
                                     </div>
                                 </div>
                             </div>
                         </div><!-- tab content outer div-->
                     </div>
-                    <div class="row">
-                        <!--search results-->
-                    </div>
+
+                    <hr>
+
+                    <div class="row" id="showResults">
+                        <div class="row headingrow">
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i1" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i2" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i3" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                        </div>
+
+                        <div class="row headingrow">
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i4" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i5" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i6" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row headingrow">
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i7" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i8" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i9" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row headingrow">
+
+                            <div class="col-xs-6 col-lg-4">
+                                <!--Empty Div for formatting -->
+                            </div>
+
+                            <div class="col-xs-6 col-lg-4">
+                                <iframe id="i10" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                            </div><!--/.col-xs-6.col-lg-4-->
+
+                        </div>
+
+                        <div class="row headingrow">
+                            <nav>
+                                <ul class="pager">
+                                    <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                    <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div><!--/row-->
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer id="footerid" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; SpotiFlow 2015. All Rights Reserved</p>
-                </div>
+<!-- Footer -->
+<footer id="footerid" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; SpotiFlow 2015. All Rights Reserved</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <script src="js/madhuri.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<script src="js/madhuri.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
 </body>
 
