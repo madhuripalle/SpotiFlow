@@ -8,10 +8,15 @@
 	border-width: 1px;
 }
 
-#bactrianflow, #cocktailflow, #dromedaryflow, #descendflow, #ascendflow{
+#bactrianflow, #cocktailflow, #dromedaryflow, #descendflow, #ascendflow, #dromedaryselect, #descendselect, #ascendselect {
 	width:80px;
 }
 
 #pageid {
-	margin-top:50px;
+	margin-top:40px;
+}
+
+#dromedaryselect, #descendselect, #ascendselect {
+	margin-top: 5px;
+	height: 20px;
 }

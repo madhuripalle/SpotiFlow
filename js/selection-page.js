@@ -30,25 +30,37 @@ $('#attrpriorityid input[type=checkbox]').change(function(){
 //collection. I assume that the total time in the collection is duration_thresh = 100;
 $('#nextpage').on('click',function(e){
 	e.preventDefault();
-	var hour = $('#hourid option:selected').val();
-	var min = $('#minuteid option:selected').val();
-	var second = $('#secondid option:selected').val();
 
-	var total_time = hour*6000+min*60+second;
-	if(total_time==0){
-		alert("Please select a valid duration!");
-	}
-
-	if(total_time>duration_thresh){
-		var msg=confirm("Your duration is beyond the total time in your collection. Select Yes to add more tracks/playlists. Select No to reset your duration.");
-		if(msg){
-			//jump to the browser to let the users select more in their collection.
-		}else{
-			//let user to reset his duration.
+	if($('#durationbtn').bootstrapSwitch('state')){
+		if($('#hourid option:selected').val()==0 && $('#minuteid option:selected').val()==0 && $('#secondid option:selected').val()==0){
+			alert("Please select the playlist duration!");
+		}
+		else{
+			var duration_time = computeDuration();
+			// console.log(total_time);
+			if(duration_time>duration_thresh){
+				var msg=confirm("Your duration is beyond the total time in your collection. Select Yes to add more tracks/playlists. Select No to reset your duration.");
+				if(msg){
+					//jump to the browser to let the users select more in their collection.
+				}else{
+					//let user to reset his duration.
+				}
+			}
 		}
 	}
 
 })
+
+function computeDuration (){
+	var hour = $('#hourid option:selected').val();
+	var min = $('#minuteid option:selected').val();
+	var second = $('#secondid option:selected').val();
+
+	var duration = Number(hour)*3600 + Number(min)*60 + Number(second);
+	return duration;
+
+
+}
 
 
 
