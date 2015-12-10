@@ -5,6 +5,10 @@ $('[data-toggle="tooltip"]').tooltip();
 
 //set a threshold to test the function
 var duration_thresh = 600;
+//The weight for the priority attributes.
+var weight_1 = [1];
+var weight_2 = [0.5, 0.5];
+var weight_3 = [0.5, 0.3, 0.2];
 
 $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	console.log(state);
@@ -198,16 +202,29 @@ function enableAll() {
 	$('#chooseagain').hide();
 }
 
-function priorityDromedary() {
+function priorityDromedary(attr_array) {
 	//Use the selected attributes to compute the dromedary flow.
+	var length = attr_array.length;
+	if(length==1){
+		//sort() the data.attr.
+	}
+	if(length==2){
+		//sort() data.attr[0]*weight_2[0]+data.attr[1]*weight_2[1]
+	}
+	if(length==3){
+		//sort() data.attr[0]*weight_3[0]+data.attr[1]*weight_3[1]+data.attr[2]*weight_3[2]
+	}
+
 }
 
-function priorityDescend() {
+function priorityDescend(attr_array) {
 	//Use the selected attributes to compute the descending flow.
+	//Sort the data and reverse. sort() & reverse()
 }
 
-function priorityAscend(){
+function priorityAscend(attr_array){
 	//Use the selected attributes to compute the ascending flow.
+	//Sort the data
 }
 
 
