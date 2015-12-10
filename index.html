@@ -163,39 +163,79 @@
                     <h2>Search Page</h2>
                 </div>
                 <div class="row">
-                    <!--search box -->
-                    <ul class="nav nav-pills nav-stacked">
-                      <li class="active"><a data-toggle="pill" href="#BrowsePlaylists" onclick="callBP();">Browse Playlists</a></li>
-                      <div id="BrowsePlaylists">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#" onclick="callPB();">Browse</a></li>
-                            <li><a data-toggle="tab" href="#" onclick="callPM();">My Playlists</a></li>
-                            <li><a data-toggle="tab" href="#SearchPF" onclick="callPF();">Featured</a></li>
-                        </ul>
-                    </div>
-                 <li><a data-toggle="pill" href="#BrowseAlbums" onclick="callBA();">Browse Albums</a></li>
-                    <div id="BrowseAlbums">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#">Browse</a></li>
-                            <li><a data-toggle="tab" href="#">My Albums</a></li>
-                            <li><a data-toggle="tab" href="#">Featured</a></li>
-                        </ul>
-                    </div>
-                      <li><a data-toggle="pill" href="#BrowseTracks" onclick="callBT();">Browse Tracks</a></li>
-                      <div id="BrowseTracks">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#">Browse</a></li>
-                            <li><a data-toggle="tab" href="#">My Tracks</a></li>
-                            <li><a data-toggle="tab" href="#">Featured</a></li>
-                        </ul>
-                      </div>
+                  <ul class="nav nav-pills nav-stacked col-md-4">
+                      <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
+                      <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
+                      <li><a href="#tab_tracks" data-toggle="pill">Browse Tracks</a></li>
                   </ul>
-              </div>
-              <div class="row">
-                <!--search results-->
-            </div>
+                  <div class="tab-content col-md-8">
+                    <div class="tab-pane fade in active" id="tab_playlists">
+                       <ul class="nav nav-tabs tabbable">
+                        <li class="active"><a data-toggle="tab" href="#playlists_search">Browse</a></li>
+                        <li><a data-toggle="tab" href="#playlists_search">My Albums</a></li>
+                        <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
+                    </ul>
+                    <div class="tab-content centerdiv">
+                     <div class="tab-pane fade in active" id="playlists_search">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search for Playlists..">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="playlists_featured">
+                   <a class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+               </div>
+           </div>
+       </div>
+       <div class="tab-pane fade" id="tab_albums">
+           <ul class="nav nav-tabs tabbable">
+            <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
+            <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
+            <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
+        </ul>
+        <div class="tab-content centerdiv">
+         <div class="tab-pane fade in active" id="albums_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for Albums..">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+            </span>
         </div>
     </div>
+    <div class="tab-pane fade" id="albums_featured">
+       <a class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+   </div>
+</div>
+</div>
+<div class="tab-pane fade" id="tab_tracks">
+   <ul class="nav nav-tabs tabbable">
+    <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
+    <li><a data-toggle="tab" href="#tracks_search">My Albums</a></li>
+    <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
+</ul>
+<div class="tab-content centerdiv">
+ <div class="tab-pane fade in active" id="tracks_search">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for Tracks..">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+    </span>
+</div>
+</div>
+<div class="tab-pane fade" id="tracks_featured">
+   <a class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
+</div>
+</div>
+</div>
+</div><!-- tab content outer div-->
+</div>
+<div class="row">
+    <!--search results-->
+</div>
+</div>
+</div>
 </div>
 </div>
 
