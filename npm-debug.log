@@ -1,0 +1,107 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'live-server' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.36
+4 verbose cache add [ 'live-server', null ]
+5 verbose cache add name=undefined spec="live-server" args=["live-server",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'live-server',
+6 verbose parsed url   path: 'live-server',
+6 verbose parsed url   href: 'live-server' }
+7 silly lockFile 9528180e-live-server live-server
+8 verbose lock live-server /Users/rishina/.npm/9528180e-live-server.lock
+9 silly lockFile 9528180e-live-server live-server
+10 silly lockFile 9528180e-live-server live-server
+11 verbose addNamed [ 'live-server', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 180ee697-live-server live-server@
+14 verbose lock live-server@ /Users/rishina/.npm/180ee697-live-server.lock
+15 silly addNameRange { name: 'live-server', range: '*', hasData: false }
+16 verbose request where is /live-server
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id adb7b8cc667e8f9f
+19 verbose url raw /live-server
+20 verbose url resolving [ 'https://registry.npmjs.org/', './live-server' ]
+21 verbose url resolved https://registry.npmjs.org/live-server
+22 verbose request where is https://registry.npmjs.org/live-server
+23 info trying registry request attempt 1 at 13:02:32
+24 verbose etag "3W9KULMPHKGHJJKPM6FJQLFVM"
+25 http GET https://registry.npmjs.org/live-server
+26 http 200 https://registry.npmjs.org/live-server
+27 silly registry.get cb [ 200,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"4MRIYJ64G7ZHV0VCCSNY01G6C"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=300',
+27 silly registry.get     'content-length': '28192',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Fri, 11 Dec 2015 18:02:33 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'x-served-by': 'cache-iad2132-IAD',
+27 silly registry.get     'x-cache': 'HIT',
+27 silly registry.get     'x-cache-hits': '1',
+27 silly registry.get     'x-timer': 'S1449856953.223527,VS0,VE334',
+27 silly registry.get     vary: 'Accept' } ]
+28 silly addNameRange number 2 { name: 'live-server', range: '*', hasData: true }
+29 silly addNameRange versions [ 'live-server',
+29 silly addNameRange   [ '0.1.0',
+29 silly addNameRange     '0.1.1',
+29 silly addNameRange     '0.2.0',
+29 silly addNameRange     '0.3.0',
+29 silly addNameRange     '0.4.0',
+29 silly addNameRange     '0.5.0',
+29 silly addNameRange     '0.6.0',
+29 silly addNameRange     '0.6.1',
+29 silly addNameRange     '0.6.2',
+29 silly addNameRange     '0.6.3',
+29 silly addNameRange     '0.6.4',
+29 silly addNameRange     '0.7.0',
+29 silly addNameRange     '0.7.1',
+29 silly addNameRange     '0.8.0',
+29 silly addNameRange     '0.8.1',
+29 silly addNameRange     '0.8.2',
+29 silly addNameRange     '0.9.0' ] ]
+30 verbose addNamed [ 'live-server', '0.9.0' ]
+31 verbose addNamed [ '0.9.0', '0.9.0' ]
+32 silly lockFile d1ebc522-live-server-0-9-0 live-server@0.9.0
+33 verbose lock live-server@0.9.0 /Users/rishina/.npm/d1ebc522-live-server-0-9-0.lock
+34 silly lockFile 47769b77-ive-server-live-server-0-9-0-tgz https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+35 verbose lock https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz /Users/rishina/.npm/47769b77-ive-server-live-server-0-9-0-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz',
+36 verbose addRemoteTarball   'a85d972cf69d3244355b9d5aefe8ff2af0127d7f' ]
+37 info retry fetch attempt 1 at 13:02:33
+38 verbose fetch to= /var/folders/x9/27cwf4gs3j9dm_gbxcshrxd00000gn/T/npm-27812-w_sPCdaP/registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+39 http GET https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+40 http 200 https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+41 silly lockFile 47769b77-ive-server-live-server-0-9-0-tgz https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+42 silly lockFile 47769b77-ive-server-live-server-0-9-0-tgz https://registry.npmjs.org/live-server/-/live-server-0.9.0.tgz
+43 silly lockFile d1ebc522-live-server-0-9-0 live-server@0.9.0
+44 silly lockFile d1ebc522-live-server-0-9-0 live-server@0.9.0
+45 silly lockFile 180ee697-live-server live-server@
+46 silly lockFile 180ee697-live-server live-server@
+47 error Error: EACCES, mkdir '/Users/rishina/.npm/live-server/0.9.0'
+47 error  { [Error: EACCES, mkdir '/Users/rishina/.npm/live-server/0.9.0']
+47 error   errno: 3,
+47 error   code: 'EACCES',
+47 error   path: '/Users/rishina/.npm/live-server/0.9.0' }
+48 error Please try running this command again as root/Administrator.
+49 error System Darwin 15.0.0
+50 error command "node" "/usr/local/bin/npm" "install" "-g" "live-server"
+51 error cwd /Users/rishina/Desktop/SpotiFlow
+52 error node -v v0.10.36
+53 error npm -v 1.4.28
+54 error path /Users/rishina/.npm/live-server/0.9.0
+55 error code EACCES
+56 error errno 3
+57 error stack Error: EACCES, mkdir '/Users/rishina/.npm/live-server/0.9.0'
+58 verbose exit [ 3, true ]
