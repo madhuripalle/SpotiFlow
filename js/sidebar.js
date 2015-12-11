@@ -6,7 +6,8 @@ function setIFrameWidth () {
     $('#current-pl').attr('width', width);
 };
 
-setIFrameWidth();
+$('#carouselbtn').click(setIFrameWidth);
+
 
 // Reset iframe height after window resize
 $(window).resize(setIFrameWidth);  
