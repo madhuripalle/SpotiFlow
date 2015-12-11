@@ -7,6 +7,7 @@ var album_input;
 var track_input;
 var clientID = '1337825ad7664e8a8c044edd1c64d050';
 var clientSecret = '618fa9ab84974efba033811399a6ebd6'
+var Base_URI = 'http://localhost:8080/';
 
 $('.playlists a').on('shown.bs.tab', function(event){
 	subtabplaylist = $(event.target).text(); 
