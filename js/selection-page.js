@@ -87,61 +87,61 @@ $('#nextpage').on('click',function(e){
 
 });
 
-$('#bactrianflow').on('click',function(e){
-	e.preventDefault();
+// $('#bactrianflow').on('click',function(e){
+// 	e.preventDefault();
 
-	$('#cocktailflow').prop('disabled',true);
-	$('.drome').prop('disabled',true);
-	$('.descend').prop('disabled',true);
-	$('.ascend').prop('disabled',true);
-	$('#chooseagain').show();
+// 	$('#cocktailflow').prop('disabled',true);
+// 	$('.drome').prop('disabled',true);
+// 	$('.descend').prop('disabled',true);
+// 	$('.ascend').prop('disabled',true);
+// 	$('#chooseagain').show();
 
-});
+// });
 
-$('#cocktailflow').on('click',function(e){
-	e.preventDefault();
+// $('#cocktailflow').on('click',function(e){
+// 	e.preventDefault();
 
-	$('#bactrianflow').prop('disabled',true);
-	$('.drome').prop('disabled',true);
-	$('.descend').prop('disabled',true);
-	$('.ascend').prop('disabled',true);
-	$('#chooseagain').show();
-});
+// 	$('#bactrianflow').prop('disabled',true);
+// 	$('.drome').prop('disabled',true);
+// 	$('.descend').prop('disabled',true);
+// 	$('.ascend').prop('disabled',true);
+// 	$('#chooseagain').show();
+// });
 
-$('#dromedaryflow').on('click',function(e){
-	e.preventDefault();
+// $('#dromedaryflow').on('click',function(e){
+// 	e.preventDefault();
 
-	$('.descend').prop('disabled',true);
-	$('.ascend').prop('disabled',true);
-	$('.flowbtn1').prop('disabled',true);
-	$('#chooseagain').show();
-});
+// 	$('.descend').prop('disabled',true);
+// 	$('.ascend').prop('disabled',true);
+// 	$('.flowbtn1').prop('disabled',true);
+// 	$('#chooseagain').show();
+// });
 
-$('#descendflow').on('click',function(e){
-	e.preventDefault();
+// $('#descendflow').on('click',function(e){
+// 	e.preventDefault();
 
-	$('.drome').prop('disabled',true);
-	$('.ascend').prop('disabled',true);
-	$('.flowbtn1').prop('disabled',true);
-	$('#chooseagain').show();
-});
+// 	$('.drome').prop('disabled',true);
+// 	$('.ascend').prop('disabled',true);
+// 	$('.flowbtn1').prop('disabled',true);
+// 	$('#chooseagain').show();
+// });
 
-$('#ascendflow').on('click',function(e){
-	e.preventDefault();
+// $('#ascendflow').on('click',function(e){
+// 	e.preventDefault();
 
-	$('.descend').prop('disabled',true);
-	$('.drome').prop('disabled',true);
-	$('.flowbtn1').prop('disabled',true);
-	$('#chooseagain').show();
-});
+// 	$('.descend').prop('disabled',true);
+// 	$('.drome').prop('disabled',true);
+// 	$('.flowbtn1').prop('disabled',true);
+// 	$('#chooseagain').show();
+// });
 
-$('.flowbtn2').on('click',function(e){
-	e.preventDefault();
-	$('.attr').prop('disabled',false);
-	$('#prioritysectionid h4').removeClass('text-muted');
-	$('#prioritysectionid h4').addClass('text-default');
-	// $('.priorder').prop('disabled',false);
-});
+// $('.flowbtn2').on('click',function(e){
+// 	e.preventDefault();
+// 	$('.attr').prop('disabled',false);
+// 	$('#prioritysectionid h4').removeClass('text-muted');
+// 	$('#prioritysectionid h4').addClass('text-default');
+// 	// $('.priorder').prop('disabled',false);
+// });
 
 //A way we can priorize the order of the three attributes.
 // $('.priorder').on('click',function(e){
@@ -169,6 +169,61 @@ $('.flowbtn2').on('click',function(e){
 // 	}
 // })
 
+function chooseBactrian (){
+	$('#cocktailflow').prop('disabled',true);
+	$('#dromedaryflow').prop('disabled',true);
+	$('#descendflow').prop('disabled',true);
+	$('#ascendflow').prop('disabled',true);
+	$('.cocktaillabel').addClass('text-muted');
+	$('.label2').addClass('text-muted');
+	$('#chooseagain').show();
+}
+
+function chooseCocktail() {
+	$('#bactrianflow').prop('disabled',true);
+	$('#dromedaryflow').prop('disabled',true);
+	$('#descendflow').prop('disabled',true);
+	$('#ascendflow').prop('disabled',true);
+	$('.bactrianlabel').addClass('text-muted');
+	$('.label2').addClass('text-muted');
+	$('#chooseagain').show();
+}
+
+function chooseDromedary() {
+	$('#descendflow').prop('disabled',true);
+	$('#ascendflow').prop('disabled',true);
+	$('#bactrianflow').prop('disabled',true);
+	$('#cocktailflow').prop('disabled',true);
+	$('.label1').addClass('text-muted');
+	$('.descendlabel').addClass('text-muted');
+	$('.ascendlabel').addClass('text-muted');
+	$('#chooseagain').show();
+
+}
+
+function chooseDescend() {
+	$('#dromedaryflow').prop('disabled',true);
+	$('#ascendflow').prop('disabled',true);
+	$('#bactrianflow').prop('disabled',true);
+	$('#cocktailflow').prop('disabled',true);
+	$('.label1').addClass('text-muted');
+	$('.dromelabel').addClass('text-muted');
+	$('.ascendlabel').addClass('text-muted');
+	$('#chooseagain').show();
+
+}
+
+function chooseAscend() {
+	$('#descendflow').prop('disabled',true);
+	$('#dromedaryflow').prop('disabled',true);
+	$('#bactrianflow').prop('disabled',true);
+	$('#cocktailflow').prop('disabled',true);
+	$('.label1').addClass('text-muted');
+	$('.descendlabel').addClass('text-muted');
+	$('.dromelabel').addClass('text-muted');
+	$('#chooseagain').show();
+
+}
 
 
 function computeDuration(){
@@ -186,14 +241,10 @@ function enableAll() {
 	// if(!$('#drome').prop('disabled')){
 	// 	console.log(1);
 	// }
-	
+	$(".label1").removeClass('text-muted');
+	$(".label2").removeClass('text-muted');
+	$(".flowimg").prop('disabled',false);
 
-	$('.flowbtn1').prop('disabled',false);
-	$('.drome').prop('disabled',false);
-	$('.descend').prop('disabled',false);
-	$('.ascend').prop('disabled',false);
-	$('.attr').prop('disabled',true);
-	$('.attr').prop('checked',false);
 	if(!$('.drome').prop('disabled')||!$('.descend').prop('disabled')||!$('.ascend').prop('disabled')){
 		$("#prioritysectionid h4").removeClass('text-default');
 		$("#prioritysectionid h4").addClass('text-muted');

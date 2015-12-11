@@ -452,18 +452,24 @@
         </div>
         <div class="row">
             <div class="col-md-4" id="bactrianimg">
-                <img class="img-responsive" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="flowimg"/>  
+                <a href="#" onclick="chooseBactrian()">
+                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="bactrianflow" />
+                </a>  
             </div>
             <div class="col-md-4" id="cocktail">
-                <img class="img-responsive" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="flowimg" />
+                <a href="#" onclick="chooseCocktail()">
+                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="cocktailflow" />
+                </a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button>
+                <label class="text-center bactrianlabel label1">Bactrian</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button> -->
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button>
+                <label class="text-center cocktaillabel label1">Cocktail</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button> -->
             </div>
 
         </div>
@@ -475,24 +481,33 @@
         </div>
         <div class="row">
             <div class="col-md-4" id="dromedaryimg">
-                <img class="img-responsive"src="img/one_wave.png" id="flowimg"/>    
+                <a href="#" onclick="chooseDromedary()">
+                    <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
+                </a>  
             </div>
             <div class="col-md-4" id="descendimg">
-                <img class="img-responsive" src="img/descending.png" id="flowimg" />
+                <a href="#" onclick="chooseDescend()">
+                    <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
+                </a>
             </div>
             <div class="col-md-4" id="ascendimg">
-                <img class="img-responsive" src="img/ascending.png" id="flowimg" />
+                <a href="#" onclick="chooseAscend()">
+                    <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
+                </a>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button>
+                <label class="text-center dromelabel label2">Dromedary</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button> -->
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button>
+                <label class="text-center descendlabel label2">Descending</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button> -->
             </div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button>
+                <label class="text-center ascendlabel label2">Ascending</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
             </div>
 
         </div>
