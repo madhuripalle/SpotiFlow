@@ -71,8 +71,8 @@ if (access_token && (state == null || state !== storedState)) {
   }
 
   document.getElementById('btn-login').addEventListener('click', function() {
-    var client_id = '1337825ad7664e8a8c044edd1c64d050'; // Your client id
-    var redirect_uri = 'http://localhost:8080/'; // Your redirect uri
+    var client_id = ClientID; // Your client id
+    var redirect_uri = Base_URI; // Your redirect uri
     var state = generateRandomString(16);
     localStorage.setItem(stateKey, state);
     var scope = 'user-read-private user-read-email';
