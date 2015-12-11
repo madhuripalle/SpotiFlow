@@ -421,11 +421,11 @@
                                 <div class="row">
 
                                     <!-- Duration Setting -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <h3 class="text-primary">Setting Playlist Duration</h3>
                                         <div class="playlistduation">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <p style="font-size:18px">Playlist duration: </p>
                                                 </div>
                                                 <div class="col-md-4">
@@ -540,7 +540,8 @@
                                     <div class="col-md-8">
                                         <h3 class="text-primary">Setting Playlist Flow</h3>
 
-                                        <div id="designflowid">
+<<<<<<< HEAD
+<!--                                        <div id="designflowid">
                                             <div id="flowtitle">
                                                 <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
                                             </div>
@@ -567,7 +568,85 @@
                                                 </div>
 
                                             </div>
-                                        </div>
+                                        </div>-->
+=======
+</div>
+
+</div>
+
+<!-- Flow Selector -->
+<div class="col-md-6">
+    <h3 class="text-primary">Setting Playlist Flow</h3>
+
+    <div id="designflowid">
+        <div id="flowtitle">
+            <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4" id="bactrianimg">
+                <a href="#" role="button" onclick="chooseBactrian()">
+                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="bactrianflow" />
+                </a>  
+            </div>
+            <div class="col-md-4" id="cocktail">
+                <a href="#" onclick="chooseCocktail()">
+                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="cocktailflow" />
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="text-center bactrianlabel label1">Bactrian</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button> -->
+            </div>
+            <div class="col-md-4">
+                <label class="text-center cocktaillabel label1">Cocktail</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button> -->
+            </div>
+
+        </div>
+    </div>
+
+    <div id="customflowid">
+        <div id="flowtitle">
+            <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4" id="dromedaryimg">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary" onclick="chooseDromedary()">
+                    <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
+                </a>  
+            </div>
+            <div class="col-md-4" id="descendimg">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline" onclick="chooseDescend()">
+                    <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
+                </a>
+            </div>
+            <div class="col-md-4" id="ascendimg">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline" onclick="chooseAscend()">
+                    <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="text-center dromelabel label2">Dromedary</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button> -->
+            </div>
+            <div class="col-md-4">
+                <label class="text-center descendlabel label2">Descending</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button> -->
+            </div>
+            <div class="col-md-4">
+                <label class="text-center ascendlabel label2">Ascending</label>
+                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
+            </div>
+
+        </div>
+
+
+</div>
+>>>>>>> d70ca07fb8de106a5d1d907cfa579fbc17222de2
 
                                         <div id="customflowid">
                                             <div id="flowtitle">
@@ -604,8 +683,14 @@
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
                                                 </div>
 
+<<<<<<< HEAD
                                             </div>
                                         </div><!-- /customflowid -->
+=======
+<!--<div id="pagenextid">
+    <span class="btn btn-default btn-sm" id="prepage">Previous</span><span class="btn btn-default btn-sm" id="nextpage">Next</span>
+</div>-->
+>>>>>>> d70ca07fb8de106a5d1d907cfa579fbc17222de2
 
                                         <div style="display:none" id="chooseagain">
                                             <button type="button" class="btn btn-info btn-xs active" onclick="enableAll()">Choose Again</button>

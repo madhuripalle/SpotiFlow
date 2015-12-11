@@ -8,22 +8,18 @@
 	border-width: 1px;
 }
 
-#bactrianflow, #cocktailflow, #dromedaryflow, #descendflow, #ascendflow, #dromedaryselect, #descendselect, #ascendselect {
+#bactrianflow, #cocktailflow, #dromedaryflow, #descendflow, #ascendflow {
 	width:auto;
 	height: auto;
 }
 
-#pageid {
-	margin-top:8%;
-}
-
-#dromedaryselect, #descendselect, #ascendselect {
-	margin-top: 1%;
-	height: 5%;
+#pagenextid {
+	margin-top:10%;
 }
 
 #chooseagain {
 	margin-top:1%;
+	margin-bottom: :1%;
 }
 
 .priorityresult {
@@ -34,3 +30,4 @@
 	margin-bottom: 1%;
 	margin-top: 2%;
 }
+
