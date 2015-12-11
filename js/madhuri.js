@@ -118,3 +118,9 @@ function CheckTabActivity() {
 
 }
 
+function RemoveSearchResults() {
+	console.log("calling next step");
+	hideme("SearchResults");
+	unhideme("SelectionOptions");
+}
+

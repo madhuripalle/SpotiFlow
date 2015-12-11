@@ -22,6 +22,10 @@ h6 {
 }
 
 
+#SelectionOptions {
+    display: none;
+}
+
 #navbarid {
     display: none;
 }

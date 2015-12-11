@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -159,154 +160,405 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="row" style="padding-top: 10%">
-                        <ul class="nav nav-pills nav-stacked col-md-4">
-                            <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
-                            <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
-                            <li><a href="#tab_tracks" data-toggle="pill">Browse Tracks</a></li>
-                        </ul>
-                        <div class="tab-content col-md-8">
-                            <div class="tab-pane fade in active" id="tab_playlists">
-                                <ul class="nav nav-tabs tabbable playlists">
-                                    <li class="active"><a data-toggle="tab" href="#playlists_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#playlists_search">My Playlists</a></li>
-                                    <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="playlists_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Playlists.." id="playlist_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+                    <div id="SearchResults">
+                        <div class="row" style="padding-top: 10%">
+                            <ul class="nav nav-pills nav-stacked col-md-4">
+                                <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
+                                <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
+                                <li><a href="#tab_tracks" data-toggle="pill">Browse Tracks</a></li>
+                            </ul>
+                            <div class="tab-content col-md-8">
+                                <div class="tab-pane fade in active" id="tab_playlists">
+                                    <ul class="nav nav-tabs tabbable playlists">
+                                        <li class="active"><a data-toggle="tab" href="#playlists_search">Browse</a></li>
+                                        <li><a data-toggle="tab" href="#playlists_search">My Playlists</a></li>
+                                        <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="playlists_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Playlists.." id="playlist_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="playlists_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+                                        <div class="tab-pane fade" id="playlists_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_albums">
-                                <ul class="nav nav-tabs tabbable albums">
-                                    <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
-                                    <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="albums_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Albums.." id="album_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+                                <div class="tab-pane fade" id="tab_albums">
+                                    <ul class="nav nav-tabs tabbable albums">
+                                        <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
+                                        <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
+                                        <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="albums_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Albums.." id="album_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="albums_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+                                        <div class="tab-pane fade" id="albums_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_tracks">
-                                <ul class="nav nav-tabs tabbable tracks">
-                                    <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#tracks_search">My Tracks</a></li>
-                                    <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="tracks_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Tracks.." id="track_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+                                <div class="tab-pane fade" id="tab_tracks">
+                                    <ul class="nav nav-tabs tabbable tracks">
+                                        <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
+                                        <li><a data-toggle="tab" href="#tracks_search">My Tracks</a></li>
+                                        <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="tracks_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Tracks.." id="track_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tracks_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
-                                    </div>
-                                </div> 
-                            </div><!--end of last tab content -->
-                        </div><!-- tab content outer div-->
+                                        <div class="tab-pane fade" id="tracks_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
+                                        </div>
+                                    </div> 
+                                </div><!--end of last tab content -->
+                            </div><!-- tab content outer div-->
+                        </div>
+
+                        <hr>
+
+                        <div class="row" id="showResults">
+                            <div class="row headingrow">
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i1" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i2" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i3" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                            </div>
+
+                            <div class="row headingrow">
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i4" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i5" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i6" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row headingrow">
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i7" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i8" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i9" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row headingrow">
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <!--Empty Div for formatting -->
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i10" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                </div><!--/.col-xs-6.col-lg-4-->
+
+                            </div>
+
+                            <div class="row headingrow">
+                                <nav>
+                                    <ul class="pager">
+                                        <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                        <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div><!--/row Showresults-->
                     </div>
+                    <div id="SelectionOptions">
+                        <!--Jizhe's stuff-->
+                        <h2>Jizhe's stuff!</h2>
+                        <div class="background-choice" id="selectionpageid">
+                            <div id="container">
+                                <h1 class="text-primary text-left">Playlist Settings</h1>
+                                <p class="text-muted" style="font-size:16px">Choose the duration and flows to complete your playlist. You can also customize your own flows!</p>
+                                <div class="row">
 
-                    <hr>
+                                    <!-- Duration Setting -->
+                                    <div class="col-md-5">
+                                        <h3 class="text-primary">Setting Playlist Duration</h3>
+                                        <div class="playlistduation">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p style="font-size:18px">Playlist duration: </p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="checkbox" id="durationbtn" data-off-text="OFF" data-on-text="ON" data-size="mini">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form class="form-inline">
+                                            <fieldset id="durationinput">
+                                                <form class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
+                                                            <select class="form-control" id="hourid">
+                                                                <option value="0">Hour</option>
+                                                                <option value="0">0</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
 
-                    <div class="row" id="showResults">
-                        <div class="row headingrow">
+                                                        <div class="col-md-4">
+                                                            <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
+                                                            <select class="form-control" id="minuteid">
+                                                                <option value="0">Minute</option>
+                                                                <option value="0">0</option>
+                                                                <option value="5">5</option>
+                                                                <option value="10">10</option>
+                                                                <option value="15">15</option>
+                                                                <option value="20">20</option>
+                                                                <option value="25">25</option>
+                                                                <option value="30">30</option>
+                                                                <option value="35">35</option>
+                                                                <option value="40">40</option>
+                                                                <option value="45">45</option>
+                                                                <option value="50">50</option>
+                                                                <option value="55">55</option>
+                                                            </select>
+                                                        </div>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i1" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+                                                        <div class="col-md-4">
+                                                            <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
+                                                            <select class="form-control" id="secondid">
+                                                                <option value="0">Second</option>
+                                                                <option value="0">0</option>
+                                                                <option value="5">5</option>
+                                                                <option value="10">10</option>
+                                                                <option value="15">15</option>
+                                                                <option value="20">20</option>
+                                                                <option value="25">25</option>
+                                                                <option value="30">30</option>
+                                                                <option value="35">35</option>
+                                                                <option value="40">40</option>
+                                                                <option value="45">45</option>
+                                                                <option value="50">50</option>
+                                                                <option value="55">55</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i2" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+                                                </form>
+                                            </fieldset>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i3" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+                                        </form>
 
-                        </div>
+                                        <div id="prioritysectionid">
+                                            <div>
+                                                <h4 class="text-muted">Priorize the attributes: </h4>
+                                            </div>
 
-                        <div class="row headingrow">
+                                            <div class="checkbox" id="attrpriorityid">
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="tempo" disabled>
+                                                    Tempo
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="energy" disabled>
+                                                    Energy
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="speechiness" disabled>
+                                                    Speechiness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="acousticness" disabled>
+                                                    Acousticness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                                                    Instrumentalness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="loudness" disabled>
+                                                    Loudness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="danceability" disabled>
+                                                    Danceability
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="popularity" disabled>
+                                                    Popularity
+                                                </label></ul>
+                                            </div>
+<!-- <div>
+<button class="btn btn-info btn-xs active priorder" disabled>Choose In Order</button>
+</div> -->
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i4" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i5" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i6" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                        </div>
 
 
-                        <div class="row headingrow">
+</div>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i7" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+</div>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i8" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+<!-- Flow Selector -->
+<div class="col-md-4">
+    <h3 class="text-primary">Setting Playlist Flow</h3>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i9" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+    <div id="designflowid">
+        <div id="flowtitle">
+            <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4" id="bactrianimg">
+                <img data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="flowimg"/>  
+            </div>
+            <div class="col-md-4" id="cocktail">
+                <img class="img-responsive" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="flowimg" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button>
+            </div>
 
-                        </div>
-
-
-                        <div class="row headingrow">
-
-                            <div class="col-xs-6 col-lg-4">
-                                <!--Empty Div for formatting -->
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i10" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div><!--/.col-xs-6.col-lg-4-->
-
-                        </div>
-
-                        <div class="row headingrow">
-                            <nav>
-                                <ul class="pager">
-                                    <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-                                    <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div><!--/row Showresults-->
-
-            </div> <!--column md-8 -->
-        </div> <!--outer row for all search functionality -->
+        </div>
     </div>
+
+    <div id="customflowid">
+        <div id="flowtitle">
+            <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4" id="dromedaryimg">
+                <img src="img/one_wave.png" id="flowimg"/>    
+            </div>
+            <div class="col-md-4" id="descendimg">
+                <img src="img/descending.png" id="flowimg" />
+            </div>
+            <div class="col-md-4" id="ascendimg">
+                <img src="img/ascending.png" id="flowimg" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button>
+            </div>
+
+        </div>
+
+<!-- <div class="row" id="customselect">
+<div class="col-md-4">
+<select class="form-control drome" id="dromedaryselect">
+<option value="">Select</option>
+<option value="tempo">Tempo</option>
+<option value="energy">Energy</option>
+<option value="speechiness">Speechiness</option>
+<option value="acousticness">Acousticness</option>
+<option value="instrumentalness">Instrumentalness</option>
+<option value="loudness">Loudness</option>
+<option value="danceability">Danceability</option>
+<option value="popularity">Popularity</option>
+</select>
+</div>
+<div class="col-md-4">
+<select class="form-control descend" id="descendselect">
+<option value="">Select</option>
+<option value="tempo">Tempo</option>
+<option value="energy">Energy</option>
+<option value="speechiness">Speechiness</option>
+<option value="acousticness">Acousticness</option>
+<option value="instrumentalness">Instrumentalness</option>
+<option value="loudness">Loudness</option>
+<option value="danceability">Danceability</option>
+<option value="popularity">Popularity</option>
+</select>
+</div>
+<div class="col-md-4">
+<select class="form-control ascend" id="ascendselect">
+<option value="">Select</option>
+<option value="tempo">Tempo</option>
+<option value="energy">Energy</option>
+<option value="speechiness">Speechiness</option>
+<option value="acousticness">Acousticness</option>
+<option value="instrumentalness">Instrumentalness</option>
+<option value="loudness">Loudness</option>
+<option value="danceability">Danceability</option>
+<option value="popularity">Popularity</option>
+</select>
+</div>
+</div> -->
+</div>
+
+<div style="display:none" id="chooseagain">
+    <button type="button" class="btn btn-info btn-xs active" onclick="enableAll()">Choose Again</button>
+</div>
+
+<div id="pageid">
+    <span class="btn btn-default btn-sm" id="prepage">Previous</span><span class="btn btn-default btn-sm" id="nextpage">Next</span>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div> <!--column md-8 -->
+<div class="col-md-4">
+    <a onclick="RemoveSearchResults();" class="btn btn-default"><span class="network-name">Next Step!</span></a> 
+</div>
+</div> <!--outer row for all search functionality -->
+</div>
 </div>
 
 <!-- Footer -->
@@ -334,6 +586,8 @@
 <script src="js/jquery.js"></script>
 <script src="js/spotify-web-api.js"></script>
 <script src="js/madhuri.js"></script>
+<script src="js/selection-page.js"></script>
+<script type="text/javascript" src="js/bootstrap-switch.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
