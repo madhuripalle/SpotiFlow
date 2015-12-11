@@ -5,6 +5,8 @@ var subtabtrack = "Browse";
 var playlist_input;
 var album_input;
 var track_input;
+var clientID = '1337825ad7664e8a8c044edd1c64d050';
+var clientSecret = '618fa9ab84974efba033811399a6ebd6'
 
 $('.playlists a').on('shown.bs.tab', function(event){
 	subtabplaylist = $(event.target).text(); 
@@ -41,6 +43,28 @@ function initiateLoginModal() {
 	console.log("initiateLoginModal called");
 	/* if any authentication is required, this is the place to call the api */
 }
+
+function spotLogin() {
+	console.log("helloooo")
+	console.log("spotLogin called");
+	/* if any authentication is required, this is the place to call the api */
+	$.ajax({
+		'url': 'https://accounts.spotify.com/authorize?client_id=' + clientID +
+              '&redirect_uri=' + 'https://localhost:8000' +
+              '&response_type=code',
+    'type': 'GET',
+    'dataType': 'jsonp',
+    'cache':true,
+    'success': function(result){
+        console.log(result);
+        
+        }
+
+	});
+
+          }  /* redirected uri needs to change */
+
+      
 
 function removeLandingPage() {
 	hideme("landingpageid");
