@@ -106,6 +106,59 @@
         </div>
     </div>
 
+<!-- Modal to apply flow attributes -->
+<div class="modal fade" id="modal-flow-attr" tabindex="-9" role="dialog" aria-labelledby="flow-attr-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="flow-attr-label">Select track attributes </h4>
+            </div>
+            <div class="modal-body body-scroll">
+                <p>Choose <strong>up to 3</strong> attributes to apply to the custom flow you selected.</p>
+                <div class="checkbox" id="attrpriorityid-modal">
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="tempo" disabled>
+                        Tempo
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="energy" disabled>
+                        Energy
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="speechiness" disabled>
+                        Speechiness
+                    </label></ul>                        
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="acousticness" disabled>
+                        Acousticness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                        Instrumentalness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="loudness" disabled>
+                        Loudness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="danceability" disabled>
+                        Danceability
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="popularity" disabled>
+                        Popularity
+                    </label></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary flow-attr-btn" data-target="#attrpriorityid-modal">Apply</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /Modal to apply flow attributes -->
+
 
     <!-- Slider Tutorial -->
     <a name="about"></a>
@@ -481,17 +534,17 @@
         </div>
         <div class="row">
             <div class="col-md-4" id="dromedaryimg">
-                <a href="#" onclick="chooseDromedary()">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary" onclick="chooseDromedary()">
                     <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
                 </a>  
             </div>
             <div class="col-md-4" id="descendimg">
-                <a href="#" onclick="chooseDescend()">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline" onclick="chooseDescend()">
                     <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
                 </a>
             </div>
             <div class="col-md-4" id="ascendimg">
-                <a href="#" onclick="chooseAscend()">
+                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline" onclick="chooseAscend()">
                     <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
                 </a>
             </div>
@@ -622,6 +675,7 @@
 <script src="js/selection-page.js"></script>
 <script src="js/login.js"></script>
 <script src="js/sidebar.js"></script>
+<script src="js/selection-modal.js"></script>
 
 </body>
 
