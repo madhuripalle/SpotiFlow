@@ -48,6 +48,7 @@ function merge_sort(array, attributes)
   	msort(array, 0, array.length, attributes);
 }
 
+// Calculates the combined 'score' of the track in the given attributes
 function WeighAttr(item, attributes) {
 	var w = 0;
 	for (var a in attributes){
