@@ -1,5 +1,6 @@
 /*   
-   Adapted from: http://en.literateprograms.org/Merge_sort_(JavaScript)?oldid=19176
+ * Sorts from least to greatest
+ * Adapted from: http://en.literateprograms.org/Merge_sort_(JavaScript)?oldid=19176
  */
  
   
