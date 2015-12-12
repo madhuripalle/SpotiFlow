@@ -421,72 +421,66 @@
                                 <div class="row">
 
                                     <!-- Duration Setting -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-5 col-xs-5">
                                         <h3 class="text-primary">Setting Playlist Duration</h3>
                                         <div class="playlistduation">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-8 col-xs-8">
                                                     <p style="font-size:18px">Playlist duration: </p>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <input type="checkbox" id="durationbtn" data-off-text="OFF" data-on-text="ON" data-size="mini">
                                                 </div>
                                             </div>
                                         </div>
                                         <form class="form-inline">
                                             <div id="durationinput" class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
-                                                        <select class="form-control" id="hourid">
-                                                            <option value="0">Hour</option>
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
+                                                <!--<div class="row">
+                                                    <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
+                                                    <select class="form-control input-sm" id="hourid">
+                                                        <option value="0">Hour</option>
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
 
-                                                    <div class="col-md-4">
-                                                        <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
-                                                        <select class="form-control" id="minuteid">
-                                                            <option value="0">Minute</option>
-                                                            <option value="0">0</option>
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                            <option value="15">15</option>
-                                                            <option value="20">20</option>
-                                                            <option value="25">25</option>
-                                                            <option value="30">30</option>
-                                                            <option value="35">35</option>
-                                                            <option value="40">40</option>
-                                                            <option value="45">45</option>
-                                                            <option value="50">50</option>
-                                                            <option value="55">55</option>
-                                                        </select>
-                                                    </div>
+                                                    <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
+                                                    <select class="form-control input-sm" id="minuteid">
+                                                        <option value="0">Minute</option>
+                                                        <option value="0">0</option>
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                        <option value="35">35</option>
+                                                        <option value="40">40</option>
+                                                        <option value="45">45</option>
+                                                        <option value="50">50</option>
+                                                        <option value="55">55</option>
+                                                    </select>
 
-                                                    <div class="col-md-4">
-                                                        <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
-                                                        <select class="form-control" id="secondid">
-                                                            <option value="0">Second</option>
-                                                            <option value="0">0</option>
-                                                            <option value="5">5</option>
-                                                            <option value="10">10</option>
-                                                            <option value="15">15</option>
-                                                            <option value="20">20</option>
-                                                            <option value="25">25</option>
-                                                            <option value="30">30</option>
-                                                            <option value="35">35</option>
-                                                            <option value="40">40</option>
-                                                            <option value="45">45</option>
-                                                            <option value="50">50</option>
-                                                            <option value="55">55</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                    <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
+                                                    <select class="form-control input-sm" id="secondid">
+                                                        <option value="0">Second</option>
+                                                        <option value="0">0</option>
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                        <option value="25">25</option>
+                                                        <option value="30">30</option>
+                                                        <option value="35">35</option>
+                                                        <option value="40">40</option>
+                                                        <option value="45">45</option>
+                                                        <option value="50">50</option>
+                                                        <option value="55">55</option>
+                                                    </select>
+                                                <!--</div>-->
                                             </div>
                                         </form>
 
@@ -537,167 +531,78 @@
                                     </div><!-- /Duration Setting -->
 
                                     <!-- Flow Selector -->
-                                    <div class="col-md-8">
+                                    <div class="col-md-7 col-xs-7">
                                         <h3 class="text-primary">Setting Playlist Flow</h3>
 
-<<<<<<< HEAD
-<!--                                        <div id="designflowid">
+                                        <div id="designflowid">
                                             <div id="flowtitle">
                                                 <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4" id="bactrianimg">
+                                                <div class="col-md-4 col-xs-4" id="bactrianimg">
                                                     <a href="#" onclick="chooseBactrian()">
                                                         <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="bactrianflow" />
                                                     </a>  
                                                 </div>
-                                                <div class="col-md-4" id="cocktail">
+                                                <div class="col-md-4 col-xs-4" id="cocktail">
                                                     <a href="#" onclick="chooseCocktail()">
                                                         <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="cocktailflow" />
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <label class="text-center bactrianlabel label1">Bactrian</label>
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button> -->
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <label class="text-center cocktaillabel label1">Cocktail</label>
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button> -->
                                                 </div>
 
                                             </div>
-                                        </div>-->
-=======
-</div>
-
-</div>
-
-<!-- Flow Selector -->
-<div class="col-md-6">
-    <h3 class="text-primary">Setting Playlist Flow</h3>
-
-    <div id="designflowid">
-        <div id="flowtitle">
-            <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
-        </div>
-        <div class="row">
-            <div class="col-md-4" id="bactrianimg">
-                <a href="#" role="button" onclick="chooseBactrian()">
-                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="bactrianflow" />
-                </a>  
-            </div>
-            <div class="col-md-4" id="cocktail">
-                <a href="#" onclick="chooseCocktail()">
-                    <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="cocktailflow" />
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label class="text-center bactrianlabel label1">Bactrian</label>
-                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button> -->
-            </div>
-            <div class="col-md-4">
-                <label class="text-center cocktaillabel label1">Cocktail</label>
-                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button> -->
-            </div>
-
-        </div>
-    </div>
-
-    <div id="customflowid">
-        <div id="flowtitle">
-            <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
-        </div>
-        <div class="row">
-            <div class="col-md-4" id="dromedaryimg">
-                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary" onclick="chooseDromedary()">
-                    <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
-                </a>  
-            </div>
-            <div class="col-md-4" id="descendimg">
-                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline" onclick="chooseDescend()">
-                    <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
-                </a>
-            </div>
-            <div class="col-md-4" id="ascendimg">
-                <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline" onclick="chooseAscend()">
-                    <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label class="text-center dromelabel label2">Dromedary</label>
-                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button> -->
-            </div>
-            <div class="col-md-4">
-                <label class="text-center descendlabel label2">Descending</label>
-                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button> -->
-            </div>
-            <div class="col-md-4">
-                <label class="text-center ascendlabel label2">Ascending</label>
-                <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
-            </div>
-
-        </div>
-
-
-</div>
->>>>>>> d70ca07fb8de106a5d1d907cfa579fbc17222de2
+                                        </div>
 
                                         <div id="customflowid">
                                             <div id="flowtitle">
                                                 <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4" id="dromedaryimg">
+                                                <div class="col-md-4 col-xs-4" id="dromedaryimg">
                                                     <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary" onclick="chooseDromedary()">
                                                         <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
                                                     </a>  
                                                 </div>
-                                                <div class="col-md-4" id="descendimg">
+                                                <div class="col-md-4 col-xs-4" id="descendimg">
                                                     <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline" onclick="chooseDescend()">
                                                         <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
                                                     </a>
                                                 </div>
-                                                <div class="col-md-4" id="ascendimg">
+                                                <div class="col-md-4 col-xs-4" id="ascendimg">
                                                     <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline" onclick="chooseAscend()">
                                                         <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <label class="text-center dromelabel label2">Dromedary</label>
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button> -->
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <label class="text-center descendlabel label2">Descending</label>
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button> -->
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <label class="text-center ascendlabel label2">Ascending</label>
                                                     <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
                                                 </div>
 
-<<<<<<< HEAD
                                             </div>
                                         </div><!-- /customflowid -->
-=======
-<!--<div id="pagenextid">
-    <span class="btn btn-default btn-sm" id="prepage">Previous</span><span class="btn btn-default btn-sm" id="nextpage">Next</span>
-</div>-->
->>>>>>> d70ca07fb8de106a5d1d907cfa579fbc17222de2
 
                                         <div style="display:none" id="chooseagain">
                                             <button type="button" class="btn btn-info btn-xs active" onclick="enableAll()">Choose Again</button>
-                                        </div>
-
-                                        <div id="pageid">
-                                            <span class="btn btn-default btn-sm" id="prepage">Previous</span><span class="btn btn-default btn-sm" id="nextpage">Next</span>
                                         </div>
 
                                     </div>
