@@ -417,72 +417,74 @@
                         <div class="background-choice" id="selectionpageid">
                             <div id="container">
                                 <h1 class="text-primary text-left">Playlist Settings</h1>
-                                <p class="text-muted" style="font-size:16px">Choose the duration and flows to complete your playlist. You can also customize your own flows!</p>
+                                <h5>Choose the duration and flows to complete your playlist. You can also customize your own flows!</h5>
                                 <div class="row">
 
                                     <!-- Duration Setting -->
-                                    <div class="col-md-5 col-xs-5">
+                                    <div class="col-md-4 col-xs-4">
                                         <h3 class="text-primary">Setting Playlist Duration</h3>
                                         <div class="playlistduation">
-                                            <div class="row">
-                                                <div class="col-md-8 col-xs-8">
-                                                    <p style="font-size:18px">Playlist duration: </p>
-                                                </div>
-                                                <div class="col-md-4 col-xs-4">
-                                                    <input type="checkbox" id="durationbtn" data-off-text="OFF" data-on-text="ON" data-size="mini">
-                                                </div>
-                                            </div>
+                                            <h4>Playlist duration:&nbsp<span><input type="checkbox" id="durationbtn" data-off-text="OFF" data-on-text="ON" data-size="mini"></span></h4>
                                         </div>
-                                        <form class="form-inline">
-                                            <div id="durationinput" class="form-group">
-                                                <!--<div class="row">
-                                                    <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
-                                                    <select class="form-control input-sm" id="hourid">
-                                                        <option value="0">Hour</option>
-                                                        <option value="0">0</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
 
-                                                    <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
-                                                    <select class="form-control input-sm" id="minuteid">
-                                                        <option value="0">Minute</option>
-                                                        <option value="0">0</option>
-                                                        <option value="5">5</option>
-                                                        <option value="10">10</option>
-                                                        <option value="15">15</option>
-                                                        <option value="20">20</option>
-                                                        <option value="25">25</option>
-                                                        <option value="30">30</option>
-                                                        <option value="35">35</option>
-                                                        <option value="40">40</option>
-                                                        <option value="45">45</option>
-                                                        <option value="50">50</option>
-                                                        <option value="55">55</option>
-                                                    </select>
+                                        <!--Duration Selection form-->
+                                        <div id="durationform">
+                                            <form class="form-inline">
+                                                <div id="durationinput" class="form-group">
+                                                    <!--<div class="row">
+                                                        <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
+                                                        <select class="form-control input-sm durtime" id="hourid">
+                                                            <option value="0">Hour</option>
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
 
-                                                    <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
-                                                    <select class="form-control input-sm" id="secondid">
-                                                        <option value="0">Second</option>
-                                                        <option value="0">0</option>
-                                                        <option value="5">5</option>
-                                                        <option value="10">10</option>
-                                                        <option value="15">15</option>
-                                                        <option value="20">20</option>
-                                                        <option value="25">25</option>
-                                                        <option value="30">30</option>
-                                                        <option value="35">35</option>
-                                                        <option value="40">40</option>
-                                                        <option value="45">45</option>
-                                                        <option value="50">50</option>
-                                                        <option value="55">55</option>
-                                                    </select>
-                                                <!--</div>-->
-                                            </div>
-                                        </form>
+                                                        <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
+                                                        <select class="form-control input-sm durtime" id="minuteid">
+                                                            <option value="0">Minute</option>
+                                                            <option value="0">0</option>
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                            <option value="25">25</option>
+                                                            <option value="30">30</option>
+                                                            <option value="35">35</option>
+                                                            <option value="40">40</option>
+                                                            <option value="45">45</option>
+                                                            <option value="50">50</option>
+                                                            <option value="55">55</option>
+                                                        </select>
+
+                                                        <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
+                                                        <select class="form-control input-sm durtime" id="secondid">
+                                                            <option value="0">Second</option>
+                                                            <option value="0">0</option>
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                            <option value="25">25</option>
+                                                            <option value="30">30</option>
+                                                            <option value="35">35</option>
+                                                            <option value="40">40</option>
+                                                            <option value="45">45</option>
+                                                            <option value="50">50</option>
+                                                            <option value="55">55</option>
+                                                        </select>
+                                                    <!--</div>-->
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+
+                                        <div id="durationset">
+                                            <button class="btn btn-primary btn-xs" id="durationsetbtn">Set Duration</button>
+                                        </div>
 
                                         <div id="prioritysectionid">
                                             <div>
@@ -523,9 +525,7 @@
                                                     Popularity
                                                 </label></ul>
                                             </div>
-<!-- <div>
-<button class="btn btn-info btn-xs active priorder" disabled>Choose In Order</button>
-</div> -->
+
                                         </div>
 
                                     </div><!-- /Duration Setting -->
