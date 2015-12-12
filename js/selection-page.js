@@ -21,6 +21,9 @@ $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	if(!state){
 		$(".durtime").prop('disabled',true);
 		$("#durationsetbtn").prop('disabled',true);
+		$(".attr").prop('disabled',true);
+		$(".attr").prop('checked',false);
+		$("#prioritysectionid h4").addClass('text-muted');
 	}
 });
 
@@ -119,14 +122,14 @@ function chooseAscend() {
 
 
 function computeDuration(){
-	var hour = $('#hourid option:selected').val();
-	var min = $('#minuteid option:selected').val();
-	var second = $('#secondid option:selected').val();
+	if($("#hourid").prop('disabled',false)||$("#minuteid").prop('disabled',false)||$("#secondid").prop('disabled',false)){
+		var hour = $('#hourid option:selected').val();
+		var min = $('#minuteid option:selected').val();
+		var second = $('#secondid option:selected').val();
 
-	var duration = Number(hour)*3600 + Number(min)*60 + Number(second);
-	return duration;
-
-
+		var duration = Number(hour)*3600 + Number(min)*60 + Number(second);
+		return duration;
+	}
 }
 
 function enableAll() {
