@@ -1,5 +1,5 @@
 $("#durationbtn").bootstrapSwitch('state',false);
-$("#durationinput").prop('disabled',true);
+$(".durtime").prop('disabled',true);
 $('[data-toggle="tooltip"]').tooltip();
 // $("#prioritysectionid").prop('disabled',false);
 
@@ -14,10 +14,10 @@ $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	console.log(state);
 	if(state)
 	{
-		$("#durationinput").prop('disabled',false);
+		$(".durtime").prop('disabled',false);
 	}
 	if(!state){
-		$("#durationinput").prop('disabled',true);
+		$(".durtime").prop('disabled',true);
 	}
 });
 
