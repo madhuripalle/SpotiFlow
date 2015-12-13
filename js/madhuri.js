@@ -43,27 +43,6 @@ function initiateLoginModal() {
 	console.log("initiateLoginModal called");
 	/* if any authentication is required, this is the place to call the api */
 }
-
-function spotLogin() {
-	console.log("helloooo")
-	console.log("spotLogin called");
-	/* if any authentication is required, this is the place to call the api */
-	$.ajax({
-		'url': 'https://accounts.spotify.com/authorize?client_id=' + clientID +
-              '&redirect_uri=' + 'https://localhost:8000' +
-              '&response_type=code',
-    'type': 'GET',
-    'dataType': 'jsonp',
-    'cache':true,
-    'success': function(result){
-        console.log(result);
-        
-        }
-
-	});
-
-          }  /* redirected uri needs to change */
-
       
 
 function removeLandingPage() {
