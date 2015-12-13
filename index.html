@@ -13,9 +13,13 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css">
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
+    <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <link href="css/loading.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -82,6 +86,7 @@
         <!-- /.container -->
     </nav>
 
+    <!-- Modals -->
     <div id="loginmodal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -94,7 +99,7 @@
                 <div class="modal-body" style="max-height: 300px; overflow-y: auto">
                     <!-- h6>Rishina that's your job.. Haha!</h6 -->
                     <button class="btn btn-primary" id="btn-login">Login to Spotify</button>
-                   
+
 
                 </div>
                 <div class="modal-footer">
@@ -102,7 +107,60 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- /loginmodal -->
+
+    <!-- Modal to apply flow attributes -->
+    <div id="modal-flow-attr" class="modal fade" role="dialog" aria-labelledby="flow-attr-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="flow-attr-label">Select track attributes </h4>
+                </div>
+                <div class="modal-body body-scroll">
+                    <p>Choose <strong>up to 3</strong> attributes to apply to the custom flow you selected.</p>
+                    <div class="checkbox" id="attrpriorityid-modal">
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="tempo" disabled>
+                            Tempo
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="energy" disabled>
+                            Energy
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="speechiness" disabled>
+                            Speechiness
+                        </label></ul>                        
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="acousticness" disabled>
+                            Acousticness
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                            Instrumentalness
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="loudness" disabled>
+                            Loudness
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="danceability" disabled>
+                            Danceability
+                        </label></ul>
+                        <ul><label>
+                            <input class="attr" type="checkbox" value="popularity" disabled>
+                            Popularity
+                        </label></ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary flow-attr-btn" data-target="#attrpriorityid-modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /modal-flow-attr -->
 
 
     <!-- Slider Tutorial -->
@@ -161,186 +219,457 @@
     <div id="searchid" class="background-choice">
         <div class="container">
             <div class="row">
-                <div class= "col-md-8">
-                    <div class="row" style="padding-top: 10%">
-                        <ul class="nav nav-pills nav-stacked col-md-4">
-                            <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
-                            <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
-                            <li><a href="#tab_tracks" data-toggle="pill">Browse Tracks</a></li>
-                        </ul>
-                        <div class="tab-content col-md-8">
-                            <div class="tab-pane fade in active" id="tab_playlists">
-                                <ul class="nav nav-tabs tabbable playlists">
-                                    <li class="active"><a data-toggle="tab" href="#playlists_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#playlists_search">My Playlists</a></li>
-                                    <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="playlists_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Playlists.." id="playlist_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+
+                <div class="col-md-8">
+                    <div id="SearchResults">
+                        <div class="row" style="padding-top: 10%">
+                            <ul class="nav nav-pills nav-stacked col-md-4">
+                                <li class="active"><a href="#tab_playlists" data-toggle="pill">Browse Playlists</a></li>
+                                <li><a href="#tab_albums" data-toggle="pill">Browse Albums</a></li>
+                                <li><a href="#tab_tracks" data-toggle="pill">Browse Tracks</a></li>
+                            </ul>
+                            <div class="tab-content col-md-8">
+                                <div class="tab-pane fade in active" id="tab_playlists">
+                                    <ul class="nav nav-tabs tabbable playlists">
+                                        <li class="active"><a data-toggle="tab" href="#playlists_search">Browse Public</a></li>
+                                        <li><a data-toggle="tab" href="#playlists_search">My Playlists</a></li>
+                                        <li><a data-toggle="tab" href="#playlists_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="playlists_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Playlists.." id="playlist_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="playlists_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+                                        <div class="tab-pane fade" id="playlists_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Playlists Now!</span></a> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_albums">
-                                <ul class="nav nav-tabs tabbable albums">
-                                    <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
-                                    <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="albums_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Albums.." id="album_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+                                <div class="tab-pane fade" id="tab_albums">
+                                    <ul class="nav nav-tabs tabbable albums">
+                                        <li class="active"><a data-toggle="tab" href="#albums_search">Browse</a></li>
+                                        <li><a data-toggle="tab" href="#albums_search">My Albums</a></li>
+                                        <li><a data-toggle="tab" href="#albums_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="albums_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Albums.." id="album_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="albums_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+                                        <div class="tab-pane fade" id="albums_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Albums Now!</span></a> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_tracks">
-                                <ul class="nav nav-tabs tabbable tracks">
-                                    <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
-                                    <li><a data-toggle="tab" href="#tracks_search">My Tracks</a></li>
-                                    <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
-                                </ul>
-                                <div class="tab-content centerdiv">
-                                    <div class="tab-pane fade in active" id="tracks_search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search for Tracks.." id="track_text">
-                                            <span class="input-group-btn">
-                                                <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
-                                            </span>
+                                <div class="tab-pane fade" id="tab_tracks">
+                                    <ul class="nav nav-tabs tabbable tracks">
+                                        <li class="active"><a data-toggle="tab" href="#tracks_search">Browse</a></li>
+                                        <li><a data-toggle="tab" href="#tracks_search">My Tracks</a></li>
+                                        <li><a data-toggle="tab" href="#tracks_featured">Featured</a></li>
+                                    </ul>
+                                    <div class="tab-content centerdiv">
+                                        <div class="tab-pane fade in active" id="tracks_search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for Tracks.." id="track_text">
+                                                <span class="input-group-btn">
+                                                    <button onclick="CheckTabActivity();" class="btn btn-default" type="button">Search</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tracks_featured">
+                                            <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
+                                        </div>
+                                    </div> 
+                                </div><!--end of last tab content -->
+                            </div><!-- tab content outer div-->
+                        </div><!-- /.row -->
+
+                        <hr>
+
+                        <!-- Search results placeholder -->
+                        <div class="row" id="showResults">
+                            <div class="row">
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i1" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <!-- Loading spinner -->
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="tracks_featured">
-                                        <a onclick="CheckTabActivity();" class="btn btn-default"><span class="network-name">Find Tracks Now!</span></a> 
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i2" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
                                     </div>
-                                </div> 
-                            </div><!--end of last tab content -->
-                        </div><!-- tab content outer div-->
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i3" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i4" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i5" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i6" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i7" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i8" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i9" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-lg-4">
+                                    <iframe id="i10" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div><!--/.col-xs-6.col-lg-4-->
+
+                            </div>
+
+                            <div class="row">
+                                <nav>
+                                    <ul class="pager">
+                                        <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous Page</a></li>
+                                        <li class="next" id="next"><a href="#"> Next Page <span aria-hidden="true">&rarr;</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div><!--/row Showresults-->
                     </div>
 
-                    <hr>
+                    <!-- Playlist Settings page -->
+                    <div id="SelectionOptions">
+                        <!--Jizhe's stuff-->
+                        <div class="background-choice" id="selectionpageid">
+                            <div id="container">
+                                <h1 class="text-primary text-left">Playlist Settings</h1>
+                                <h5>Choose the duration and flows to complete your playlist. You can also customize your own flows!</h5>
+                                <div class="row">
 
-                    <div class="row" id="showResults">
-                        <div class="row headingrow">
+                                    <!-- Duration Setting -->
+                                    <div class="col-md-4 col-xs-4">
+                                        <h3 class="text-primary">Setting Playlist Duration</h3>
+                                        <div class="playlistduation">
+                                            <h4>Playlist duration:&nbsp<span><input type="checkbox" id="durationbtn" data-off-text="OFF" data-on-text="ON" data-size="mini"></span></h4>
+                                        </div>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i1" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+                                        <!--Duration Selection form-->
+                                        <div id="durationform">
+                                            <form class="form-inline">
+                                                <div id="durationinput" class="form-group">
+                                                    <!--<div class="row">
+                                                        <!-- <input type="text" class="form-control" id="hourid" placeholder="Hour"> -->
+                                                        <select class="form-control input-sm durtime" id="hourid">
+                                                            <option value="0">Hour</option>
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i2" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
+                                                        <!-- <input type="text" class="form-control" id="minuteid" placeholder="Minute"> -->
+                                                        <select class="form-control input-sm durtime" id="minuteid">
+                                                            <option value="0">Minute</option>
+                                                            <option value="0">0</option>
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                            <option value="25">25</option>
+                                                            <option value="30">30</option>
+                                                            <option value="35">35</option>
+                                                            <option value="40">40</option>
+                                                            <option value="45">45</option>
+                                                            <option value="50">50</option>
+                                                            <option value="55">55</option>
+                                                        </select>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i3" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+                                                        <!-- <input type="text" class="form-control" id="secondid" placeholder="Second"> -->
+                                                        <select class="form-control input-sm durtime" id="secondid">
+                                                            <option value="0">Second</option>
+                                                            <option value="0">0</option>
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                            <option value="25">25</option>
+                                                            <option value="30">30</option>
+                                                            <option value="35">35</option>
+                                                            <option value="40">40</option>
+                                                            <option value="45">45</option>
+                                                            <option value="50">50</option>
+                                                            <option value="55">55</option>
+                                                        </select>
+                                                    <!--</div>-->
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+
+                                        <div id="durationset">
+                                            <button class="btn btn-primary btn-xs" id="durationsetbtn">Set Duration</button>
+                                        </div>
+
+                                        <div id="prioritysectionid">
+                                            <div>
+                                                <h4 class="text-muted">Priorize the attributes: </h4>
+                                            </div>
+
+                                            <div class="checkbox" id="attrpriorityid">
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="tempo" disabled>
+                                                    Tempo
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="energy" disabled>
+                                                    Energy
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="speechiness" disabled>
+                                                    Speechiness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="acousticness" disabled>
+                                                    Acousticness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                                                    Instrumentalness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="loudness" disabled>
+                                                    Loudness
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="danceability" disabled>
+                                                    Danceability
+                                                </label></ul>
+                                                <ul><label>
+                                                    <input class="attr" type="checkbox" value="popularity" disabled>
+                                                    Popularity
+                                                </label></ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div><!-- /Duration Setting -->
+
+                                    <!-- Flow Selector -->
+                                    <div class="col-md-7 col-xs-7">
+                                        <h3 class="text-primary">Setting Playlist Flow</h3>
+
+                                        <div id="designflowid">
+                                            <div id="flowtitle">
+                                                <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4" id="bactrianimg">
+                                                    <a href="#" onclick="chooseBactrian()">
+                                                        <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Songs will be organized to two peaks, with soft start and end." src="img/two_waves.png" id="bactrianflow" />
+                                                    </a>  
+                                                </div>
+                                                <div class="col-md-4 col-xs-4" id="cocktail">
+                                                    <a href="#" onclick="chooseCocktail()">
+                                                        <img class="img-responsive flowimg" data-toggle="tooltip" data-placement="top" title="Soft and comfortable songs organized smoothly." src="img/cocktail.jpg" id="cocktailflow" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4">
+                                                    <label class="text-center bactrianlabel label1">Bactrian</label>
+                                                    <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="bactrianflow">Bactrian</button> -->
+                                                </div>
+                                                <div class="col-md-4 col-xs-4">
+                                                    <label class="text-center cocktaillabel label1">Cocktail</label>
+                                                    <!-- <button type="button" class="btn btn-success btn-xs active flowbtn1" id="cocktailflow">Cocktail</button> -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div id="customflowid">
+                                            <div id="flowtitle">
+                                                <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4" id="dromedaryimg">
+                                                    <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary" onclick="chooseDromedary()">
+                                                        <img class="img-responsive flowimg" src="img/one_wave.png" id="dromedaryflow"/>  
+                                                    </a>  
+                                                </div>
+                                                <div class="col-md-4 col-xs-4" id="descendimg">
+                                                    <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline" onclick="chooseDescend()">
+                                                        <img class="img-responsive flowimg" src="img/descending.png" id="descendflow"/>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4 col-xs-4" id="ascendimg">
+                                                    <a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline" onclick="chooseAscend()">
+                                                        <img class="img-responsive flowimg" src="img/ascending.png" id="ascendflow"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-4">
+                                                    <label class="text-center dromelabel label2">Dromedary</label>
+                                                    <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 drome" id="dromedaryflow">Dromedary</button> -->
+                                                </div>
+                                                <div class="col-md-4 col-xs-4">
+                                                    <label class="text-center descendlabel label2">Descending</label>
+                                                    <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 descend" id="descendflow">Descending</button> -->
+                                                </div>
+                                                <div class="col-md-4 col-xs-4">
+                                                    <label class="text-center ascendlabel label2">Ascending</label>
+                                                    <!-- <button type="button" class="btn btn-success btn-xs active flowbtn2 ascend" id="ascendflow">Ascending</button> -->
+                                                </div>
+
+                                            </div>
+                                        </div><!-- /customflowid -->
+
+                                        <div style="display:none" id="chooseagain">
+                                            <button type="button" class="btn btn-info btn-xs active" onclick="enableAll()">Choose Again</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
 
-                        <div class="row headingrow">
+                    </div>
+                </div> <!--column md-8 -->
+                <!-- column md-4 -->
+                <div class="col-md-4">
+                    <a onclick="RemoveSearchResults();" class="btn btn-default"><span class="network-name">Next Step!</span></a> 
+                    <!-- Current Playlist Sidebar -->
+                    <div id="sidebar" class="col-lg-12 col-md-12 col-sm-12">
+                        <h3>Current Tracks</h3>
+                        <p class="col-lg-6 col-md-6 col-sm-6 text-left"><strong>Duration: </strong></p>
+                        <p class="col-lg-6 col-md-6 col-sm-6 text-right"><strong>Flow: </strong></p>
 
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i4" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i5" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i6" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                        </div>
-
-
-                        <div class="row headingrow">
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i7" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i8" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i9" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div>
-
-                        </div>
-
-
-                        <div class="row headingrow">
-
-                            <div class="col-xs-6 col-lg-4">
-                                <!--Empty Div for formatting -->
-                            </div>
-
-                            <div class="col-xs-6 col-lg-4">
-                                <iframe id="i10" src="" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
-                            </div><!--/.col-xs-6.col-lg-4-->
-
-                        </div>
-
-                        <div class="row headingrow">
-                            <nav>
-                                <ul class="pager">
-                                    <li class="previous" id="prev"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
-                                    <li class="next" id="next"><a href="#"> Next <span aria-hidden="true">&rarr;</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div><!--/row Showresults-->
-
-            </div> <!--column md-8 -->
-        </div> <!--outer row for all search functionality -->
-    </div>
-</div>
-
-<!-- Footer -->
-<footer id="footerid" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; SpotiFlow 2015. All Rights Reserved</p>
-            </div>
+                        <iframe id="current-pl" src="https://embed.spotify.com/?uri=spotify:user:qlmhuge:playlist:6Df19VKaShrdWrAnHinwVO" width="640" height="720" frameborder="0" allowtransparency="true"></iframe>
+                    </div>
+                </div><!-- /column md-4 -->
+            </div> <!--outer row for all search functionality -->
         </div>
     </div>
-</footer>
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-<script src="js/spotify-web-api.js"></script>
-<script src="js/madhuri.js"></script>
-<script src="js/login.js"></script>
+    <!-- Footer -->
+    <footer id="footerid" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; SpotiFlow 2015. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-switch.min.js"></script>
+
+    <!-- Spinner Javascript -->
+    <script type="text/javascript" src="http://fgnass.github.io/spin.js/spin.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script type="text/javascript" src="js/spotify-web-api.js"></script>
+    <script type="text/javascript" src="js/madhuri.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/loading.js"></script>
+    <script type="text/javascript" src="js/selection-page.js"></script>
+    <script type="text/javascript" src="js/selection-modal.js"></script>
+    <script type="text/javascript" src="js/sidebar.js"></script>
 
 </body>
 

@@ -1,0 +1,58 @@
+<a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Dromedary">1st img</a>
+                   
+<a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Descending Incline">2nd img</a>
+
+<a href="#" role="button" data-toggle="modal" data-target="#modal-flow-attr" data-flow="Ascending Incline">3rd img</a>
+
+<!-- Modal to apply flow attributes -->
+<div class="modal fade" id="modal-flow-attr" tabindex="-9" role="dialog" aria-labelledby="flow-attr-label">
+	<div class="modal-dialog" role="document">
+        <div class="modal-content">
+          	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="flow-attr-label">Select track attributes </h4>
+            </div>
+            <div class="modal-body body-scroll">
+                <p>Choose <strong>up to 3</strong> attributes to apply to the custom flow you selected.</p>
+                <div class="checkbox" id="attrpriorityid-modal">
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="tempo" disabled>
+                        Tempo
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="energy" disabled>
+                        Energy
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="speechiness" disabled>
+                        Speechiness
+                    </label></ul>                        
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="acousticness" disabled>
+                        Acousticness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                        Instrumentalness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="loudness" disabled>
+                        Loudness
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="danceability" disabled>
+                        Danceability
+                    </label></ul>
+                    <ul><label>
+                        <input class="attr" type="checkbox" value="popularity" disabled>
+                        Popularity
+                    </label></ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary flow-attr-btn" data-target="#attrpriorityid-modal">Apply</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /Modal to apply flow attributes -->

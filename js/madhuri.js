@@ -5,8 +5,10 @@ var subtabtrack = "Browse";
 var playlist_input;
 var album_input;
 var track_input;
-var clientID = '1337825ad7664e8a8c044edd1c64d050';
-var clientSecret = '618fa9ab84974efba033811399a6ebd6'
+var ClientID = '130113b2e9fb4c0496d9b11fd8df30da';
+var clientSecret = '618fa9ab84974efba033811399a6ebd6';
+var Base_URI = 'file:///Users/madhuripalle/Documents/SpotiFlow/index.html';
+var echoapikey = "CMEE0GLDSZ09UMTDR";
 
 $('.playlists a').on('shown.bs.tab', function(event){
 	subtabplaylist = $(event.target).text(); 
@@ -43,6 +45,7 @@ function initiateLoginModal() {
 	console.log("initiateLoginModal called");
 	/* if any authentication is required, this is the place to call the api */
 }
+
       
 
 function removeLandingPage() {
@@ -119,5 +122,42 @@ function CheckTabActivity() {
 	else
 		console.log("Error choosing tabs");
 
+}
+
+function RemoveSearchResults() {
+	console.log("calling next step");
+	hideme("SearchResults");
+	unhideme("SelectionOptions");
+	callSampleTrackAnalysis("spotify:track:0eGsygTp906u18L0Oimnem");
+}
+
+function callSampleTrackAnalysis(trackid)
+{
+
+$.ajax({
+  	type:     "GET",
+  	url:      "http://developer.echonest.com/api/v4/song/profile?api_key=" + echoapikey + "&track_id=" + trackid + "&bucket=id:spotify&bucket=audio_summary",
+  	dataType: "json",
+  	success: function(data){
+  		console.log(data);
+  		if(data.response.songs)
+  		{
+  		var energy = data.response.songs[0].audio_summary.energy;
+  		var acousticness = data.response.songs[0].audio_summary.acousticness;
+  		var danceability = data.response.songs[0].audio_summary.danceability
+  		var instrumentalness = data.response.songs[0].audio_summary.instrumentalness;
+  		var liveness = data.response.songs[0].audio_summary.liveness;
+  		var speechiness = data.response.songs[0].audio_summary.speechiness;
+  		var valence = data.response.songs[0].audio_summary.valence;
+  		console.log("Energy: " + energy);
+  		console.log("Acousticness: " + acousticness);
+  		console.log("Danceability: " + danceability);
+  		console.log("Instrumentalness: " + instrumentalness);
+  		console.log("Liveness: " + liveness);
+  		console.log("Speechiness: " + speechiness);
+  		console.log("Valence: " + valence );
+  	}
+  }
+  });
 }
 
