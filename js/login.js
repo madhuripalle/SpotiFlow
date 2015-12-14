@@ -1,33 +1,3 @@
-// var clientID = '1337825ad7664e8a8c044edd1c64d050';
-// var clientSecret = '618fa9ab84974efba033811399a6ebd6';
-
-
-// function spotLogin() {
-//  console.log("helloooo")
-//  console.log("spotLogin called");
-//  /* if any authentication is required, this is the place to call the api */
-//  var url = 'https://accounts.spotify.com/authorize?client_id=' + clientID +
-//               '&redirect_uri=' + 'http://localhost:8080/crap' +
-//               '&response_type=code';
-
-//     console.log(url);
-//  $.ajax({
-//    'url': url,
-//      'type': 'GET',
-//      'dataType': 'json',
-//      'cache':true,
-//      'success': function(result){
-//          console.log(result);        
-//      }
-//  });
-
-// }  /* redirected uri needs to change */ 
-
-
-// var elem = document.getElementById('btn-login');
-
-// elem.addEventListener('click', spotLogin);
-
 var stateKey = 'spotify_auth_state';
 /**
  * Obtains parameters from the hash of the URL
@@ -96,7 +66,7 @@ if (access_token && (state == null || state !== storedState)) {
         // var redirect_uri = 'file:///Users/rishina/Desktop/SpotiFlow/index.html';
         var state = generateRandomString(16);
         localStorage.setItem(stateKey, state);
-        var scope = 'user-read-private user-read-email'; //change scopes finally
+        var scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private'; //change scopes finally
         var url = 'https://accounts.spotify.com/authorize';
         url += '?response_type=token';
         url += '&client_id=' + encodeURIComponent(client_id);
