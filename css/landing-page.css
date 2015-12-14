@@ -21,6 +21,13 @@ h6 {
     font-weight: 700;
 }
 
+#prev {
+    display: none;
+}
+
+#next {
+    display: none;
+}
 
 #SelectionOptions {
     display: none;
