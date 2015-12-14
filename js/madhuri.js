@@ -12,8 +12,6 @@ var echoapikey = "CMEE0GLDSZ09UMTDR";
 var currentpage;
 var spotifyApi = new SpotifyWebApi();
 
-
-
 var userid;
 
 
@@ -213,6 +211,13 @@ function callGetSelfData() {
   .then(function(data) {
     console.log(data);
     userid = data.id;
+    var userprofilepicOnNav = data.images[0].url;
+    var usernameOnNav = data.display_name;
+    var nodepic = document.getElementById("img");
+    var nodename = document.getElementById("user_name");
+    nodepic.src = userprofilepicOnNav;
+    nodename.innerHTML = usernameOnNav;
+
   }, function(err) {
     console.error(err);
   });
