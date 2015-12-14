@@ -13,7 +13,7 @@ var currentpage;
 var spotifyApi = new SpotifyWebApi();
 
 var userid;
-
+var i,j,k;
 
 $('.playlists a').on('shown.bs.tab', function(event){
 	subtabplaylist = $(event.target).text(); 
@@ -284,6 +284,15 @@ function callBrowseTracks(SearchString)
 	spotifyApi.searchTracks(SearchString, {limit: 10})
   .then(function(data) {
     console.log(data);
+    var track1url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	var node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = track1url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -294,13 +303,17 @@ function callMyTracks(userid)
 spotifyApi.getMySavedTracks()
   .then(function(data) {
     console.log(data);
+     var track2url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	var node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = track1url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
-}
-
-function callFeaturedTracks()
-{
-
 }
 
