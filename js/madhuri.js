@@ -10,8 +10,11 @@ var clientSecret = '618fa9ab84974efba033811399a6ebd6';
 var Base_URI = 'file:///Users/madhuripalle/Documents/SpotiFlow/index.html';
 var echoapikey = "CMEE0GLDSZ09UMTDR";
 var currentpage;
-
 var spotifyApi = new SpotifyWebApi();
+
+
+
+var userid;
 
 
 $('.playlists a').on('shown.bs.tab', function(event){
@@ -90,6 +93,7 @@ function RemoveCarosuel() {
 	unhideme("SearchResults");
 	hideme("SelectionOptions");
 	currentpage="SearchResults";
+	callGetSelfData();
 }
 
 function CheckTabActivity() {
@@ -105,9 +109,11 @@ if(currentbrowsetab=="Browse Playlists") {
 	else if(subtabplaylist=="Browse") {
 		//call API for public playlist content
 		console.log("Browsing for " + playlist_input);
+		callBrowsePlaylists(playlist_input);
 	}
 	else if(subtabplaylist=="My Playlists") {
 		console.log("Personal Content for " + playlist_input);
+		callMyPlaylists(userid);
 	}
 	else {
 		console.log("error in playlist call");
@@ -120,13 +126,16 @@ else if(currentbrowsetab=="Browse Albums") {
 	if(subtabalbum=="Featured") {
 		//call API for featured playlists
 		console.log("Featured albums list will be shown");
+		callFeaturedAlbums();
 	}
 	else if(subtabalbum=="Browse") {
 		//call API for public playlist content
 		console.log("Browsing for " + album_input);
+		callBrowseAlbums(album_input);
 	}
 	else if(subtabalbum=="My Albums") {
 		console.log("Personal Content for " + album_input);
+		callMyAlbums(userid);
 	}
 	else {
 		console.log("error in album call");
@@ -139,13 +148,16 @@ else if(currentbrowsetab=="Browse Tracks") {
 	if(subtabtrack=="Featured") {
 	//call API for featured playlists
 	console.log("Featured tracks list will be shown");
+	callFeaturedTracks();
 	}
 	else if(subtabtrack=="Browse") {
 		//call API for public playlist content
 		console.log("Browsing for " + track_input);
+		callBrowseTracks(track_input);
 	}
 	else if(subtabtrack=="My Tracks") {
 		console.log("Personal Content for " + track_input);
+		callMyTracks(userid);
 	}
 	else {
 		console.log("error in track call");
@@ -193,5 +205,99 @@ function callSampleTrackAnalysis(trackid)
 			}
 		}
 	});
+}
+
+function callGetSelfData() {
+	spotifyApi.setAccessToken('BQCmwWobslq7NyEYzgkWKwNLg96VsuU1oLCn9Rchh4ilxW4B1RAeJIeZ0hcNC0ZEXhzAG2sSUGlZoFAjoOqJEPPPuW9EJyaV5og8n0DMy7kr7-kgIgK8Y9W4Qk3TTrJPLh3sUX_JKybOauEyi5Ucf2GT4-U7RK6iT-_yRmktfxcSltKP_rYJz_1A1bPE0eiTFxY-vDNEtIVSdiisOb53VfSK6HBVj70YvV9F4NXdqZR9fYjuqJnUXPnPPHfTpik3rLMEnjrKy5yh18zYY1SkhvgIUs-9mA');
+	spotifyApi.getMe()
+  .then(function(data) {
+    console.log(data);
+    userid = data.id;
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callFeaturedPlaylists()
+{
+	// get albums by a certain artist
+spotifyApi.getFeaturedPlaylists({limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callBrowsePlaylists(SearchString) {
+	spotifyApi.searchPlaylists(SearchString, {limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callMyPlaylists(userid) {
+	spotifyApi.getUserPlaylists(userid ,{limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callBrowseAlbums(SearchString) {
+	spotifyApi.searchAlbums(SearchString, {limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callMyAlbums(userid)
+{
+	spotifyApi.getMySavedAlbums()
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callFeaturedAlbums()
+{
+	spotifyApi.getNewReleases({limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callBrowseTracks(SearchString)
+{
+	spotifyApi.searchTracks(SearchString, {limit: 10})
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callMyTracks(userid)
+{
+spotifyApi.getMySavedTracks()
+  .then(function(data) {
+    console.log(data);
+  }, function(err) {
+    console.error(err);
+  });
+}
+
+function callFeaturedTracks()
+{
+
 }
 
