@@ -230,3 +230,14 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+#user_name {
+    display: inline-block;
+    padding-right: 3px !important;
+}
+
+#img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
