@@ -110,7 +110,6 @@ if(currentbrowsetab=="Browse Playlists") {
 		callBrowsePlaylists(playlist_input);
 	}
 	else if(subtabplaylist=="My Playlists") {
-		console.log("Personal Content for " + playlist_input);
 		callMyPlaylists(userid);
 	}
 	else {
@@ -132,7 +131,6 @@ else if(currentbrowsetab=="Browse Albums") {
 		callBrowseAlbums(album_input);
 	}
 	else if(subtabalbum=="My Albums") {
-		console.log("Personal Content for " + album_input);
 		callMyAlbums(userid);
 	}
 	else {
