@@ -163,7 +163,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	//Assume the duration for a track is 300 seconds.
 	var tracksPlaylist = Math.floor(durationSecs/300);
 	var tracksAll = playlistTracks.length;
-	var interval = Math.floor(tracksAll/tracksPlaylist)-1;
+	var interval = Math.floor(tracksAll/tracksPlaylist);
 	interval = Math.floor(interval/2)*2;
 
 	if(tracksPlaylist<2){
