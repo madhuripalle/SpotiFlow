@@ -163,7 +163,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	//Assume the duration for a track is 300 seconds.
 	var tracksPlaylist = Math.floor(durationSecs/300);
 	var tracksAll = playlistTracks.length;
-	var interval = Math.floor(tracksAll/tracksPlaylist);
+	var interval = Math.floor(tracksAll/tracksPlaylist)-1;
 	interval = Math.floor(interval/2)*2;
 
 	if(tracksPlaylist<2){
@@ -172,7 +172,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		return;
 	}
 	else{
-		var output_ = generateDromedary(playlistTracks, interval);
+		var output_ = generateDromedary(playlistTracks, interval, tracksPlaylist);
 		return output_;
 
 	}
@@ -254,8 +254,9 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		    }
 		}
 
-		var output1 = generateDromedary(even,interval/2);
-		var output2 = generateDromedary(odd, interval/2);
+		//Seperate the playlistTracks to form two dromedary and then merge them.
+		var output1 = generateDromedary(even,interval, Math.floor(tracksPlaylist/2));
+		var output2 = generateDromedary(odd, interval, Math.floor(tracksPlaylist/2));
 
 		for(var i = 0; i < output2.length; i++){
 			output1.push(output2[i]);
@@ -271,7 +272,7 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 
 
 
-var generateDromedary = function(playlist, interval){
+var generateDromedary = function(playlist, interval, tracksPlaylist){
 	var evenplaylistTracks = [];
 	var oddplaylistTracks = [];
 
@@ -289,7 +290,7 @@ var generateDromedary = function(playlist, interval){
 
 	//The generated playlist.
 	var output= [];
-	var tracksHalfPlaylist = Math.round(tracksPlaylist/2);
+	var tracksHalfPlaylist = Math.floor(tracksPlaylist/2);
 	for (var i=0; i<= Math.floor(tracksHalfPlaylist/2); i++){
 		output[i] = evenplaylistTracks[i*interval/2];
 	}
