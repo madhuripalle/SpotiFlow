@@ -166,11 +166,117 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	var interval = Math.floor(tracksAll/tracksPlaylist);
 	interval = Math.floor(interval/2)*2;
 
+	if(tracksPlaylist<2){
+		//If it only allow one song, we don't create a playlist.
+		alert("The set duration is to short to form a playlist!");
+		return;
+	}
+	else{
+		var output_ = generateDromedary(playlistTracks, interval);
+		return output_;
+
+	}
+
+};
+
+var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs){
+	for (var idx in playlistTracks){
+		var addTrackProfile = function(data) {
+			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+		};
+
+		EchoNestWebApi.getTrackProfile (api_key, 
+									   playlistTracks[idx].track.id,
+									   addTrackProfile
+									   );
+		
+		playlistTracks[idx].track['idx'] = idx;
+	}
+
+	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
+
+	//Compute the score and merge sort the process.
+	var attrArray = [];
+	if (flowAttrs.length == 1){
+		//the name of the selected attribute.
+		var flowAttr1 = flowAttrs[0];
+		for (var idx in playlistTracks){
+			//I hope track[flowAttr1] is the value of the selected attribute. 
+			attrArray[idx] = playlistTracks[idx].track[flowAttr1];
+		}
+	}
+	else if(flowAttrs.length == 2){
+		var flowAttr1 = flowAttrs[0];
+		var flowAttr2 = flowAttrs[1];
+		for (var idx in playlistTracks){
+			//I hope track[flowAttr1] is the value of the selected attribute. 
+			attrArray[idx] = 0.5*playlistTracks[idx].track[flowAttr1] + 0.5*playlistTracks[idx].track[flowAttr2];
+		}
+	}
+	else {
+		var flowAttr1 = flowAttrs[0];
+		var flowAttr2 = flowAttrs[1];
+		var flowAttr3 = flowAttrs[2];
+		for (var idx in playlistTracks){
+			//I hope track[flowAttr1] is the value of the selected attribute. 
+			attrArray[idx] = 0.33*playlistTracks[idx].track[flowAttr1] + 0.33*playlistTracks[idx].track[flowAttr2] + 0.33*playlistTracks[idx].track[flowAttr3];
+		}
+	}
+
+	//Not sure what WeighAttr does. You can edit this!
+	for (var idx in playlistTracks){
+		playlistTracks[idx].track['score']=attrArray[idx];
+	}
+	//Sort the array. Sorry I do not undertand the usage of the merge_sort you write. 
+	merge_sort(playlistTracks,score);
+
+	//Assume the duration for a track is 300 seconds.
+	var tracksPlaylist = Math.floor(durationSecs/300);
+	var tracksAll = playlistTracks.length;
+	var interval = Math.floor(tracksAll/tracksPlaylist);
+	interval = Math.floor(interval/2)*2;
+
+	if(tracksPlaylist<=6){
+		alert("The set duration is to short to form a playlist!");
+		return;
+	}
+	else{
+		var even = [];
+		var odd = [];
+
+		//divide the sorted array based on even and odd index.
+		for (var i=0;i<playlistTracks.length;i++){
+		    if ((i+2)%2==0) {
+		        even.push(playlistTracks[i]);
+		    }
+		    else {
+		        odd.push(playlistTracks[i]);
+		    }
+		}
+
+		var output1 = generateDromedary(even,interval/2);
+		var output2 = generateDromedary(odd, interval/2);
+
+		for(var i = 0; i < output2.length; i++){
+			output1.push(output2[i]);
+		}
+
+		var output_ = output1;
+		return output_;
+
+
+	}
+
+};
+
+
+
+var generateDromedary = function(playlist, interval){
 	var evenplaylistTracks = [];
 	var oddplaylistTracks = [];
 
 	//divide the sorted array based on even and odd index.
-	for (var i=0;i<lengthplaylistTracks.length;i++){
+	for (var i=0;i<playlistTracks.length;i++){
 	    if ((i+2)%2==0) {
 	        evenplaylistTracks.push(playlistTracks[i]);
 	    }
@@ -197,4 +303,5 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		output[i] = oddplaylistTracks[(Math.floor(tracksHalfPlaylist*3/2)-1-tracksHalfPlaylist)*interval*2+(i-(Math.floor(tracksHalfPlaylist*3/2)-1))*interval/2];
 	}
 
+	return output;
 };
