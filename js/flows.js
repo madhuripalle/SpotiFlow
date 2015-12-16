@@ -14,7 +14,7 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 	for (t in playlistTracks){
 		uris.uris.push(playlistTracks[t].track.uri);
 	}
-	SpotifyWebApi.removeTracksFromPlaylist(userid, currentPlaylistId, uris);
+	spotifyApi.removeTracksFromPlaylist(userid, currentPlaylistId, uris);
 	return sortTracks;
 };
 
@@ -23,7 +23,7 @@ var ReorderPlaylist = function(playlistTracksWithIdx){
 	for(var new_idx in playlistTracksWithIdx){
 		var idx = playlistTracksWithIdx[new_idx].track.idx;
 		if(idx > new_idx) {
-			SpotifyWebApi.reorderTracksInPlaylist(userid, currentPlaylistId, idx, new_idx, rtipCallback);
+			spotifyApi.reorderTracksInPlaylist(userid, currentPlaylistId, idx, new_idx, rtipCallback);
 		}
 	}
 	console.log('ReorderPlaylist finished.');

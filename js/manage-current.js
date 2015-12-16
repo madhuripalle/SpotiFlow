@@ -16,11 +16,11 @@ function AddResultToCurrent(resultURI) {
 	var uris = {uris: []};
 	if (params[1] == "tracks"){
 		uris.uris.push(resultURI);
-		SpotifyWebApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
 	}else{
 		if(params[1] == "album"){
 
-			SpotifyWebApi.getAlbumTracks(params[2])
+			spotifyApi.getAlbumTracks(params[2])
 			.then(albumTracksCallback(data)
 			, function(err) {
 				console.error(err);
@@ -40,7 +40,7 @@ function AddResultsToCurrent(trackURIs){
 	}
 	for(i in chunkedTrackURIs){
 		var uris = {"uris": chunkedTrackURIs[i]};
-		SpotifyWebApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
 	}
 };
 
@@ -53,18 +53,26 @@ function refreshCurrentPlaylist() {
 	// to test
 
 	var options = {offset: 0};
-	//var hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
-	var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
-	.then(rcpCallback(data)
+	//var hasNext = spotifyApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+	var hasNext = spotifyApi.getPlaylistTracks(userid, currentPlaylistId, options)
+	.then(function(data) {
+		currentPlaylistTracks.concat(data.items);
+		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
+		return data.next != null;
+}
 	, function(err) {
 		console.error(err);
 	});
 
 	while (hasNext){
 		options.offset += 100;
-		//hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
-		hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
-		.then(rcpCallback(data)
+		//hasNext = spotifyApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+		hasNext = spotifyApi.getPlaylistTracks(userid, currentPlaylistId, options)
+		.then(function(data) {
+		currentPlaylistTracks.concat(data.items);
+		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
+		return data.next != null;
+}
 		, function(err) {
 			console.error(err);
 		});
@@ -76,18 +84,14 @@ function refreshCurrentPlaylist() {
 	$('#current-pl').attr( 'src', function ( i, val ) { return val; });
 };
 
-function rcpCallback(error, success) {
-	if(success){
-		currentPlaylistTracks.concat(success.response.items);
+function rcpCallback(data) {
+		currentPlaylistTracks.concat(data.response.items);
 		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
-		return success.response.next != null;
-	}else if(error){
-		alert(error);
-	}
+		return data.response.next != null;
 };
 
 function albumTracksCallback(data){
-		var tracks = success.response.items;
+		var tracks = data.response.items;
 		var uris = {"uris": []}
 		for(var t in tracks){
 			uris.uris.push

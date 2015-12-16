@@ -376,11 +376,11 @@ function callTrackAnalysis(trackid, callback)
 function callGetSelfData() {
 
 
-	spotifyApi.setAccessToken('BQAuONUxH_ECqUrusWVcKotYwwZG_F_y3jRBcokgMkaw4qlwfKER4g2QdroMWxXjZ7EZil3ZZqrwwIgueOYud_2iyUfjEJ19Pqgi0t30Ziu_wopdDdtXoXrr0ThY8r6FEhpztPgWymPlBPLC86_uP3qfbXMwqLRXIdH20r6_NhWbMXbjzwnMKgWopeikad-H-IvIc_srbqqrql2RS7fGid_-7LDs9nYViqCAJlwtHoU62P4KPNFN7HlLKgF-LThapKyZEEAS9DzhjsaAgaCDAwlbqACs8N8x-aOr5JiGyJKX4Yorph_2pVgZs-_gzGk');
+	//spotifyApi.setAccessToken('BQAuONUxH_ECqUrusWVcKotYwwZG_F_y3jRBcokgMkaw4qlwfKER4g2QdroMWxXjZ7EZil3ZZqrwwIgueOYud_2iyUfjEJ19Pqgi0t30Ziu_wopdDdtXoXrr0ThY8r6FEhpztPgWymPlBPLC86_uP3qfbXMwqLRXIdH20r6_NhWbMXbjzwnMKgWopeikad-H-IvIc_srbqqrql2RS7fGid_-7LDs9nYViqCAJlwtHoU62P4KPNFN7HlLKgF-LThapKyZEEAS9DzhjsaAgaCDAwlbqACs8N8x-aOr5JiGyJKX4Yorph_2pVgZs-_gzGk');
 
 	
 	//localhost access_token
-	//spotifyApi.setAccessToken(access_token);
+	spotifyApi.setAccessToken(access_token);
 
 
 
