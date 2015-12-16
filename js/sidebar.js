@@ -29,7 +29,7 @@ function SetIFrameSize () {
 };
 
 function DisplayCurrentDuration() {
-    $('#sidebar').find('p').text('<strong>Duration: </strong>'+SecondsToTime(currentPlaylistDuration));
+    $('#sidebar').find('p').text('<strong>Duration: </strong>'+SecondsToTime(Math.floor(currentPlaylistDuration)));
 };
 
 function SecondsToTime(seconds) {
