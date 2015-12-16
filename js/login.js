@@ -3,7 +3,7 @@ var stateKey = 'spotify_auth_state';
  * Obtains parameters from the hash of the URL
  * @return Object
  */
-var user_name, img;
+var user_name, img, user_id;
 
 
 function getHashParams() {
@@ -50,8 +50,11 @@ if (access_token && (state == null || state !== storedState)) {
                 'Authorization': 'Bearer ' + access_token
             },
             success: function(response) {
+                //console.log(response)
                 user_name = response.display_name;
                 img = response.images[0].url;
+                user_id = response.id;
+                //console.log(user_id)
                 document.getElementById('user_name').innerHTML = user_name;
                 document.getElementById('img').src = img;
             }
