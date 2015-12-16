@@ -42,7 +42,7 @@ var Bactrian = function(playlistTracks, durationSecs, durationAttrs) {
 		//^nvm define callback inside this loop
 
 		var addTrackProfile = function(data) {
-			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
 
 		callTrackAnalysis (playlistTracks[idx].track.id,
@@ -66,13 +66,13 @@ var Ambient = function(playlistTracks, durationSecs, durationAttrs) {};
 var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs) {
 	for (var idx in playlistTracks){
 		var addTrackProfile = function(data) {
-			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
 
 		callTrackAnalysis (playlistTracks[idx].track.id,
 						   addTrackProfile
 						   );
-		
+
 		playlistTracks[idx].track['idx'] = idx;
 	}
 
@@ -86,7 +86,7 @@ var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs
 var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs) {
 	for (var idx in playlistTracks){
 		var addTrackProfile = function(data) {
-			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
 
 		callTrackAnalysis (playlistTracks[idx].track.id,
@@ -105,7 +105,7 @@ var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs){
 	for (var idx in playlistTracks){
 		var addTrackProfile = function(data) {
-			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
 
 		callTrackAnalysis (playlistTracks[idx].track.id,
@@ -174,7 +174,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs){
 	for (var idx in playlistTracks){
 		var addTrackProfile = function(data) {
-			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
+			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
 
 		callTrackAnalysis (playlistTracks[idx].track.id,
