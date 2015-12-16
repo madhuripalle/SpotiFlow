@@ -99,6 +99,12 @@ function RemoveCarosuel() {
 	callGetSelfData();
 }
 
+function clearfields() {
+	document.getElementById("playlist_text").value = "";
+    document.getElementById("album_text").value = "";
+    document.getElementById("track_text").value = "";
+}
+
 function callPrevResults() {
 	Offset = Offset - 10;
 	if(Offset < 0) {
@@ -487,6 +493,7 @@ function callMyTracks(userid)
 function populateItems(items, useTrackUri) 
 {
 	unhideme("showResults");
+	clearfields();
 	var embedurl = "https://embed.spotify.com/?uri=";
 	for(i=1;i<=10;i++)
 	{
