@@ -48,6 +48,7 @@ $("[id=prevstep]").click(function(){
 		$("[id=prevstep]").attr('disabled', true);
 		$("[id=nextstep]").attr('disabled', false);
 	}
+	SetIFrameSize();
 });
 
 $("[id=nextstep]").click(function(){
@@ -63,6 +64,7 @@ $("[id=nextstep]").click(function(){
 		$("[id=prevstep]").attr('disabled', false);
 		$("[id=nextstep]").attr('disabled', false);
 	}
+	SetIFrameSize();
 });
 
 function processAdd(elementid)
@@ -144,11 +146,13 @@ function callPrevResults() {
 		Offset = 0;
 	}
 	callOffsetResults();
+	SetIFrameSize();
 }
 
 function callNextResults() {
 	Offset = Offset + 10;
 	callOffsetResults();
+	SetIFrameSize();
 }
 
 function callOffsetResults() {
@@ -311,6 +315,7 @@ function CheckTabActivity() {
 	else {
 		console.log("Error choosing tabs");
 	}
+	SetIFrameSize();
 }
 
 function RemoveSearchResults() {
@@ -320,6 +325,7 @@ function RemoveSearchResults() {
 	unhideme("SelectionOptions");
 	currentpage="SelectOptions";
 	UnloadSpinners();
+	SetIFrameSize();
 }
 
 
