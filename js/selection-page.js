@@ -21,8 +21,8 @@ $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	if(!state){
 		$(".durtime").prop('disabled',true);
 		$("#durationsetbtn").prop('disabled',true);
-		$(".attr").prop('disabled',true);
-		$(".attr").prop('checked',false);
+		$('#prioritysectionid').find(".attr").prop('disabled',true);
+		$('#prioritysectionid').find(".attr").prop('checked',false);
 		$("#prioritysectionid h4").addClass('text-muted');
 	}
 });
@@ -45,7 +45,7 @@ $('#durationsetbtn').on('click',function(e){
 	if(durationSet >= durationPlaylist){
 		var msg = confirm("The duration is beyond the scope of the current playlist. Do you want to prioritize the tracks?");
 		if(msg){
-			$('.attr').prop('disabled',false);
+			$('#prioritysectionid').find('.attr').prop('disabled',false);
 			$('#prioritysectionid h4').removeClass('text-muted');
 		}
 	}
