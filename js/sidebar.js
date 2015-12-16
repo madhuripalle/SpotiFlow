@@ -45,4 +45,4 @@ function SecondsToTime(seconds) {
     return h+":"+(m < 10 ? '0'+m : m)+":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
 };
 
-function cre
+//function cre
