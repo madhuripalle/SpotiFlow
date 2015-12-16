@@ -13,17 +13,6 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 
 };
 
-var GetPlaylistDuration = function(playlistTracks) {
-	var duration = 0.0;
-
-	for (var i in playlistTracks) {
-		duration += playlistTracks[i].track.duration_ms / 1000;
-	}
-
-	return duration;
-};
-
-
 /**
  * Designer Flows
  */
@@ -118,7 +107,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 
 	//Compute the score and merge sort the process.
-	var attrArray = [];
+	/*var attrArray = [];
 	if (flowAttrs.length == 1){
 		//the name of the selected attribute.
 		var flowAttr1 = flowAttrs[0];
@@ -150,7 +139,8 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		playlistTracks[idx].track['score']=attrArray[idx];
 	}
 	//Sort the array. Sorry I do not undertand the usage of the merge_sort you write. 
-	merge_sort(playlistTracks,score);
+	merge_sort(playlistTracks,score);*/
+	merge_sort(playlistTracks, flowAttrs);
 
 	//Assume the duration for a track is 300 seconds.
 	var tracksPlaylist = Math.floor(durationSecs/300);
@@ -162,7 +152,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		//If it only allow one song, we don't create a playlist.
 		alert("The set duration is to short to form a playlist!");
 		return;
-	}
+	}//~~~~~~~~~~
 	else{
 		var output_ = generateDromedary(playlistTracks, interval, tracksPlaylist);
 		return output_;
@@ -187,7 +177,7 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 
 	//Compute the score and merge sort the process.
-	var attrArray = [];
+	/*var attrArray = [];
 	if (flowAttrs.length == 1){
 		//the name of the selected attribute.
 		var flowAttr1 = flowAttrs[0];
@@ -219,7 +209,8 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		playlistTracks[idx].track['score']=attrArray[idx];
 	}
 	//Sort the array. Sorry I do not undertand the usage of the merge_sort you write. 
-	merge_sort(playlistTracks,score);
+	merge_sort(playlistTracks,score);*/
+	merge_sort(playlistTracks, flowAttrs);
 
 	//Assume the duration for a track is 300 seconds.
 	var tracksPlaylist = Math.floor(durationSecs/300);
