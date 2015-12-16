@@ -28,6 +28,8 @@ function SetIFrameSize () {
     $('#sidebar').css('height', sidebarHeight+'px');
     var height = Math.min(sidebarHeight-$('#sidebar').find('h3').outerHeight(true)-$('#sidebar').find('p').outerHeight(true), 720);
     $('#current-pl').attr('height', height+'px');
+
+
 };
 
 function DisplayCurrentDuration() {
@@ -42,3 +44,5 @@ function SecondsToTime(seconds) {
     s -= m*60;
     return h+":"+(m < 10 ? '0'+m : m)+":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
 };
+
+function cre

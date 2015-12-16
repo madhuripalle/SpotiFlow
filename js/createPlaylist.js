@@ -49,7 +49,8 @@
                 console.log(response);
                 playlist_id = response.id;
                 SetCurrentPlaylistId(playlist_id);
-                refreshCurrentPlaylistFirstTime(user_id, playlist_id);               
+                refreshCurrentPlaylistFirstTime(user_id, playlist_id); 
+                              
             },
             error: function(err) {
                 console.log('Error', err);
