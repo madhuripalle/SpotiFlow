@@ -124,6 +124,29 @@
         </div>
     </div><!-- for empty input -->
 
+    <div id="createmodal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create A Playlist</h4>
+                </div>
+                <div class="modal-body" style="max-height: 300px; overflow-y: auto">
+                    <h6>Please enter the name of your playlist!</h6>
+                    <div class="form-group">
+                        <label for="playlistName">Playlist Name</label>
+                        <input type="text" class="form-control" id="playlistName" placeholder="Dance">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-create" data-dismiss="modal" onclick="createlist();">Okay!</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- for creation of playlist -->
+
     <div id="FeatureNotAvailable-Modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -241,7 +264,9 @@
                     </a>
                 </div>  <!--mycarousel-->
                 <div class="row" id="carouselbtn" >
-                    <a onclick="RemoveCarosuel();" class="btn btn-default btn-lg"><span class="network-name">Let's Get Started</span></a>
+                    <a data-toggle="modal" data-target="#createmodal" class="btn btn-default btn-lg"><span class="network-name">Let's Get Started</span></a>
+
+                    <!--a onclick="RemoveCarosuel();" class="btn btn-default btn-lg"><span class="network-name">Let's Get Started</span></a> -->
                 </div> <!--row for button-->
             </div> <!--row-->
         </div> <!--container-->
@@ -785,8 +810,12 @@
     <script type="text/javascript" src="js/selection-page.js"></script>
     <script type="text/javascript" src="js/selection-modal.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
+
     <script type="text/javascript" src="js/mergesort.js"></script>
     <script type="text/javascript" src="js/flows.js"></script>
+
+    <script type="text/javascript" src="js/createPlaylist.js"></script>
+
 
 </body>
 

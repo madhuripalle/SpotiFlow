@@ -372,11 +372,20 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQBjPWOQicmxAJaNo4NPmIh0tBAOkSHjxKFs4LrxhD-KD7wak69RNRkUlWDJHfdzXKSZSk5ML8NRg7SuhPgM0f9Bc4oJJ3JbpissO9AWyF4nikJIxUS_fL6cazlv0UzMVn9dfqMBv3lTdhFHYlcSkgBoUyBcxRAYHzaoJ7HSCNiKUSgazNgnHT71Wr7dbC4pQZftU_ITw8gEtpjMEwtVsmx9KjzQM5bKsW6QSxn0BHyJVPdG8tSmprq39ucrxEJrfRLtJly918bHUGAxj5mQHLFDMDWN_NdIvGZlcVLtD1ou8I5G3TLbeCoX7XfGcek');
+	//spotifyApi.setAccessToken('BQBjPWOQicmxAJaNo4NPmIh0tBAOkSHjxKFs4LrxhD-KD7wak69RNRkUlWDJHfdzXKSZSk5ML8NRg7SuhPgM0f9Bc4oJJ3JbpissO9AWyF4nikJIxUS_fL6cazlv0UzMVn9dfqMBv3lTdhFHYlcSkgBoUyBcxRAYHzaoJ7HSCNiKUSgazNgnHT71Wr7dbC4pQZftU_ITw8gEtpjMEwtVsmx9KjzQM5bKsW6QSxn0BHyJVPdG8tSmprq39ucrxEJrfRLtJly918bHUGAxj5mQHLFDMDWN_NdIvGZlcVLtD1ou8I5G3TLbeCoX7XfGcek');
+
+
+
+	//spotifyApi.setAccessToken('BQD6EJknnyBx5znEH8a93di4zaXjHPVd9n9pQ6bBKzAjhYiTjl39cvn5P8MZtTGC0H8atIXFgpkjK3mAOA_XsEZME41IG2ov5WQBPhXVQlmvpc3zlNZUu8tKkAXh_Wm6W8ev4sZT7ekeyb6wCGr75IJkA7QA3PPWRwnvX8SdJkdeMY2ZK2bvGliZ9ouR5954WstK8KrW4CBN8rDosXIEG1sHn4yY16Av4hrabsNFV2NIjHlIu0sJPabKk6GevvSidFvcXeT1hlfYuciUTy5uMvnUprm8irOtQw');
+	
+	//localhost access_token
+	spotifyApi.setAccessToken(access_token);
+
+
 
 	spotifyApi.getMe()
 	.then(function(data) {
-		console.log(data);
+		//console.log(data);
 		userid = data.id;
 		var userprofilepicOnNav = data.images[0].url;
 		var usernameOnNav = data.display_name;
@@ -386,6 +395,17 @@ function callGetSelfData() {
 		nodename.innerHTML = usernameOnNav;
 
 	}, function(err) {
+		console.error(err);
+	});
+}
+
+function createlist()
+{
+	RemoveCarosuel();
+	spotifyApi.createPlaylist(user_id)
+	.then(function(data) {
+		console.log(data);
+		}, function(err) {
 		console.error(err);
 	});
 }
