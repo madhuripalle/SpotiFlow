@@ -301,8 +301,8 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQA3OU0eVHHVTguqUwKSGe_9PqmiSB9XYUu_gExlGGOsys3evdo16yeGmqKN-Fphxj0eS4yJovT2NOys0vVTCPt98fjz6AT054nuVV_ydjp-UHWe1bkLGO41uWaCGU9vSAa_e2Z-j0bYO968YWDJ90f7XD3eonf0Q_wB_E65ZP78rnea4cBUwaL2FZr0yEZzucdRMVqJlNHJP-kVOYLdAf4UF3CP7A88F1ZSNO9CxA77W8td_QAfnn-bJGE1zzfFUKRcHcUJH-Q0-PhDxvHz65UDDS-QlrRvezVOe8j7Lb_jKCd61w');
-	//spotifyApi.setAccessToken(accestoken);
+	spotifyApi.setAccessToken('BQD55OFrBHlmuKxGj2fV3a8D2c-cS8wLf_W1Y86XkVGtxs2QoTDnKsOgqJzOZ6nK2Yqq3G7EbZf5gXBCkga3s6iPNLf4AuNyJbC_LmnbGigEsDJeibtS5JHv_gupuubFbe55g8uIjB4QpsunJWsAxgx-uq_XHA-uqeUjdlYSFWEyfLrUxCwJpFBXHZRbBAhk9TcqsAltH8H63_hyZEFWO8jfsUxDvXHyc3KjfGy5fXEESUmzod20eHaYgQ1CKljoHreOXz84XfoRH-GY3QDpCurXbOxyiVkOz5GlnyAxSqKLzoZdSzqH15tEbUmIjyI');
+	//spotifyApi.setAccessToken(accesstoken);
 	spotifyApi.getMe()
 	.then(function(data) {
 		console.log(data);

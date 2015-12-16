@@ -7,10 +7,12 @@ function SetCurrentPlaylistId(playlistId){
 	currentPlaylistId = playlistId;
 };
 
+function AddResultToCurrent(resultId, resultType) {
 
+}
 
 function refreshCurrentPlaylist() {
-	var options = [offset: 0];
+	var options = {offset: 0};
 	var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options, rcpCallback);
 
 	while (hasNext){
