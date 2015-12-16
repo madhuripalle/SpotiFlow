@@ -57,7 +57,7 @@ $("#nextstep").click(function(){
 	console.log("currentpage is " + currentpage);
 	if(currentpage=="SelectOptions")
 	{	
-		alert("Applying the flow.");
+		$('gotospotify-modal').modal('show');
 		callSampleTrackAnalysis("spotify:track:0eGsygTp906u18L0Oimnem");
 	}
 	if(currentpage=="SearchResults")
