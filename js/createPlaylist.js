@@ -40,7 +40,8 @@ $(document).ready(function() {
                 'Content-Type': 'application/json'
             },
             success: function(response) {
-                console.log('create playlist response', response);
+                console.log(response);
+                
             },
             error: function(err) {
                 console.log('Error', err);
