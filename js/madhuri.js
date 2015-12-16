@@ -206,6 +206,7 @@ function callSampleTrackAnalysis(trackid)
 
 function callGetSelfData() {
 	spotifyApi.setAccessToken('BQBCPSsl9BVoxQjEsqnXgXX_uCr9njLx02D7mwMSKY0282aqrAEmAOb-zTTMDnvt6raQv6KqmGlfApnz7Bc4Ef66rQICjoxhkMysKdNTKzr2B-4n6c07LY_QiwGBFPNdfdeguWgGMwz8oKOSBBtV-0HITQn1q0yQX2U3oANWhelgmHmlC4crd4o68-CT4KwJDuHQG6eRv1r8tybL5NlG3Hl4T3_SF7ZC4MZq58JvJYw8g3K5UwhZ97gSD_3wBkoFbkWyRShOci9F0vZlvjfcp8dn-DB-jmZcWh810OBX1n8Sx4iOqcdGOd4k2O49vN4');
+	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
   .then(function(data) {
     console.log(data);
