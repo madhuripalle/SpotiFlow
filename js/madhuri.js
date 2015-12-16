@@ -176,6 +176,10 @@ function callOffsetResults() {
 }
 
 function CheckTabActivity() {
+
+	hideme("ShowWelcomeText");
+	hideme("NoResultsFound");
+
 	console.log(currentbrowsetab);
 	lastSearchBrowseTab = currentbrowsetab;
 	Offset = 0;
@@ -192,7 +196,12 @@ function CheckTabActivity() {
 		else if(subtabplaylist=="Browse") {
 		//call API for public playlist content
 			console.log("Browsing for " + playlist_input);
+			if(playlist_input=="") {
+				$('#pleaseEnterInput-modal').modal('show');
+			}
+			else {
 			callBrowsePlaylists(playlist_input);
+			}
 		}
 		else if(subtabplaylist=="My Playlists") {
 			callMyPlaylists(userid);
@@ -214,7 +223,12 @@ function CheckTabActivity() {
 		else if(subtabalbum=="Browse") {
 		//call API for public playlist content
 			console.log("Browsing for " + album_input);
+			if(album_input=="") {
+				$('#pleaseEnterInput-modal').modal('show');
+			}
+			else {
 			callBrowseAlbums(album_input);
+		}
 		}
 		else if(subtabalbum=="My Albums") {
 			callMyAlbums(userid);
@@ -236,7 +250,12 @@ function CheckTabActivity() {
 		else if(subtabtrack=="Browse") {
 			//call API for public playlist content
 			console.log("Browsing for " + track_input);
+			if(track_input=="") {
+				$('#pleaseEnterInput-modal').modal('show');
+			}
+			else {
 			callBrowseTracks(track_input);
+		}
 		}
 		else if(subtabtrack=="My Tracks") {
 			console.log("Personal Content for " + track_input);
@@ -252,6 +271,8 @@ function CheckTabActivity() {
 }
 
 function RemoveSearchResults() {
+	hideme("ShowWelcomeText");
+	hideme("NoResultsFound");
 	hideme("SearchResults");
 	unhideme("SelectionOptions");
 	currentpage="SelectOptions";
@@ -301,8 +322,9 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQD55OFrBHlmuKxGj2fV3a8D2c-cS8wLf_W1Y86XkVGtxs2QoTDnKsOgqJzOZ6nK2Yqq3G7EbZf5gXBCkga3s6iPNLf4AuNyJbC_LmnbGigEsDJeibtS5JHv_gupuubFbe55g8uIjB4QpsunJWsAxgx-uq_XHA-uqeUjdlYSFWEyfLrUxCwJpFBXHZRbBAhk9TcqsAltH8H63_hyZEFWO8jfsUxDvXHyc3KjfGy5fXEESUmzod20eHaYgQ1CKljoHreOXz84XfoRH-GY3QDpCurXbOxyiVkOz5GlnyAxSqKLzoZdSzqH15tEbUmIjyI');
 	//spotifyApi.setAccessToken(accesstoken);
+	spotifyApi.setAccessToken('BQDL4cME7esP_oh7iyeQzFuvSqDy7dzfPHdZVatB34HChY77O3HWfOvdyjgbCr8G3KBwoKG8wpZh7c57SmgcNiRPj2UcPNxqcYb1j5k0EGZ2EBle0AArwb3zaCeQMMtTwBRpVPMTv0PTt0bHM5lnI1eJ48Ic2Bx6TCsSpw568Q-8q5RmkKsN5RyZQh8-nHwnl195zRuc5GcORuI0LHk9yfBKuY3xXe0j9BIn2jlewK4dZzGSffIweK7F0WBfh9V-ggTuwB3GTsRYN1cJpng7O08ArRmL2RyLmujEZMuzq_Nu1gK4tw');
+
 	spotifyApi.getMe()
 	.then(function(data) {
 		console.log(data);
@@ -324,9 +346,15 @@ function callFeaturedPlaylists()
 	// get albums by a certain artist
 	spotifyApi.getFeaturedPlaylists({limit: 10, offset: Offset})
 	.then(function(data) {
+		
 		console.log(data);
+		if(data.playlists.items[0]) {
 		populateItems(data.playlists.items, false);
 		updateNavigation(data.playlists);
+	}
+		else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -335,9 +363,16 @@ function callFeaturedPlaylists()
 function callBrowsePlaylists(SearchString) {
 	spotifyApi.searchPlaylists(SearchString, {limit: 10, offset: Offset})
 	.then(function(data) {
+		
 		console.log(data);
+		if(data.playlists.items[0]) {
+		
 		populateItems(data.playlists.items, false);
 		updateNavigation(data.playlists);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -347,8 +382,13 @@ function callMyPlaylists(userid) {
 	spotifyApi.getUserPlaylists(userid ,{limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
+		if(data.items[0]) {
 		populateItems(data.items, false);
 		updateNavigation(data);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -357,9 +397,16 @@ function callMyPlaylists(userid) {
 function callBrowseAlbums(SearchString) {
 	spotifyApi.searchAlbums(SearchString, {limit: 10, offset: Offset})
 	.then(function(data) {
+
 		console.log(data);
+		if(data.albums.items[0])
+		{
 		populateItems(data.albums.items, false);
-		updateNavigation(data.album);
+		updateNavigation(data.albums);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -370,8 +417,14 @@ function callMyAlbums(userid)
 	spotifyApi.getMySavedAlbums(userid, {limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
-		populateItems(data.album.items, false);
-		updateNavigation(data.album);
+		if(data.albums.items[0])
+		{
+		populateItems(data.albums.items, false);
+		updateNavigation(data.albums);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -382,8 +435,13 @@ function callFeaturedAlbums()
 	spotifyApi.getNewReleases({limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
+		if(data.albums.items[0]) {
 		populateItems(data.albums.items, false);
-		updateNavigation(data.album);
+		updateNavigation(data.albums);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -394,8 +452,14 @@ function callBrowseTracks(SearchString)
 	spotifyApi.searchTracks(SearchString, {limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
+		if(data.tracks.items[0])
+		{
 		populateItems(data.tracks.items, false);
 		updateNavigation(data.tracks);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
 	});
@@ -406,15 +470,22 @@ function callMyTracks(userid)
 	spotifyApi.getMySavedTracks({limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
+		if(data.iems[0]) {
 		populateItems(data.items, true);
 		updateNavigation(data);
+	}
+	else {
+			unhideme("NoResultsFound");
+		}
 	}, function(err) {
 		console.error(err);
+		unhideme("NoResultsFound");
 	});
 }
 
 function populateItems(items, useTrackUri) 
 {
+	unhideme("showResults");
 	var embedurl = "https://embed.spotify.com/?uri=";
 	for(i=1;i<=10;i++)
 	{

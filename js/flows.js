@@ -13,6 +13,10 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 
 };
 
+var ReorderPlaylist = function(playlistTracksWithIdx){
+	
+};
+
 /**
  * Designer Flows
  */
@@ -251,8 +255,6 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 	}
 
 };
-
-
 
 var generateDromedary = function(playlist, interval, tracksPlaylist){
 	var evenplaylistTracks = [];
