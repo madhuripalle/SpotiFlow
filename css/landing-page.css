@@ -21,6 +21,17 @@ h6 {
     font-weight: 700;
 }
 
+#ShowWelcomeText {
+  border-radius: 5px;
+  border: 2px solid white;
+}
+
+#NoResultsFound {
+  border-radius: 5px;
+  border: 2px solid white;
+  display: none;
+}
+
 #prev {
     display: none;
 }
@@ -61,6 +72,23 @@ h6 {
 
 #BrowseTracks {
     display: none;
+}
+
+#showResults {
+    display:none;
+}
+
+.modal-header {
+   background: #337ab7;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   color: white;
+}
+
+.message {
+    text-align: center;
+    vertical-align: middle;
+    padding: 30px;
 }
 
 .divstyle {

@@ -92,20 +92,37 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login Modal - Temporary</h4>
+                    <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body" style="max-height: 300px; overflow-y: auto">
-                    <!-- h6>Rishina that's your job.. Haha!</h6 -->
-                    <button class="btn btn-primary" id="btn-login">Login to Spotify</button>
-
-
+                    <p>Click on Continue to Develop if you are a developer, or Login to spotify if you're a user!</p>
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-primary" id="btn-login">Login to Spotify</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="removeLandingPage();">Continue to Develop</button>
                 </div>
             </div>
         </div>
     </div><!-- /loginmodal -->
+
+    <div id="pleaseEnterInput-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Invalid Entry</h4>
+                </div>
+                <div class="modal-body" style="max-height: 300px; overflow-y: auto">
+                    <h6>Please enter an input and try again!</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Okay!</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- for empty input -->
 
     <!-- Modal to apply flow attributes -->
     <div id="modal-flow-attr" class="modal fade" role="dialog" aria-labelledby="flow-attr-label">
@@ -289,6 +306,16 @@
                         </div><!-- /.row -->
 
                         <hr>
+
+                        <div class="row message" id="ShowWelcomeText">
+                            <h2><i>Welcome</i></h2>
+                            <h3><i>Start searching for some music using the search box above<i></h3>
+                        </div>
+
+                        <div class="row message" id="NoResultsFound">
+                            <h2><i>Sorry</i></h2>
+                            <h3><i>No Results found<i></h3>
+                        </div>
 
                         <!-- Search results placeholder -->
                         <div class="row" id="showResults">
@@ -628,7 +655,7 @@
                         <h3>Current Tracks</h3>
                         <p class="col-lg-6 col-md-6 col-sm-6 text-left"><strong>Duration: </strong></p>
 
-                        <iframe id="current-pl" style="border: 2px solid #337ab7" src="https://embed.spotify.com/?uri=spotify:user:qlmhuge:playlist:6Df19VKaShrdWrAnHinwVO" width="640" height="720" frameborder="0" allowtransparency="true"></iframe>
+                        <iframe id="current-pl" src="https://embed.spotify.com/?uri=spotify:user:qlmhuge:playlist:6Df19VKaShrdWrAnHinwVO" width="640" height="720" frameborder="0" allowtransparency="true"></iframe>
                     </div>
                 </div>
 
