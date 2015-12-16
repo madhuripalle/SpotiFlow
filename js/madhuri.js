@@ -394,6 +394,7 @@ function callGetSelfData() {
 	.then(function(data) {
 		//console.log(data);
 		userid = data.id;
+		console.log(userid);
 		var userprofilepicOnNav = data.images[0].url;
 		var usernameOnNav = data.display_name;
 		var nodepic = document.getElementById("img");

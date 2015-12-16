@@ -1,4 +1,4 @@
-$(document).ready(function() {
+//$(document).ready(function() {
     // lets get started
 
     // creation of playlist
@@ -24,7 +24,6 @@ $(document).ready(function() {
 
         playlist();
         SetIFrameSize();
-        refreshCurrentPlaylist();
     }
 
     var elementC = document.getElementById('btn-create');
@@ -50,11 +49,11 @@ $(document).ready(function() {
                 console.log(response);
                 playlist_id = response.id;
                 SetCurrentPlaylistId(playlist_id);
-                
+                refreshCurrentPlaylistFirstTime(user_id, playlist_id);               
             },
             error: function(err) {
                 console.log('Error', err);
             }
         });
     }
-});
+//});
