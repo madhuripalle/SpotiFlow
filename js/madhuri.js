@@ -24,6 +24,8 @@ var text="";
 var userid;
 var i,j,k;
 
+var playlistName = document.getElementById('playlistName');
+
 $('.playlists a').on('shown.bs.tab', function(event){
 	subtabplaylist = $(event.target).text(); 
 });
@@ -399,7 +401,7 @@ function callGetSelfData() {
 	});
 }
 
-function createlist()
+function playlist1()
 {
 	RemoveCarosuel();
 	spotifyApi.createPlaylist(user_id)
@@ -408,7 +410,7 @@ function createlist()
 		}, function(err) {
 		console.error(err);
 	});
-}
+} 
 
 function callFeaturedPlaylists()
 {
