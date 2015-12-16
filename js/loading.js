@@ -1,9 +1,8 @@
 /*
  *  Show loading div with spinner (spin.min.js)
  */
-function LoadSpinners () {
+function LoadSpinners (numResults) {
     console.log("loadSpinners called");
-    $('.loading').show();
     var opts = {
         lines: 7 // The number of lines to draw
         , length: 2 // The length of each line
@@ -26,28 +25,33 @@ function LoadSpinners () {
         , hwaccel: false // Whether to use hardware acceleration
         , position: 'absolute' // Element positioning
     };
-    var targets = document.getElementsByClassName('loading');
+    var targets = document.getElementsByClassName('loading'); //NodeList object idx starts with 0
     var spinners = [];
-    for (var i in targets) {
+    for (var i = 0; i < numResults; i++) {
+        var iframeId = '#i'.concat("", i+1);
+        console.log(iframeId);
+        $(iframeId).parent().find('.loading').show();
         spinners.push(new Spinner(opts).spin(targets[i])); //throwing an error
 
-        // this may fail if we receive less than ten results
-        // or if doesn't gether targets in order
-        var idNum = i+1;
-        $('#i'+idNum).load(function () {
-            spinners[i].stop();
-            $('#i'+idNum).find('.loading').hide();
-        });
+        var iframe = document.getElementById(iframeId.slice(1));
+        var onloadBehavior = function () {
+            console.log('iframe '+iframe.id+' loaded.');
+            //spinners[i].stop();
+            spinners.shift();
+            $(iframe).parent().find('.loading').hide();
+        };
+        iframe.onload = onloadBehavior;
     }
-    // breaks it currenty.
-    /*
-    $('.pager')click(function () {
-        for (var i in spinners){
-            var idNum = i+1;
-            spinners[i].stop();
-            $('#i'+idNum).find('.loading').hide();
-        }
-    });*/
+    
+    //$('.pager').click(function () {  
+    //});
 };
 
-// on result iframe load, remove spinner
+function UnloadSpinners() {
+    for (var i in spinners){
+        var idNum = i+1;
+        spinners[i].stop();
+        //spinners.shift();
+        $('#i'+idNum).parent().find('.loading').hide();
+    }
+}
