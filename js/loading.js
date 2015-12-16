@@ -1,11 +1,12 @@
+var spinners = [];
+
 /*
  *  Show loading div with spinner (spin.min.js)
  */
 
+function LoadSpinners (numResults) {
 
-function LoadSpinners () {
     console.log("loadSpinners called");
-    $('.loading').show();
     var opts = {
         lines: 7 // The number of lines to draw
         , length: 2 // The length of each line
@@ -28,7 +29,8 @@ function LoadSpinners () {
         , hwaccel: false // Whether to use hardware acceleration
         , position: 'absolute' // Element positioning
     };
-    var targets = document.getElementsByClassName('loading');
+
+ /*   var targets = document.getElementsByClassName('loading');
     var spinners = [];
     var i = 0;
     for (i = 0; i < targets.length; i++) {
@@ -56,7 +58,34 @@ function LoadSpinners () {
             spinners[i].stop();
             $('#i'+idNum).parent().find('.loading').hide();
         }
-    });
+    }); */
+
+    var targets = document.getElementsByClassName('loading'); //NodeList object idx starts with 0
+    spinners.length = 0;
+    for (var i = 0; i < numResults; i++) {
+        var iframeId = '#i'.concat("", i+1);
+        console.log(iframeId);
+        $(iframeId).parent().find('.loading').show();
+        spinners.push(new Spinner(opts).spin(targets[i])); //throwing an error
+
+        var iframe = document.getElementById(iframeId.slice(1));
+        iframe.onload = function () {
+            console.log('iframe '+this.id+' loaded.');
+            //spinners[i].stop();
+            //spinners.shift();
+            $(this).parent().find('.loading').hide();
+        };
+    }
+    
+    //$('.pager').click(function () {  
+    //});
 };
 
-// on result iframe load, remove spinner
+function UnloadSpinners() {
+    for (var i in spinners){
+        var idNum = i+1;
+        spinners[i].stop();
+        //spinners.shift();
+        $('#i'+idNum).parent().find('.loading').hide();
+    }
+}

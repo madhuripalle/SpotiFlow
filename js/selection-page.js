@@ -6,10 +6,9 @@ $('[data-toggle="tooltip"]').tooltip();
 
 //set a threshold to test the function
 var durationPlaylist = 600;
-//The weight for the priority attributes.
-var weight_1 = [1];
-var weight_2 = [0.5, 0.5];
-var weight_3 = [0.5, 0.3, 0.2];
+
+//Modal selected attibutes
+var flowattr = [];
 
 $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	console.log(state);
@@ -21,8 +20,8 @@ $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	if(!state){
 		$(".durtime").prop('disabled',true);
 		$("#durationsetbtn").prop('disabled',true);
-		$(".attr").prop('disabled',true);
-		$(".attr").prop('checked',false);
+		$('#prioritysectionid').find(".attr").prop('disabled',true);
+		$('#prioritysectionid').find(".attr").prop('checked',false);
 		$("#prioritysectionid h4").addClass('text-muted');
 	}
 });
@@ -36,6 +35,15 @@ $('#attrpriorityid input[type=checkbox]').change(function(){
 	}
 });
 
+$('#attrpriorityid-modal input[type=checkbox]').change(function(){
+	if($('#attrpriorityid-modal input[type=checkbox]:checked').length==3){
+		$('#attrpriorityid-modal input[type=checkbox]:not(:checked)').prop('disabled',true);
+	}
+	else{
+		$('#attrpriorityid-modal input[type=checkbox]:not(:checked)').prop('disabled',false);
+	}
+});
+
 $('#durationsetbtn').on('click',function(e){
 	e.preventDefault();
 
@@ -45,7 +53,7 @@ $('#durationsetbtn').on('click',function(e){
 	if(durationSet >= durationPlaylist){
 		var msg = confirm("The duration is beyond the scope of the current playlist. Do you want to prioritize the tracks?");
 		if(msg){
-			$('.attr').prop('disabled',false);
+			$('#prioritysectionid').find('.attr').prop('disabled',false);
 			$('#prioritysectionid h4').removeClass('text-muted');
 		}
 	}
@@ -148,29 +156,15 @@ function enableAll() {
 	$('#chooseagain').hide();
 }
 
-function priorityDromedary(attr_array) {
-	//Use the selected attributes to compute the dromedary flow.
-	var length = attr_array.length;
-	if(length==1){
-		//sort() the data.attr.
-	}
-	if(length==2){
-		//sort() data.attr[0]*weight_2[0]+data.attr[1]*weight_2[1]
-	}
-	if(length==3){
-		//sort() data.attr[0]*weight_3[0]+data.attr[1]*weight_3[1]+data.attr[2]*weight_3[2]
-	}
+function attributesSelectFunc() {
 
-}
+	var flowattr_length = $('#attrpriorityid-modal input[type=checkbox]:checked').length;
 
-function priorityDescend(attr_array) {
-	//Use the selected attributes to compute the descending flow.
-	//Sort the data and reverse. sort() & reverse()
-}
-
-function priorityAscend(attr_array){
-	//Use the selected attributes to compute the ascending flow.
-	//Sort the data
+	for(var i = 0; i< flowattr_length; i++){
+		flowattr[i] = $('#attrpriorityid-modal input[type=checkbox]:checked')[i].value;
+		// console.log(flowattr[i]);
+	}
+	
 }
 
 

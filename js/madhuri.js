@@ -11,6 +11,7 @@ var Base_URI = 'file:///Users/madhuripalle/Documents/SpotiFlow/index.html';
 var echoapikey = "CMEE0GLDSZ09UMTDR";
 var currentpage;
 var spotifyApi = new SpotifyWebApi();
+var node;
 
 var userid;
 var i,j,k;
@@ -45,7 +46,7 @@ $("[id=nextstep]").click(function(){
 	console.log("currentpage is " + currentpage);
 	if(currentpage=="SelectOptions")
 	{	
-		alert("sorry, next page not available yet!");
+		alert("Applying the flow.");
 		callSampleTrackAnalysis("spotify:track:0eGsygTp906u18L0Oimnem");
 	}
 	if(currentpage=="SearchResults")
@@ -170,6 +171,7 @@ function RemoveSearchResults() {
 	hideme("SearchResults");
 	unhideme("SelectionOptions");
 	currentpage="SelectOptions";
+	UnloadSpinners();
 }
 
 
@@ -203,9 +205,23 @@ function callSampleTrackAnalysis(trackid)
 	});
 }
 
+function callTrackAnalysis(trackid, callback)
+{
+	$.ajax({
+		type:     "GET",
+		url:      "http://developer.echonest.com/api/v4/song/profile?api_key=" + echoapikey + "&track_id=" + trackid + "&bucket=id:spotify&bucket=audio_summary",
+		dataType: "json",
+		success: callback(data)
+	});
+}
+
 function callGetSelfData() {
-	//spotifyApi.setAccessToken('BQCmwWobslq7NyEYzgkWKwNLg96VsuU1oLCn9Rchh4ilxW4B1RAeJIeZ0hcNC0ZEXhzAG2sSUGlZoFAjoOqJEPPPuW9EJyaV5og8n0DMy7kr7-kgIgK8Y9W4Qk3TTrJPLh3sUX_JKybOauEyi5Ucf2GT4-U7RK6iT-_yRmktfxcSltKP_rYJz_1A1bPE0eiTFxY-vDNEtIVSdiisOb53VfSK6HBVj70YvV9F4NXdqZR9fYjuqJnUXPnPPHfTpik3rLMEnjrKy5yh18zYY1SkhvgIUs-9mA');
-	spotifyApi.setAccessToken(access_token)
+
+	spotifyApi.setAccessToken('BQCmwWobslq7NyEYzgkWKwNLg96VsuU1oLCn9Rchh4ilxW4B1RAeJIeZ0hcNC0ZEXhzAG2sSUGlZoFAjoOqJEPPPuW9EJyaV5og8n0DMy7kr7-kgIgK8Y9W4Qk3TTrJPLh3sUX_JKybOauEyi5Ucf2GT4-U7RK6iT-_yRmktfxcSltKP_rYJz_1A1bPE0eiTFxY-vDNEtIVSdiisOb53VfSK6HBVj70YvV9F4NXdqZR9fYjuqJnUXPnPPHfTpik3rLMEnjrKy5yh18zYY1SkhvgIUs-9mA');
+	
+	// when doing on localhost
+	//spotifyApi.setAccessToken(access_token)
+
 	spotifyApi.getMe()
   .then(function(data) {
     console.log(data);
@@ -255,6 +271,15 @@ function callBrowseAlbums(SearchString) {
 	spotifyApi.searchAlbums(SearchString, {limit: 10})
   .then(function(data) {
     console.log(data);
+    var album1url = "https://embed.spotify.com/?uri=";
+     for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album1url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -265,6 +290,15 @@ function callMyAlbums(userid)
 	spotifyApi.getMySavedAlbums()
   .then(function(data) {
     console.log(data);
+    var album2url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album2url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -275,6 +309,15 @@ function callFeaturedAlbums()
 	spotifyApi.getNewReleases({limit: 10})
   .then(function(data) {
     console.log(data);
+    var album3url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album3url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -288,7 +331,7 @@ function callBrowseTracks(SearchString)
     var track1url = "https://embed.spotify.com/?uri=";
     for(i=1;i<=10;i++)
     {
-    	var node = document.getElementById("i" + i);
+    	node = document.getElementById("i" + i);
     	if(data.tracks.items[i-1])
     	{
     		node.src = track1url + data.tracks.items[i-1].uri;
@@ -307,10 +350,10 @@ spotifyApi.getMySavedTracks()
      var track2url = "https://embed.spotify.com/?uri=";
     for(i=1;i<=10;i++)
     {
-    	var node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
+    	node = document.getElementById("i" + i);
+    	if(data.items[i-1].track.uri)
     	{
-    		node.src = track1url + data.tracks.items[i-1].uri;
+    		node.src = track2url + data.items[i-1].track.uri;
     	}
     }
   }, function(err) {
