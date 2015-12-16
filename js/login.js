@@ -69,7 +69,7 @@ if (access_token && (state == null || state !== storedState)) {
         //var redirect_uri = 'file:///Users/rishina/Desktop/SpotiFlow/index.html';
         var state = generateRandomString(16);
         localStorage.setItem(stateKey, state);
-        var scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private'; //change scopes finally
+        var scope = 'user-read-private user-read-email playlist-read-collaborative playlist-read-private user-read-private playlist-modify-public playlist-modify-private streaming user-library-read user-library-modify user-follow-modify user-follow-read'; //change scopes finally
         var url = 'https://accounts.spotify.com/authorize';
         url += '?response_type=token';
         url += '&client_id=' + encodeURIComponent(client_id);
