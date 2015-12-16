@@ -49,6 +49,11 @@ function refreshCurrentPlaylist() {
 		options.offset += 100;
 		hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options, rcpCallback);
 	}
+
+	currentPlaylistDuration = GetPlaylistDuration(currentPlaylistTracks);
+	DisplayCurrentDuration();
+	// Reload the current-pl iframe
+	$('#current-pl').attr( 'src', function ( i, val ) { return val; });
 };
 
 function rcpCallback(error, success) {

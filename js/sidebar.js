@@ -1,3 +1,12 @@
+// Reset iframe height after window resize
+$(window).resize(SetIFrameSize);
+
+$('#carouselbtn').click(function(e) {
+    SetIFrameSize();
+    // To test
+    //LoadSpinners(4);
+});
+
 function SetIFrameSize () {
     console.log("setIFrameSize called");
     // Set sidebar and current-pl width
@@ -19,14 +28,15 @@ function SetIFrameSize () {
     $('#current-pl').attr('height', height);
 };
 
-$('#carouselbtn').click(function(e) {
-    SetIFrameSize();
-    // To test
-    //LoadSpinners(4);
-});
+function DisplayCurrentDuration() {
+    $('#sidebar').find('p').text('<strong>Duration: </strong>'+SecondsToTime(currentPlaylistDuration));
+};
 
-// Reset iframe height after window resize
-$(window).resize(SetIFrameSize);
-
-
-// Need a var for the created playlist (object and/or URI)
+function SecondsToTime(seconds) {
+    var s = seconds;
+    var h = Math.floor(s/3600); //Get whole hours
+    s -= h*3600;
+    var m = Math.floor(s/60); //Get remaining minutes
+    s -= m*60;
+    return h+":"+(m < 10 ? '0'+m : m)+":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
+}
