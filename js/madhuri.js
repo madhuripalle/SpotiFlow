@@ -98,6 +98,7 @@ function processAdd(elementid)
 		}
 	}
 		console.log(ids);
+		$('#nextstep').prop('disabled', false);
 }
 
 
@@ -333,7 +334,6 @@ function CheckTabActivity() {
 	else {
 		console.log("Error choosing tabs");
 	}
-	$('#nextstep').prop('disabled', false);
 }
 
 function RemoveSearchResults() {
