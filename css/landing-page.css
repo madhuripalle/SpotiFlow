@@ -78,6 +78,15 @@ h6 {
     display:none;
 }
 
+.btnclass {
+    padding-top: 5%;
+}
+
+.mediapic {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .modal-header {
    background: #337ab7;
    border-top-left-radius: 5px;
@@ -94,8 +103,8 @@ h6 {
 .divstyle {
     text-align: center;
     vertical-align: middle;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%
 }
 
 .centerdiv {

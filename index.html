@@ -155,35 +155,35 @@
                     <p>Choose <strong>up to 3</strong> attributes to apply to the custom flow you selected.</p>
                     <div class="checkbox" id="attrpriorityid-modal">
                         <ul><label>
-                            <input class="attr" type="checkbox" value="tempo" disabled>
+                            <input class="attr" type="checkbox" value="tempo">
                             Tempo
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="energy" disabled>
+                            <input class="attr" type="checkbox" value="energy">
                             Energy
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="speechiness" disabled>
+                            <input class="attr" type="checkbox" value="speechiness">
                             Speechiness
                         </label></ul>                        
                         <ul><label>
-                            <input class="attr" type="checkbox" value="acousticness" disabled>
+                            <input class="attr" type="checkbox" value="acousticness">
                             Acousticness
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="instrumentalness" disabled>
+                            <input class="attr" type="checkbox" value="instrumentalness">
                             Instrumentalness
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="loudness" disabled>
+                            <input class="attr" type="checkbox" value="loudness">
                             Loudness
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="danceability" disabled>
+                            <input class="attr" type="checkbox" value="danceability">
                             Danceability
                         </label></ul>
                         <ul><label>
-                            <input class="attr" type="checkbox" value="popularity" disabled>
+                            <input class="attr" type="checkbox" value="popularity">
                             Popularity
                         </label></ul>
                     </div>
@@ -326,6 +326,13 @@
 
                         <hr>
 
+                        <!--
+                        <div class="alert alert-success fade in row headingrow" id="alertboxsuccess">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success</strong> <div id="alertsuccesstext">Your choice has been added!</div>
+                        </div>
+                        -->
+
                         <div class="row message" id="ShowWelcomeText">
                             <h2><i>Welcome</i></h2>
                             <h3><i>Start searching for some music using the search box above<i></h3>
@@ -341,8 +348,12 @@
                             <div class="row">
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i1" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i1" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn1" onclick="processAdd(1);">Add to Collection</button>
+                                </div>
                                     <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
@@ -352,8 +363,13 @@
                                 </div>
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i2" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i2" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn2" onclick="processAdd(2);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -364,8 +380,13 @@
                             <div class="row">
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i3" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i3" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn3" onclick="processAdd(3);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -374,30 +395,13 @@
                                 </div>
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i4" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
-                                    <div class="loading">
-                                        <div class="loadingcontent">
-                                            <p class="loadingspinner"></p>
-                                        </div>
-                                    </div>
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i4" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
                                 </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i5" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
-                                    <div class="loading">
-                                        <div class="loadingcontent">
-                                            <p class="loadingspinner"></p>
-                                        </div>
-                                    </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn4" onclick="processAdd(4);">Add to Collection</button>
                                 </div>
-
-                                <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i6" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -408,8 +412,13 @@
                             <div class="row">
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i7" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i5" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn5" onclick="processAdd(5);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -418,8 +427,45 @@
                                 </div>
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i8" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i6" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn6" onclick="processAdd(6);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
 
+                                <div class="col-md-6 divstyle">
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i7" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn7" onclick="processAdd(7);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
+                                    <div class="loading">
+                                        <div class="loadingcontent">
+                                            <p class="loadingspinner"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 divstyle">
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i8" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn8" onclick="processAdd(8);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -432,8 +478,13 @@
                             <div class="row">
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i9" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i9" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn9" onclick="processAdd(9);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
@@ -442,14 +493,19 @@
                                 </div>
 
                                 <div class="col-md-6 divstyle">
-                                    <iframe align="middle" id="i10" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
-
+                                    <div class="row">
+                                    <iframe class="mediapic" align="middle" id="i10" src="" width="300" height="380" frameborder="1" allowtransparency="true"></iframe>
+                                </div>
+                                <div class="row btnclass">
+                                    <button class="btn btn-primary" id="addbtn10" onclick="processAdd(10);">Add to Collection</button>
+                                </div>
+                                    <!-- Loading spinner -->
                                     <div class="loading">
                                         <div class="loadingcontent">
                                             <p class="loadingspinner"></p>
                                         </div>
                                     </div>
-                                </div><!--/.col-xs-6.col-lg-4-->
+                                </div>
 
                             </div>
 
@@ -590,7 +646,7 @@
 
                                         <div id="designflowid">
                                             <div id="flowtitle">
-                                                <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Hover the images to learn more!" aria-hidden="true"></span> </h4>
+                                                <h4>Designer Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Click the picture to choose the flow. Hover the picture to see more!" aria-hidden="true"></span> </h4>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-4" id="bactrianimg">
@@ -619,7 +675,7 @@
 
                                         <div id="customflowid">
                                             <div id="flowtitle">
-                                                <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow for the playlist!" aria-hidden="true"></span> </h4>
+                                                <h4>Custom Flows&nbsp<span class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="Customize your own flow by tracks' features. Click the picture to select the flow." aria-hidden="true"></span> </h4>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-4" id="dromedaryimg">

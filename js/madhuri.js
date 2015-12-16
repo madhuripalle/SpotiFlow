@@ -17,6 +17,10 @@ var lastSearchString = null;
 var lastSearchBrowseTab = null;
 var lastSearchSubTab = null;
 
+var ids = {};
+var trackidstemp = [];
+var text="";
+
 var userid;
 var i,j,k;
 
@@ -61,6 +65,35 @@ $("[id=nextstep]").click(function(){
 	}
 });
 
+function processAdd(elementid)
+{
+	
+	var choice = elementid;
+	var res = currentbrowsetab.split(" ");
+	var val = res[1];
+
+	for(i=1;i<=10;i++)
+	{
+		if(i==choice)
+		{
+			var trackuritemp = trackidstemp[i-1];
+			ids[trackuritemp] = val;
+		}
+	}
+		console.log(ids);
+}
+
+
+function printtemptracks()
+{
+	
+	console.log("calling print temp tracks");
+	var index;
+	for	(index = 0; index < trackidstemp.length; index++) {
+    	console.log(trackidstemp[index]);
+    }
+}
+
 function unhideme (divid) {
 	var item = document.getElementById(divid);
 	if (item) {
@@ -99,6 +132,12 @@ function RemoveCarosuel() {
 	callGetSelfData();
 }
 
+function clearfields() {
+	document.getElementById("playlist_text").value = "";
+    document.getElementById("album_text").value = "";
+    document.getElementById("track_text").value = "";
+}
+
 function callPrevResults() {
 	Offset = Offset - 10;
 	if(Offset < 0) {
@@ -114,6 +153,7 @@ function callNextResults() {
 
 function callOffsetResults() {
 	LoadSpinners(10);
+	trackidstemp = [];
 	console.log(lastSearchBrowseTab);
 	console.log(lastSearchSubTab);
 	if(lastSearchBrowseTab=="Browse Playlists") {
@@ -180,6 +220,7 @@ function CheckTabActivity() {
 
 	hideme("ShowWelcomeText");
 	hideme("NoResultsFound");
+	trackidstemp = [];
 
 	console.log(currentbrowsetab);
 	lastSearchBrowseTab = currentbrowsetab;
@@ -324,7 +365,6 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	//spotifyApi.setAccessToken(accesstoken);
 	spotifyApi.setAccessToken('BQCxT0HWB2GqpVfzdfAShcYFfVq-s1NK566SkYCRdPtFsYeDbJkCO3M2kSYB55tkNUjmUS65p4yofiSKdfdmn8cxduHnozEMzAeHsS307SdNxzwE3ewH7mQc-Nk-JqaGVhIqml12VH5XH_mLPaNQvd-3CP5VyIFoosRd21CWKZIJrzfP2emH-I0JiZxqe0oPMZf_8D_kspchlBGGCzd9XP_zaszw2rigotd2an8gYBoupFUdMfHoTcrgiygawdRgzPtGACof0LukuURTRlATGDH7gELQBlIR_rj8rR3MywYDI_PAJF-UKey6GRoL9mY');
 
 	spotifyApi.getMe()
@@ -472,7 +512,7 @@ function callMyTracks(userid)
 	spotifyApi.getMySavedTracks({limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
-		if(data.iems[0]) {
+		if(data.items[0]) {
 		populateItems(data.items, true);
 		updateNavigation(data);
 	}
@@ -488,6 +528,7 @@ function callMyTracks(userid)
 function populateItems(items, useTrackUri) 
 {
 	unhideme("showResults");
+	clearfields();
 	var embedurl = "https://embed.spotify.com/?uri=";
 	for(i=1;i<=10;i++)
 	{
@@ -496,16 +537,21 @@ function populateItems(items, useTrackUri)
 		if(items[i-1]) {
 			if(useTrackUri) {
 				node.src = embedurl + items[i-1].track.uri;
+				var temp = items[i-1].track.uri;
+				trackidstemp[i-1] = temp;
 				unhideme(divid);
 			} 
 			else {
 				node.src = embedurl + items[i-1].uri;
+				var temp = items[i-1].uri;
+				trackidstemp[i-1] = temp;
 				unhideme(divid);
 			}
 		} else {
 			hideme(divid);
 		}
 	}
+	printtemptracks();
 }
 
 function updateNavigation(data) 

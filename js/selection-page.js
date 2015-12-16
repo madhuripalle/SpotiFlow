@@ -153,6 +153,9 @@ function enableAll() {
 		$("#prioritysectionid h4").addClass('text-muted');
 		// $('.priorder').prop('disabled',true);
 	}
+	flowattr = [];
+	// console.log(flowattr);
+
 	$('#chooseagain').hide();
 }
 
@@ -162,8 +165,11 @@ function attributesSelectFunc() {
 
 	for(var i = 0; i< flowattr_length; i++){
 		flowattr[i] = $('#attrpriorityid-modal input[type=checkbox]:checked')[i].value;
-		// console.log(flowattr[i]);
+		console.log(flowattr[i]);
 	}
+
+	//close the modal after apply
+	$("#modal-flow-attr").modal('hide');
 	
 }
 
