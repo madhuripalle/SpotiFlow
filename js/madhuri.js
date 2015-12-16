@@ -231,7 +231,8 @@ function CheckTabActivity() {
 		}
 		}
 		else if(subtabalbum=="My Albums") {
-			callMyAlbums(userid);
+			/*callMyAlbums(userid);*/
+			$('#FeatureNotAvailable-Modal').modal('show');
 		}
 		else {
 			console.log("error in album call");
