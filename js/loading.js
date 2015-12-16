@@ -1,3 +1,5 @@
+var spinners = [];
+
 /*
  *  Show loading div with spinner (spin.min.js)
  */
@@ -26,7 +28,7 @@ function LoadSpinners (numResults) {
         , position: 'absolute' // Element positioning
     };
     var targets = document.getElementsByClassName('loading'); //NodeList object idx starts with 0
-    var spinners = [];
+    spinners.length = 0;
     for (var i = 0; i < numResults; i++) {
         var iframeId = '#i'.concat("", i+1);
         console.log(iframeId);

@@ -210,12 +210,12 @@ function callTrackAnalysis(trackid, callback)
 		type:     "GET",
 		url:      "http://developer.echonest.com/api/v4/song/profile?api_key=" + echoapikey + "&track_id=" + trackid + "&bucket=id:spotify&bucket=audio_summary",
 		dataType: "json",
-		success: callback(data);
+		success: callback(data)
 	});
 }
 
 function callGetSelfData() {
-	spotifyApi.setAccessToken('BQBMdT91pArCM09aI93FYZ3X6O4EoSUS7rGWiMGHx-NkMiquxjfyh8g3sMF8yfhOm3FvOkyxYOAYlrfkXHaP74AAbEtil-mgYtmtRTXr8enOFHUR6Gg2nm6tfTVg79_-yDQo1HhC3tJRNJvLXI80q3BbCM-oFTbjgiz2D-G9K6wN0RDGVRyn0OXITiSuNNGE4CyW_XkikDBBHGhLI9yUJ0I9zdmx3UGkm8UT6CSvkX-60QobAvR-CgirBEHWFhUnEpJWbGs2GN5_dQ8YUeaDVtwmJf105IUzA-_-0V5BoACdX7mc79DnZdVt4-9nfkY');
+	spotifyApi.setAccessToken('BQDHeXUtpGjWmW7xtj4KC0ipxIhEFtb3feZxXiY1AJDeDl_QkTO9qAoJPb6nuh6DSfLBj9JneSBwthrxI4d5oG1tFqgW9fzUbQKSGYwW6Biww3sm3cT3htbTIysURKYjo2gvZKX58GwIsLYCmuwffQfqFE1RqUn4WPmVlMDDPSl3S7UbH764mu-G4Vb2zP-OT2DW_M0CgeKQIzjDOpEhLUVfkzIKl-iz4_CPj2P9szfv2a3OdLIs0kvN1WgoSR0Rdx6Sxk_ZGhY3-dp1qkTg1yl-kmlj9bsHFw3McD0skbNchOqY1HkRTxIUcpRKdPI');
 	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
   .then(function(data) {
@@ -321,7 +321,7 @@ spotifyApi.getMySavedTracks()
     	var node = document.getElementById("i" + i);
     	if(data.tracks.items[i-1])
     	{
-    		node.src = track1url + data.tracks.items[i-1].uri;
+    		node.src = track2url + data.tracks.items[i-1].uri;
     	}
     }
   }, function(err) {
