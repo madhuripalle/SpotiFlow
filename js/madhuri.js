@@ -401,10 +401,10 @@ function callGetSelfData() {
 	});
 }
 
-function playlist1()
+function playlist1(user_id,playlistName)
 {
 	RemoveCarosuel();
-	spotifyApi.createPlaylist(user_id)
+	spotifyApi.createPlaylist(user_id,{name : playlistName})
 	.then(function(data) {
 		console.log(data);
 		}, function(err) {

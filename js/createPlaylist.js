@@ -12,7 +12,7 @@ function createlist() {
     console.log('creating')
     //calling playlist creation function
     //playlist();
-    playlist1();
+    playlist1(user_id,playlistName);
     SetIFrameSize();
 }
 
