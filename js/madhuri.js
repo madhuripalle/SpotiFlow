@@ -17,6 +17,10 @@ var lastSearchString = null;
 var lastSearchBrowseTab = null;
 var lastSearchSubTab = null;
 
+var ids = {};
+var trackidstemp = [];
+var text="";
+
 var userid;
 var i,j,k;
 
@@ -60,6 +64,35 @@ $("[id=nextstep]").click(function(){
 		$("[id=nextstep]").attr('disabled', false);
 	}
 });
+
+function processAdd(elementid)
+{
+	
+	var choice = elementid;
+	var res = currentbrowsetab.split(" ");
+	var val = res[1];
+
+	for(i=1;i<=10;i++)
+	{
+		if(i==choice)
+		{
+			var trackuritemp = trackidstemp[i-1];
+			ids[trackuritemp] = val;
+		}
+	}
+		console.log(ids);
+}
+
+
+function printtemptracks()
+{
+	
+	console.log("calling print temp tracks");
+	var index;
+	for	(index = 0; index < trackidstemp.length; index++) {
+    	console.log(trackidstemp[index]);
+    }
+}
 
 function unhideme (divid) {
 	var item = document.getElementById(divid);
@@ -120,6 +153,7 @@ function callNextResults() {
 
 function callOffsetResults() {
 	LoadSpinners(10);
+	trackidstemp = [];
 	console.log(lastSearchBrowseTab);
 	console.log(lastSearchSubTab);
 	if(lastSearchBrowseTab=="Browse Playlists") {
@@ -186,6 +220,7 @@ function CheckTabActivity() {
 
 	hideme("ShowWelcomeText");
 	hideme("NoResultsFound");
+	trackidstemp = [];
 
 	console.log(currentbrowsetab);
 	lastSearchBrowseTab = currentbrowsetab;
@@ -330,7 +365,7 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQDL4cME7esP_oh7iyeQzFuvSqDy7dzfPHdZVatB34HChY77O3HWfOvdyjgbCr8G3KBwoKG8wpZh7c57SmgcNiRPj2UcPNxqcYb1j5k0EGZ2EBle0AArwb3zaCeQMMtTwBRpVPMTv0PTt0bHM5lnI1eJ48Ic2Bx6TCsSpw568Q-8q5RmkKsN5RyZQh8-nHwnl195zRuc5GcORuI0LHk9yfBKuY3xXe0j9BIn2jlewK4dZzGSffIweK7F0WBfh9V-ggTuwB3GTsRYN1cJpng7O08ArRmL2RyLmujEZMuzq_Nu1gK4tw');
+	spotifyApi.setAccessToken('BQDeMYz16L0iSPnGsA67DVrB6OmK0V4cj__QxVqZdWqA08nz03qMkA5kfKQXfqGbYuXYbI5vfGJhGmL2_OPQusFWI-2Psa_MavNXOzU9QkqmIxTQia9WvxJUhzdB2as50mfKYWziQjGyw22XWZXn_vT251CjRS8Hjj7Elu0n_-NccdRqEGoB6FHB1D8d4u0adUhlxlilocCDVKNNLmEn1InjcGSGQRbgSvooWYUOIn6wqw5F6GTdvJaqhZWiRrX6Jabh9T5KY2fNC0GCHF0lvGGBq8AUgOLcIcxFreySOWjnY3jULA');
 	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
 	.then(function(data) {
@@ -477,7 +512,7 @@ function callMyTracks(userid)
 	spotifyApi.getMySavedTracks({limit: 10, offset: Offset})
 	.then(function(data) {
 		console.log(data);
-		if(data.iems[0]) {
+		if(data.items[0]) {
 		populateItems(data.items, true);
 		updateNavigation(data);
 	}
@@ -502,16 +537,21 @@ function populateItems(items, useTrackUri)
 		if(items[i-1]) {
 			if(useTrackUri) {
 				node.src = embedurl + items[i-1].track.uri;
+				var temp = items[i-1].track.uri;
+				trackidstemp[i-1] = temp;
 				unhideme(divid);
 			} 
 			else {
 				node.src = embedurl + items[i-1].uri;
+				var temp = items[i-1].uri;
+				trackidstemp[i-1] = temp;
 				unhideme(divid);
 			}
 		} else {
 			hideme(divid);
 		}
 	}
+	printtemptracks();
 }
 
 function updateNavigation(data) 
