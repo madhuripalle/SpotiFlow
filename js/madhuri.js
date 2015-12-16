@@ -113,6 +113,7 @@ function callNextResults() {
 }
 
 function callOffsetResults() {
+	LoadSpinners(10);
 	console.log(lastSearchBrowseTab);
 	console.log(lastSearchSubTab);
 	if(lastSearchBrowseTab=="Browse Playlists") {
