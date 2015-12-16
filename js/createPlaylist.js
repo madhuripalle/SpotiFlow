@@ -16,6 +16,7 @@ $(document).ready(function() {
 
         playlist();
         SetIFrameSize();
+        refreshCurrentPlaylist();
     }
 
     var elementC = document.getElementById('btn-create');

@@ -4,8 +4,8 @@ var currentPlaylistTracks = [];
 
 //$('#current-pl').attr('src', getCurrentPlaylistEmbedURL());
 // to test
-var tcurrentPlaylistId = "6Df19VKaShrdWrAnHinwVO";
-var tuserid = "qlmhuge";
+//var tcurrentPlaylistId = "6Df19VKaShrdWrAnHinwVO";
+//var tuserid = "qlmhuge";
 
 function SetCurrentPlaylistId(playlistId){
 	currentPlaylistId = playlistId;
@@ -53,8 +53,8 @@ function refreshCurrentPlaylist() {
 	// to test
 
 	var options = {offset: 0};
-	var hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
-	//var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
+	//var hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+	var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
 	.then(rcpCallback(data)
 	, function(err) {
 		console.error(err);
@@ -62,8 +62,8 @@ function refreshCurrentPlaylist() {
 
 	while (hasNext){
 		options.offset += 100;
-		hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
-		//hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
+		//hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+		hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
 		.then(rcpCallback(data)
 		, function(err) {
 			console.error(err);
