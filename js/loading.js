@@ -1,6 +1,8 @@
 /*
  *  Show loading div with spinner (spin.min.js)
  */
+
+
 function LoadSpinners () {
     console.log("loadSpinners called");
     $('.loading').show();
@@ -28,26 +30,33 @@ function LoadSpinners () {
     };
     var targets = document.getElementsByClassName('loading');
     var spinners = [];
-    for (var i in targets) {
-        spinners.push(new Spinner(opts).spin(targets[i])); //throwing an error
+    var i = 0;
+    for (i = 0; i < targets.length; i++) {
+        var temp = new Spinner(opts).spin();
+        targets[i].appendChild(temp.el);
+        spinners.push(temp); //throwing an error
 
         // this may fail if we receive less than ten results
         // or if doesn't gether targets in order
         var idNum = i+1;
+        $('#i'+idNum).data('spinner-id', i);
         $('#i'+idNum).load(function () {
-            spinners[i].stop();
-            $('#i'+idNum).find('.loading').hide();
+            spinners[$(this).data('spinner-id')].stop();
+            $(this).parent().find('.loading').hide();
         });
     }
+    
+
     // breaks it currenty.
-    /*
-    $('.pager')click(function () {
-        for (var i in spinners){
+    
+    $('.pager').click(function () {
+        var i = 0;
+        for (i = 0; i < spinners.length; i++){
             var idNum = i+1;
             spinners[i].stop();
-            $('#i'+idNum).find('.loading').hide();
+            $('#i'+idNum).parent().find('.loading').hide();
         }
-    });*/
+    });
 };
 
 // on result iframe load, remove spinner

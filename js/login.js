@@ -35,7 +35,7 @@ var access_token = params.access_token,
     state = params.state,
     storedState = localStorage.getItem(stateKey);
 if (access_token && (state == null || state !== storedState)) {
-    alert('There was an error during the authentication');
+    window.location.href = "/";
 } else {
 
     localStorage.removeItem(stateKey);
@@ -63,7 +63,7 @@ if (access_token && (state == null || state !== storedState)) {
     document.getElementById('btn-login').addEventListener('click', function() {
         var client_id = '1337825ad7664e8a8c044edd1c64d050'; // Your client id
         var redirect_uri = 'http://localhost:8080/'; // Your redirect uri
-        // var redirect_uri = 'file:///Users/rishina/Desktop/SpotiFlow/index.html';
+        //var redirect_uri = 'file:///Users/rishina/Desktop/SpotiFlow/index.html';
         var state = generateRandomString(16);
         localStorage.setItem(stateKey, state);
         var scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private'; //change scopes finally
