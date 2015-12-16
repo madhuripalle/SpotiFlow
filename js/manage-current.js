@@ -3,6 +3,9 @@ var currentPlaylistDuration = 0.0;
 var currentPlaylistTracks = [];
 
 //$('#current-pl').attr('src', getCurrentPlaylistEmbedURL());
+// to test
+var tcurrentPlaylistId = "6Df19VKaShrdWrAnHinwVO";
+var tuserid = "qlmhuge";
 
 function SetCurrentPlaylistId(playlistId){
 	currentPlaylistId = playlistId;
@@ -17,7 +20,11 @@ function AddResultToCurrent(resultURI) {
 	}else{
 		if(params[1] == "album"){
 
-			SpotifyWebApi.getAlbumTracks(params[2], albumTracksCallback);
+			SpotifyWebApi.getAlbumTracks(params[2])
+			.then(albumTracksCallback(data)
+			, function(err) {
+				console.error(err);
+			});
 		}
 	}
 };
@@ -42,12 +49,25 @@ function getCurrentPlaylistEmbedURL() {
 }
 
 function refreshCurrentPlaylist() {
+	console.log('refreshCurrentPlaylist called');
+	// to test
+
 	var options = {offset: 0};
-	var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options, rcpCallback);
+	var hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+	//var hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
+	.then(rcpCallback(data)
+	, function(err) {
+		console.error(err);
+	});
 
 	while (hasNext){
 		options.offset += 100;
-		hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options, rcpCallback);
+		hasNext = SpotifyWebApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
+		//hasNext = SpotifyWebApi.getPlaylistTracks(userid, currentPlaylistId, options)
+		.then(rcpCallback(data)
+		, function(err) {
+			console.error(err);
+		});
 	}
 
 	currentPlaylistDuration = GetPlaylistDuration(currentPlaylistTracks);
@@ -66,16 +86,12 @@ function rcpCallback(error, success) {
 	}
 };
 
-function albumTracksCallback(error, success){
-	if(success){
+function albumTracksCallback(data){
 		var tracks = success.response.items;
 		var uris = {"uris": []}
 		for(var t in tracks){
 			uris.uris.push
 		}
-	}else if(error){
-		alert(error);
-	}
 };
 
 function GetPlaylistDuration(playlistTracks) {
