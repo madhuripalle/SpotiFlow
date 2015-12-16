@@ -42,6 +42,7 @@ function AddResultsToCurrent(trackURIs){
 		var uris = {"uris": chunkedTrackURIs[i]};
 		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
 	}
+	refreshCurrentPlaylist();
 };
 
 function getCurrentPlaylistEmbedURL() {
@@ -56,7 +57,9 @@ function refreshCurrentPlaylist() {
 	//var hasNext = spotifyApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
 	var hasNext = spotifyApi.getPlaylistTracks(userid, currentPlaylistId, options)
 	.then(function(data) {
+		console.log('getPlaylistTracks called and data returned');
 		currentPlaylistTracks.concat(data.items);
+		console.log(currentPlaylistTracks.length);
 		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
 		return data.next != null;
 }
@@ -64,27 +67,28 @@ function refreshCurrentPlaylist() {
 		console.error(err);
 	});
 
-	while (hasNext){
+	/*while (hasNext){
 		options.offset += 100;
 		//hasNext = spotifyApi.getPlaylistTracks(tuserid, tcurrentPlaylistId, options)
 		hasNext = spotifyApi.getPlaylistTracks(userid, currentPlaylistId, options)
 		.then(function(data) {
 		currentPlaylistTracks.concat(data.items);
+		console.log(currentPlaylistTracks.length);
 		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
 		return data.next != null;
 }
 		, function(err) {
 			console.error(err);
 		});
-	}
+	}*/
 
 	currentPlaylistDuration = GetPlaylistDuration(currentPlaylistTracks);
 	DisplayCurrentDuration();
 	// Reload the current-pl iframe
-	$('#current-pl').attr( 'src', function ( i, val ) { return val; });
+	$('#current-pl').attr( 'src', getCurrentPlaylistEmbedURL());
 };
 
-function rcpCallback(data) {
+/*function rcpCallback(data) {
 		currentPlaylistTracks.concat(data.response.items);
 		currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
 		return data.response.next != null;
@@ -96,14 +100,15 @@ function albumTracksCallback(data){
 		for(var t in tracks){
 			uris.uris.push
 		}
-};
+};*/
 
 function GetPlaylistDuration(playlistTracks) {
 	var duration = 0.0;
 
+	if(playlistTracks.length > 0){
 	for (var i in playlistTracks) {
 		duration += playlistTracks[i].track.duration_ms / 1000;
 	}
-
+	}
 	return duration;
 };
