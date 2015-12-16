@@ -1,7 +1,7 @@
 // lets get started
 
 // creation of playlist
-
+/*
 var playlistName = document.getElementById('playlistName');
 
 //console.log(user_id);
@@ -34,4 +34,4 @@ function createlist() {
 
 var elementC = document.getElementById('btn-create');
 
-elementC.addEventListener('click', createlist);
+elementC.addEventListener('click', createlist); */
