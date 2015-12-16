@@ -12,6 +12,10 @@ var echoapikey = "CMEE0GLDSZ09UMTDR";
 var currentpage;
 var spotifyApi = new SpotifyWebApi();
 var node;
+var Offset = 0;
+var lastSearchString = null;
+var lastSearchBrowseTab = null;
+var lastSearchSubTab = null;
 
 var userid;
 var i,j,k;
@@ -60,17 +64,17 @@ $("[id=nextstep]").click(function(){
 function unhideme (divid) {
 	var item = document.getElementById(divid);
 	if (item) {
-// console.log("unhideme: " + divid);
-item.style.display='block';
-}
+		// console.log("unhideme: " + divid);
+		item.style.display='block';
+	}
 }
 
 function hideme (divid) {
 	var item = document.getElementById(divid);
 	if (item) {
-// console.log("hideme: " + divid);
-item.style.display='none';
-}
+		// console.log("hideme: " + divid);
+		item.style.display='none';
+	}
 }
 
 function initiateLoginModal() {
@@ -95,76 +99,156 @@ function RemoveCarosuel() {
 	callGetSelfData();
 }
 
+function callPrevResults() {
+	Offset = Offset - 10;
+	if(Offset < 0) {
+		Offset = 0;
+	}
+	callOffsetResults();
+}
+
+function callNextResults() {
+	Offset = Offset + 10;
+	callOffsetResults();
+}
+
+function callOffsetResults() {
+	console.log(lastSearchBrowseTab);
+	console.log(lastSearchSubTab);
+	if(lastSearchBrowseTab=="Browse Playlists") {
+		if(lastSearchSubTab=="Featured") {
+			//call API for featured playlists
+			console.log("Featured playlist list will be shown");
+			callFeaturedPlaylists();
+		}
+		else if(subtabplaylist=="Browse") {
+			//call API for public playlist content
+			console.log("Browsing for " + lastSearchString);
+			callBrowsePlaylists(lastSearchString);
+		}
+		else if(subtabplaylist=="My Playlists") {
+			callMyPlaylists(userid);
+		}
+		else {
+			console.log("error in playlist call");
+		}
+	}
+	else if(lastSearchBrowseTab=="Browse Albums") {
+		if(lastSearchSubTab=="Featured") {
+			//call API for featured playlists
+			console.log("Featured albums list will be shown");
+			callFeaturedAlbums();
+		}
+		else if(lastSearchSubTab=="Browse") {
+			//call API for public playlist content
+			console.log("Browsing for " + lastSearchString);
+			callBrowseAlbums(lastSearchString);
+		}
+		else if(lastSearchSubTab=="My Albums") {
+			callMyAlbums(userid);
+		}
+		else {
+			console.log("error in album call");
+		}
+	}
+	else if(lastSearchBrowseTab=="Browse Tracks") {
+		if(lastSearchSubTab=="Featured") {
+			//call API for featured playlists
+			console.log("Featured tracks list will be shown");
+			callFeaturedTracks();
+		}
+		else if(lastSearchSubTab=="Browse") {
+			//call API for public playlist content
+			console.log("Browsing for " + lastSearchString);
+			callBrowseTracks(lastSearchString);
+		}
+		else if(lastSearchSubTab=="My Tracks") {
+			console.log("Personal Content for " + lastSearchString);
+			callMyTracks(userid);
+		}
+		else {
+			console.log("error in track call");
+		}
+	}
+	else {
+		console.log("Error choosing tabs");
+	}
+}
+
 function CheckTabActivity() {
-console.log(currentbrowsetab);
-if(currentbrowsetab=="Browse Playlists") {
-	playlist_input = document.getElementById("playlist_text").value;
-	console.log(subtabplaylist);
-	if(subtabplaylist=="Featured") {
+	console.log(currentbrowsetab);
+	lastSearchBrowseTab = currentbrowsetab;
+	Offset = 0;
+	if(currentbrowsetab=="Browse Playlists") {
+		playlist_input = document.getElementById("playlist_text").value;
+		lastSearchString = playlist_input;
+		lastSearchSubTab = subtabplaylist;
+		console.log(subtabplaylist);
+		if(subtabplaylist=="Featured") {
+//call API for featured playlists
+			console.log("Featured playlist list will be shown");
+			callFeaturedPlaylists();
+		}
+		else if(subtabplaylist=="Browse") {
+		//call API for public playlist content
+			console.log("Browsing for " + playlist_input);
+			callBrowsePlaylists(playlist_input);
+		}
+		else if(subtabplaylist=="My Playlists") {
+			callMyPlaylists(userid);
+		}
+		else {
+			console.log("error in playlist call");
+		}
+	}
+	else if(currentbrowsetab=="Browse Albums") {
+		album_input = document.getElementById("album_text").value;
+		lastSearchString = album_input;
+		lastSearchSubTab = subtabalbum;
+		console.log(subtabalbum);
+		if(subtabalbum=="Featured") {
 		//call API for featured playlists
-		console.log("Featured playlist list will be shown");
-		callFeaturedPlaylists();
-	}
-	else if(subtabplaylist=="Browse") {
+			console.log("Featured albums list will be shown");
+			callFeaturedAlbums();
+		}
+		else if(subtabalbum=="Browse") {
 		//call API for public playlist content
-		console.log("Browsing for " + playlist_input);
-		callBrowsePlaylists(playlist_input);
+			console.log("Browsing for " + album_input);
+			callBrowseAlbums(album_input);
+		}
+		else if(subtabalbum=="My Albums") {
+			callMyAlbums(userid);
+		}
+		else {
+			console.log("error in album call");
+		}
 	}
-	else if(subtabplaylist=="My Playlists") {
-		callMyPlaylists(userid);
+	else if(currentbrowsetab=="Browse Tracks") {
+		track_input = document.getElementById("track_text").value;
+		lastSearchString = track_input;
+		lastSearchSubTab = subtabtrack;
+		console.log(subtabtrack);
+		if(subtabtrack=="Featured") {
+			//call API for featured playlists
+			console.log("Featured tracks list will be shown");
+			callFeaturedTracks();
+		}
+		else if(subtabtrack=="Browse") {
+			//call API for public playlist content
+			console.log("Browsing for " + track_input);
+			callBrowseTracks(track_input);
+		}
+		else if(subtabtrack=="My Tracks") {
+			console.log("Personal Content for " + track_input);
+			callMyTracks(userid);
+		}
+		else {
+			console.log("error in track call");
+		}
 	}
 	else {
-		console.log("error in playlist call");
+		console.log("Error choosing tabs");
 	}
-}
-
-else if(currentbrowsetab=="Browse Albums") {
-	album_input = document.getElementById("album_text").value;
-	console.log(subtabalbum);
-	if(subtabalbum=="Featured") {
-		//call API for featured playlists
-		console.log("Featured albums list will be shown");
-		callFeaturedAlbums();
-	}
-	else if(subtabalbum=="Browse") {
-		//call API for public playlist content
-		console.log("Browsing for " + album_input);
-		callBrowseAlbums(album_input);
-	}
-	else if(subtabalbum=="My Albums") {
-		callMyAlbums(userid);
-	}
-	else {
-		console.log("error in album call");
-	}
-}
-
-else if(currentbrowsetab=="Browse Tracks") {
-	track_input = document.getElementById("track_text").value;
-	console.log(subtabalbum);
-	if(subtabtrack=="Featured") {
-	//call API for featured playlists
-	console.log("Featured tracks list will be shown");
-	callFeaturedTracks();
-	}
-	else if(subtabtrack=="Browse") {
-		//call API for public playlist content
-		console.log("Browsing for " + track_input);
-		callBrowseTracks(track_input);
-	}
-	else if(subtabtrack=="My Tracks") {
-		console.log("Personal Content for " + track_input);
-		callMyTracks(userid);
-	}
-	else {
-		console.log("error in track call");
-	}
-}
-
-else {
-	console.log("Error choosing tabs");
-}
-
 }
 
 function RemoveSearchResults() {
@@ -217,171 +301,158 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQD6EJknnyBx5znEH8a93di4zaXjHPVd9n9pQ6bBKzAjhYiTjl39cvn5P8MZtTGC0H8atIXFgpkjK3mAOA_XsEZME41IG2ov5WQBPhXVQlmvpc3zlNZUu8tKkAXh_Wm6W8ev4sZT7ekeyb6wCGr75IJkA7QA3PPWRwnvX8SdJkdeMY2ZK2bvGliZ9ouR5954WstK8KrW4CBN8rDosXIEG1sHn4yY16Av4hrabsNFV2NIjHlIu0sJPabKk6GevvSidFvcXeT1hlfYuciUTy5uMvnUprm8irOtQw');
+	spotifyApi.setAccessToken('BQA3OU0eVHHVTguqUwKSGe_9PqmiSB9XYUu_gExlGGOsys3evdo16yeGmqKN-Fphxj0eS4yJovT2NOys0vVTCPt98fjz6AT054nuVV_ydjp-UHWe1bkLGO41uWaCGU9vSAa_e2Z-j0bYO968YWDJ90f7XD3eonf0Q_wB_E65ZP78rnea4cBUwaL2FZr0yEZzucdRMVqJlNHJP-kVOYLdAf4UF3CP7A88F1ZSNO9CxA77W8td_QAfnn-bJGE1zzfFUKRcHcUJH-Q0-PhDxvHz65UDDS-QlrRvezVOe8j7Lb_jKCd61w');
 	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
-  .then(function(data) {
-    console.log(data);
-    userid = data.id;
-    var userprofilepicOnNav = data.images[0].url;
-    var usernameOnNav = data.display_name;
-    var nodepic = document.getElementById("img");
-    var nodename = document.getElementById("user_name");
-    nodepic.src = userprofilepicOnNav;
-    nodename.innerHTML = usernameOnNav;
+	.then(function(data) {
+		console.log(data);
+		userid = data.id;
+		var userprofilepicOnNav = data.images[0].url;
+		var usernameOnNav = data.display_name;
+		var nodepic = document.getElementById("img");
+		var nodename = document.getElementById("user_name");
+		nodepic.src = userprofilepicOnNav;
+		nodename.innerHTML = usernameOnNav;
 
-  }, function(err) {
-    console.error(err);
-  });
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callFeaturedPlaylists()
 {
 	// get albums by a certain artist
-spotifyApi.getFeaturedPlaylists({limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var playlist3url = "https://embed.spotify.com/?uri=";
-     for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.playlists.items[i-1])
-    	{
-    		node.src = playlist3url + data.playlists.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.getFeaturedPlaylists({limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.playlists.items, false);
+		updateNavigation(data.playlists);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callBrowsePlaylists(SearchString) {
-	spotifyApi.searchPlaylists(SearchString, {limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var playlist1url = "https://embed.spotify.com/?uri=";
-     for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.playlists.items[i-1])
-    	{
-    		node.src = playlist1url + data.playlists.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.searchPlaylists(SearchString, {limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.playlists.items, false);
+		updateNavigation(data.playlists);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callMyPlaylists(userid) {
-	spotifyApi.getUserPlaylists(userid ,{limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var playlist2url = "https://embed.spotify.com/?uri=";
-     for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.items[i-1])
-    	{
-    		node.src = playlist2url + data.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.getUserPlaylists(userid ,{limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.items, false);
+		updateNavigation(data);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callBrowseAlbums(SearchString) {
-	spotifyApi.searchAlbums(SearchString, {limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var album1url = "https://embed.spotify.com/?uri=";
-     for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.albums.items[i-1])
-    	{
-    		node.src = album1url + data.albums.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.searchAlbums(SearchString, {limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.albums.items, false);
+		updateNavigation(data.album);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callMyAlbums(userid)
 {
-	spotifyApi.getMySavedAlbums()
-  .then(function(data) {
-    console.log(data);
-    var album2url = "https://embed.spotify.com/?uri=";
-    for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.albums.items[i-1])
-    	{
-    		node.src = album2url + data.albums.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.getMySavedAlbums(userid, {limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.album.items, false);
+		updateNavigation(data.album);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callFeaturedAlbums()
 {
-	spotifyApi.getNewReleases({limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var album3url = "https://embed.spotify.com/?uri=";
-    for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.albums.items[i-1])
-    	{
-    		node.src = album3url + data.albums.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.getNewReleases({limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.albums.items, false);
+		updateNavigation(data.album);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callBrowseTracks(SearchString)
 {
-	spotifyApi.searchTracks(SearchString, {limit: 10})
-  .then(function(data) {
-    console.log(data);
-    var track1url = "https://embed.spotify.com/?uri=";
-    for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
-    	{
-    		node.src = track1url + data.tracks.items[i-1].uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.searchTracks(SearchString, {limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.tracks.items, false);
+		updateNavigation(data.tracks);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
 function callMyTracks(userid)
 {
-spotifyApi.getMySavedTracks()
-  .then(function(data) {
-    console.log(data);
-     var track2url = "https://embed.spotify.com/?uri=";
-    for(i=1;i<=10;i++)
-    {
-    	node = document.getElementById("i" + i);
-    	if(data.items[i-1].track.uri)
-    	{
-    		node.src = track2url + data.items[i-1].track.uri;
-    	}
-    }
-  }, function(err) {
-    console.error(err);
-  });
+	spotifyApi.getMySavedTracks({limit: 10, offset: Offset})
+	.then(function(data) {
+		console.log(data);
+		populateItems(data.items, true);
+		updateNavigation(data);
+	}, function(err) {
+		console.error(err);
+	});
 }
 
+function populateItems(items, useTrackUri) 
+{
+	var embedurl = "https://embed.spotify.com/?uri=";
+	for(i=1;i<=10;i++)
+	{
+		divid = "i" + i;
+		node = document.getElementById(divid);
+		if(items[i-1]) {
+			if(useTrackUri) {
+				node.src = embedurl + items[i-1].track.uri;
+				unhideme(divid);
+			} 
+			else {
+				node.src = embedurl + items[i-1].uri;
+				unhideme(divid);
+			}
+		} else {
+			hideme(divid);
+		}
+	}
+}
+
+function updateNavigation(data) 
+{
+	console.log("called updateNavigation");
+	console.log(data);
+
+	if(data.previous) {
+		console.log("in prev loop true");
+		$("[id=prevresults]").removeClass('disabled').addClass('active');
+	} else {
+		console.log("in prev loop false");
+		$("[id=prevresults]").removeClass('active').addClass('disabled');
+	}
+
+	if(data.next) {
+		console.log("in next loop true");
+		$("[id=nextresults]").removeClass('disabled').addClass('active');
+	} else {
+		console.log("in next loop false");
+		$("[id=nextresults]").removeClass('active').addClass('disabled');
+	}
+}
