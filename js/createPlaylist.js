@@ -1,47 +1,50 @@
-// lets get started
+$(document).ready(function() {
+    // lets get started
 
-// creation of playlist
+    // creation of playlist
 
-var playlistName = document.getElementById('playlistName');
+    var playlistName;
 
-//console.log(user_id);
+    //console.log(user_id);
 
 
-function createlist() {
-    RemoveCarosuel();
-    console.log('creating')
-    //calling playlist creation function
-    //playlist();
-    playlist1(user_id,playlistName);
-    SetIFrameSize();
-}
+    function createlist() {
+        RemoveCarosuel();
+        console.log('creating')
 
-var elementC = document.getElementById('btn-create');
+        //calling playlist creation function
 
-elementC.addEventListener('click', createlist); 
+        playlist();
+        SetIFrameSize();
+    }
 
-function playlist() {
+    var elementC = document.getElementById('btn-create');
 
-     $.ajax({
+    elementC.addEventListener('click', createlist);
 
-        url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
-        //type: "POST",
-        headers: {
-            'Authorization': 'Bearer ' + access_token,
-            'Content-Type': 'application/json'
-        },
+    function playlist() {
 
-        data: {
-         "name": playlistName
-        },
+        playlistName = document.getElementById('playlistName').value;
 
-        dataType: 'json',
+        console.log('Creating Awesome Playlist with Name: ', playlistName);
 
-        success: function(response) {
-            console.log(response)
-            //console.log(data.error);
-                //console.log('created playlist')
-        }
-
-    });
-}
+        $.ajax('https://api.spotify.com/v1/users/' + user_id + '/playlists', {
+            method: 'POST',
+            data: JSON.stringify({
+                'name': playlistName,
+                'public': true
+            }),
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                console.log('create playlist response', response);
+            },
+            error: function(err) {
+                console.log('Error', err);
+            }
+        });
+    }
+});
