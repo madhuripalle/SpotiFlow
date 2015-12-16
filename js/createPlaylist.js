@@ -9,6 +9,14 @@ $(document).ready(function() {
 
 
     function createlist() {
+
+        playlistName = document.getElementById('playlistName').value;
+
+        if (!playlistName) {
+            alert('Please enter a name!')
+            return;
+        }
+
         RemoveCarosuel();
         console.log('creating')
 
@@ -23,8 +31,6 @@ $(document).ready(function() {
     elementC.addEventListener('click', createlist);
 
     function playlist() {
-
-        playlistName = document.getElementById('playlistName').value;
 
         console.log('Creating Awesome Playlist with Name: ', playlistName);
 
@@ -41,6 +47,8 @@ $(document).ready(function() {
             },
             success: function(response) {
                 console.log(response);
+                playlist_id = response.id;
+                SetCurrentPlaylistId(playlist_id);
                 
             },
             error: function(err) {
