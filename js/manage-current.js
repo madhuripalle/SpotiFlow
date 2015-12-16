@@ -15,19 +15,32 @@ function SetCurrentPlaylistId(playlistId){
 function AddResultToCurrent(resultURI, choice) {
 	//var params = resultURI.split(":");
 	var uris = [];
-	uris.push(resultURI);
+	var getalbumid = resultURI.split(":");
 
 	if (choice == "Tracks"){
 
+		uris.push(resultURI);
 		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
 		refreshCurrentPlaylist();
 
 	}else{
 		if(choice == "Albums"){
 
-			spotifyApi.getAlbumTracks(params[2])
-			.then(albumTracksCallback(data)
-			, function(err) {
+			
+			spotifyApi.getAlbumTracks(getalbumid[2])
+				.then(function(data) {
+				console.log(data);
+				console.log("album id is " + getalbumid[2]);
+				var length = data.total;
+				console.log("length is" + length)
+				var index;
+				for(index=0;index<length;index++)
+				{
+					uris.push(data.items[index].uri);
+				}
+				spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+
+				}, function(err) {
 				console.error(err);
 			});
 		}
