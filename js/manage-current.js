@@ -10,7 +10,7 @@ function SetCurrentPlaylistId(playlistId){
 
 function AddResultToCurrent(resultURI) {
 	var params = resultURI.split(":");
-	var uris = {"uris": []}
+	var uris = {uris: []};
 	if (params[1] == "tracks"){
 		uris.uris.push(resultURI);
 		SpotifyWebApi.addTracksToPlaylist(userid, currentPlaylistId, uris);

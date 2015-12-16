@@ -10,12 +10,30 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 	}
 
 	// remaining elements of sortTracks are to be removed from playlistTracks
-
+	var uris = {uris: []}
+	for (t in playlistTracks){
+		uris.uris.push(playlistTracks[t].track.uri);
+	}
+	SpotifyWebApi.removeTracksFromPlaylist(userid, currentPlaylistId, uris);
+	return sortTracks;
 };
 
+// Insertion sort reorders the actual spotify playlist
 var ReorderPlaylist = function(playlistTracksWithIdx){
-	
+	for(var new_idx in playlistTracksWithIdx){
+		var idx = playlistTracksWithIdx[new_idx].track.idx;
+		if(idx > new_idx) {
+			SpotifyWebApi.reorderTracksInPlaylist(userid, currentPlaylistId, idx, new_idx, rtipCallback);
+		}
+	}
+	console.log('ReorderPlaylist finished.');
 };
+
+var rtipCallback = function(e,s){
+	if(e){
+		alert(e);
+	}
+}
 
 /**
  * Designer Flows
@@ -69,7 +87,7 @@ var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs
 		playlistTracks[idx].track['idx'] = idx;
 	}
 
-	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
+	playlistTracks = TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 	merge_sort(playlistTracks, flowAttrs);
 	playlistTracks.reverse();
 
@@ -89,7 +107,7 @@ var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		playlistTracks[idx].track['idx'] = idx;
 	}
 
-	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
+	playlistTracks = TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 	merge_sort(playlistTracks, flowAttrs);
 
 	// Send new order to reorder tracks in playlist endpoint
@@ -108,42 +126,8 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		playlistTracks[idx].track['idx'] = idx;
 	}
 
-	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
+	playlistTracks = TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 
-	//Compute the score and merge sort the process.
-	/*var attrArray = [];
-	if (flowAttrs.length == 1){
-		//the name of the selected attribute.
-		var flowAttr1 = flowAttrs[0];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = playlistTracks[idx].track[flowAttr1];
-		}
-	}
-	else if(flowAttrs.length == 2){
-		var flowAttr1 = flowAttrs[0];
-		var flowAttr2 = flowAttrs[1];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = 0.5*playlistTracks[idx].track[flowAttr1] + 0.5*playlistTracks[idx].track[flowAttr2];
-		}
-	}
-	else {
-		var flowAttr1 = flowAttrs[0];
-		var flowAttr2 = flowAttrs[1];
-		var flowAttr3 = flowAttrs[2];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = 0.33*playlistTracks[idx].track[flowAttr1] + 0.33*playlistTracks[idx].track[flowAttr2] + 0.33*playlistTracks[idx].track[flowAttr3];
-		}
-	}
-
-	//Not sure what WeighAttr does. You can edit this!
-	for (var idx in playlistTracks){
-		playlistTracks[idx].track['score']=attrArray[idx];
-	}
-	//Sort the array. Sorry I do not undertand the usage of the merge_sort you write. 
-	merge_sort(playlistTracks,score);*/
 	merge_sort(playlistTracks, flowAttrs);
 
 	//Assume the duration for a track is 300 seconds.
@@ -178,42 +162,8 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 		playlistTracks[idx].track['idx'] = idx;
 	}
 
-	TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
+	playlistTracks = TruncatePlaylist(playlistTracks, durationSecs, durationAttrs);
 
-	//Compute the score and merge sort the process.
-	/*var attrArray = [];
-	if (flowAttrs.length == 1){
-		//the name of the selected attribute.
-		var flowAttr1 = flowAttrs[0];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = playlistTracks[idx].track[flowAttr1];
-		}
-	}
-	else if(flowAttrs.length == 2){
-		var flowAttr1 = flowAttrs[0];
-		var flowAttr2 = flowAttrs[1];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = 0.5*playlistTracks[idx].track[flowAttr1] + 0.5*playlistTracks[idx].track[flowAttr2];
-		}
-	}
-	else {
-		var flowAttr1 = flowAttrs[0];
-		var flowAttr2 = flowAttrs[1];
-		var flowAttr3 = flowAttrs[2];
-		for (var idx in playlistTracks){
-			//I hope track[flowAttr1] is the value of the selected attribute. 
-			attrArray[idx] = 0.33*playlistTracks[idx].track[flowAttr1] + 0.33*playlistTracks[idx].track[flowAttr2] + 0.33*playlistTracks[idx].track[flowAttr3];
-		}
-	}
-
-	//Not sure what WeighAttr does. You can edit this!
-	for (var idx in playlistTracks){
-		playlistTracks[idx].track['score']=attrArray[idx];
-	}
-	//Sort the array. Sorry I do not undertand the usage of the merge_sort you write. 
-	merge_sort(playlistTracks,score);*/
 	merge_sort(playlistTracks, flowAttrs);
 
 	//Assume the duration for a track is 300 seconds.
@@ -290,3 +240,7 @@ var generateDromedary = function(playlist, interval, tracksPlaylist){
 
 	return output;
 };
+
+/*function merge_sort_api(playlistTracks){
+	msort_api(array, 0, array.length)
+}*/

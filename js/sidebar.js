@@ -1,11 +1,11 @@
 // Reset iframe height after window resize
 $(window).resize(SetIFrameSize);
 
-$('#carouselbtn').click(function(e) {
+/*$('#carouselbtn').click(function(e) {
     SetIFrameSize();
     // To test
     //LoadSpinners(4);
-});
+});*/
 
 function SetIFrameSize () {
     console.log("setIFrameSize called");
@@ -39,4 +39,4 @@ function SecondsToTime(seconds) {
     var m = Math.floor(s/60); //Get remaining minutes
     s -= m*60;
     return h+":"+(m < 10 ? '0'+m : m)+":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
-}
+};
