@@ -78,6 +78,18 @@ h6 {
     display:none;
 }
 
+.centerdiv2 {
+    vertical-align: middle;
+    margin: auto;
+    padding-top: 6%;
+    padding-bottom: 6%;
+}
+
+.textcenter {
+    text-align: center;
+    vertical-align: middle;
+}
+
 .btnclass {
     padding-top: 5%;
 }

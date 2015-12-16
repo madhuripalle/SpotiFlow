@@ -88,6 +88,7 @@ function processAdd(elementid)
 		{
 			var trackuritemp = trackidstemp[i-1];
 			ids[trackuritemp] = val;
+			AddResultToCurrent(trackuritemp, val);
 		}
 	}
 		console.log(ids);
@@ -235,6 +236,7 @@ function CheckTabActivity() {
 	hideme("ShowWelcomeText");
 	hideme("NoResultsFound");
 	trackidstemp = [];
+	LoadSpinners(10);
 
 	console.log(currentbrowsetab);
 	lastSearchBrowseTab = currentbrowsetab;

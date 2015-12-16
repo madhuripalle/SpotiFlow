@@ -12,14 +12,18 @@ function SetCurrentPlaylistId(playlistId){
 	currentPlaylistId = playlistId;
 };
 
-function AddResultToCurrent(resultURI) {
-	var params = resultURI.split(":");
-	var uris = {uris: []};
-	if (params[1] == "tracks"){
-		uris.uris.push(resultURI);
+function AddResultToCurrent(resultURI, choice) {
+	//var params = resultURI.split(":");
+	var uris = [];
+	uris.push(resultURI);
+
+	if (choice == "Tracks"){
+
 		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+		refreshCurrentPlaylist();
+
 	}else{
-		if(params[1] == "album"){
+		if(choice == "Albums"){
 
 			spotifyApi.getAlbumTracks(params[2])
 			.then(albumTracksCallback(data)
@@ -30,21 +34,21 @@ function AddResultToCurrent(resultURI) {
 	}
 };
 
-function AddResultsToCurrent(trackURIs){
-	if(trackURIs == null || trackURIs.length < 1){
-		alert(trackURIs+" passed to AddResultsToCurrent(trackURIs)");
-		return;
-	}
-	var chunkedTrackURIs = [];
-	while (trackURIs.length){
-		chunkedTrackURIs.push(trackURIs.splice(0,100));
-	}
-	for(i in chunkedTrackURIs){
-		var uris = {"uris": chunkedTrackURIs[i]};
-		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
-	}
-	refreshCurrentPlaylist();
-};
+// function AddResultsToCurrent(trackURIs){
+// 	if(trackURIs == null || trackURIs.length < 1){
+// 		alert(trackURIs+" passed to AddResultsToCurrent(trackURIs)");
+// 		return;
+// 	}
+// 	var chunkedTrackURIs = [];
+// 	while (trackURIs.length){
+// 		chunkedTrackURIs.push(trackURIs.splice(0,100));
+// 	}
+// 	for(i in chunkedTrackURIs){
+// 		var uris = {"uris": chunkedTrackURIs[i]};
+// 		spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+// 	}
+// 	refreshCurrentPlaylist();
+// };
 
 function getCurrentPlaylistEmbedURL() {
 	return "https://embed.spotify.com/?uri=spotify:user:"+userid+":playlist:"+currentPlaylistId;
