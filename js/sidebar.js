@@ -22,10 +22,12 @@ function SetIFrameSize () {
     var activePage = $('.background-choice').filter(function() {
         return $(this).css('display') === 'block';
     });
-    var sidebarHeight = activePage.height() - $('#prevstep').parent().outerHeight(true);
-    $('#sidebar').css('height', sidebarHeight);
-    var height = Math.min($('#sidebar').height()-$('#sidebar').find('h3').outerHeight(true)-$('#sidebar').find('p').outerHeight(true), 720);
-    $('#current-pl').attr('height', height);
+    var sidebarHeight1 = $(window).height() - $('#navbarid').outerHeight(true) - $('.step-nav').outerHeight(true) - $('#footerid').outerHeight(true);
+    var sidebarHeight2 = activePage.height() - $('.step-nav').outerHeight(true);
+    var sidebarHeight = Math.min(sidebarHeight1, sidebarHeight2);
+    $('#sidebar').css('height', sidebarHeight+'px');
+    var height = Math.min(sidebarHeight-$('#sidebar').find('h3').outerHeight(true)-$('#sidebar').find('p').outerHeight(true), 720);
+    $('#current-pl').attr('height', height+'px');
 };
 
 function DisplayCurrentDuration() {

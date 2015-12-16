@@ -104,6 +104,7 @@ function unhideme (divid) {
 		// console.log("unhideme: " + divid);
 		item.style.display='block';
 	}
+	SetIFrameSize();
 }
 
 function hideme (divid) {
@@ -112,6 +113,7 @@ function hideme (divid) {
 		// console.log("hideme: " + divid);
 		item.style.display='none';
 	}
+	SetIFrameSize();
 }
 
 function initiateLoginModal() {
@@ -318,7 +320,6 @@ function CheckTabActivity() {
 		console.log("Error choosing tabs");
 	}
 	$('#nextstep').prop('disabled', false);
-	SetIFrameSize();
 }
 
 function RemoveSearchResults() {
@@ -505,9 +506,11 @@ function callFeaturedAlbums()
 		if(data.albums.items[0]) {
 		populateItems(data.albums.items, false);
 		updateNavigation(data.albums);
+		SetIFrameSize();
 	}
 	else {
 			unhideme("NoResultsFound");
+			SetIFrameSize();
 		}
 	}, function(err) {
 		console.error(err);
