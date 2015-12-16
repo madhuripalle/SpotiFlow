@@ -40,18 +40,18 @@ $('.nav-stacked a').on('shown.bs.tab', function(event){
 	currentbrowsetab = $(event.target).text(); 
 });
 
-$("[id=prevstep]").click(function(){
+$("#prevstep").click(function(){
 	console.log("currentpage is " + currentpage);
 	if(currentpage=="SelectOptions")
 	{	
 		RemoveCarosuel();
-		$("[id=prevstep]").attr('disabled', true);
-		$("[id=nextstep]").attr('disabled', false);
+		$("#prevstep").prop('disabled', true);
+		$("#nextstep").prop('disabled', false);
 	}
 	SetIFrameSize();
 });
 
-$("[id=nextstep]").click(function(){
+$("#nextstep").click(function(){
 	console.log("currentpage is " + currentpage);
 	if(currentpage=="SelectOptions")
 	{	
@@ -61,8 +61,8 @@ $("[id=nextstep]").click(function(){
 	if(currentpage=="SearchResults")
 	{
 		RemoveSearchResults();
-		$("[id=prevstep]").attr('disabled', false);
-		$("[id=nextstep]").attr('disabled', false);
+		$("#prevstep").prop('disabled', false);
+		$("#nextstep").prop('disabled', false);
 	}
 	SetIFrameSize();
 });
@@ -315,6 +315,7 @@ function CheckTabActivity() {
 	else {
 		console.log("Error choosing tabs");
 	}
+	$('#nextstep').prop('disabled', false);
 	SetIFrameSize();
 }
 
