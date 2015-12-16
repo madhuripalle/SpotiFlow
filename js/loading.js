@@ -34,13 +34,12 @@ function LoadSpinners (numResults) {
         spinners.push(new Spinner(opts).spin(targets[i])); //throwing an error
 
         var iframe = document.getElementById(iframeId.slice(1));
-        var onloadBehavior = function () {
-            console.log('iframe '+iframe.id+' loaded.');
+        iframe.onload = function () {
+            console.log('iframe '+this.id+' loaded.');
             //spinners[i].stop();
-            spinners.shift();
-            $(iframe).parent().find('.loading').hide();
+            //spinners.shift();
+            $(this).parent().find('.loading').hide();
         };
-        iframe.onload = onloadBehavior;
     }
     
     //$('.pager').click(function () {  

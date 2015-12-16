@@ -45,10 +45,9 @@ var Bactrian = function(playlistTracks, durationSecs, durationAttrs) {
 			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
 		};
 
-		EchoNestWebApi.getTrackProfile (api_key, 
-									   playlistTracks[idx].track.id,
-									   addTrackProfile
-									   );
+		callTrackAnalysis (playlistTracks[idx].track.id,
+						   addTrackProfile
+						   );
 		
 		// if necessary, store original playlist idx in track object
 		playlistTracks[idx].track['idx'] = idx; //+1?
@@ -56,10 +55,6 @@ var Bactrian = function(playlistTracks, durationSecs, durationAttrs) {
 
 	}
 };
-/*
-var addTrackProfile = function (data) {
-
-};*/
 
 var Ambient = function(playlistTracks, durationSecs, durationAttrs) {};
 
@@ -74,10 +69,9 @@ var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs
 			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
 		};
 
-		EchoNestWebApi.getTrackProfile (api_key, 
-									   playlistTracks[idx].track.id,
-									   addTrackProfile
-									   );
+		callTrackAnalysis (playlistTracks[idx].track.id,
+						   addTrackProfile
+						   );
 		
 		playlistTracks[idx].track['idx'] = idx;
 	}
@@ -95,10 +89,9 @@ var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
 		};
 
-		EchoNestWebApi.getTrackProfile (api_key, 
-									   playlistTracks[idx].track.id,
-									   addTrackProfile
-									   );
+		callTrackAnalysis (playlistTracks[idx].track.id,
+						   addTrackProfile
+						   );
 		
 		playlistTracks[idx].track['idx'] = idx;
 	}
@@ -115,10 +108,9 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
 		};
 
-		EchoNestWebApi.getTrackProfile (api_key, 
-									   playlistTracks[idx].track.id,
-									   addTrackProfile
-									   );
+		callTrackAnalysis (playlistTracks[idx].track.id,
+						   addTrackProfile
+						   );
 		
 		playlistTracks[idx].track['idx'] = idx;
 	}
@@ -185,10 +177,9 @@ var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 			playlistTracks[idx].track['audio_summary'] = data.response.track.audio_summary;
 		};
 
-		EchoNestWebApi.getTrackProfile (api_key, 
-									   playlistTracks[idx].track.id,
-									   addTrackProfile
-									   );
+		callTrackAnalysis (playlistTracks[idx].track.id,
+						   addTrackProfile
+						   );
 		
 		playlistTracks[idx].track['idx'] = idx;
 	}

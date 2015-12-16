@@ -7,7 +7,7 @@ function SetIFrameWidth () {
 $('#carouselbtn').click(function(e) {
     SetIFrameWidth();
     // To test
-    LoadSpinners(4);
+    //LoadSpinners(4);
 });
 
 // Reset iframe height after window resize
