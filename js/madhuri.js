@@ -11,6 +11,7 @@ var Base_URI = 'file:///Users/madhuripalle/Documents/SpotiFlow/index.html';
 var echoapikey = "CMEE0GLDSZ09UMTDR";
 var currentpage;
 var spotifyApi = new SpotifyWebApi();
+var node;
 
 var userid;
 var i,j,k;
@@ -215,7 +216,12 @@ function callTrackAnalysis(trackid, callback)
 }
 
 function callGetSelfData() {
-	spotifyApi.setAccessToken('BQDHeXUtpGjWmW7xtj4KC0ipxIhEFtb3feZxXiY1AJDeDl_QkTO9qAoJPb6nuh6DSfLBj9JneSBwthrxI4d5oG1tFqgW9fzUbQKSGYwW6Biww3sm3cT3htbTIysURKYjo2gvZKX58GwIsLYCmuwffQfqFE1RqUn4WPmVlMDDPSl3S7UbH764mu-G4Vb2zP-OT2DW_M0CgeKQIzjDOpEhLUVfkzIKl-iz4_CPj2P9szfv2a3OdLIs0kvN1WgoSR0Rdx6Sxk_ZGhY3-dp1qkTg1yl-kmlj9bsHFw3McD0skbNchOqY1HkRTxIUcpRKdPI');
+//<<<<<<< HEAD
+	//spotifyApi.setAccessToken('BQDHeXUtpGjWmW7xtj4KC0ipxIhEFtb3feZxXiY1AJDeDl_QkTO9qAoJPb6nuh6DSfLBj9JneSBwthrxI4d5oG1tFqgW9fzUbQKSGYwW6Biww3sm3cT3htbTIysURKYjo2gvZKX58GwIsLYCmuwffQfqFE1RqUn4WPmVlMDDPSl3S7UbH764mu-G4Vb2zP-OT2DW_M0CgeKQIzjDOpEhLUVfkzIKl-iz4_CPj2P9szfv2a3OdLIs0kvN1WgoSR0Rdx6Sxk_ZGhY3-dp1qkTg1yl-kmlj9bsHFw3McD0skbNchOqY1HkRTxIUcpRKdPI');
+//=======
+
+	spotifyApi.setAccessToken('BQBW4TC1CuV4nYhWOHyCmVJ7j8IUVnKCF2xD6QkTMohMtDfRgCgkeCZSyFg8vkY6hmx6Y-gknMXA_MRvku-sKxT3Uz5CqaJBZxTWQa1msO3qib527CrJOdhYqk0VsNlQHvCPS9myvjkloVu6_UOeUQSDV2vRdPnZueOOhF92N-5BUHCyqs7zBCQIgZLMZmOvPNq09GabdWPP6bi4QLqI7sULZR2w5LY_YDWK1F2B6kXingDQ3UwDNQyZePIc9TJ2Q8GIgKkvrHZJozhZLzaxRArdIQlFjYgZwA');
+//>>>>>>> 806741d7f128ce84876140ce7fc2a5154a6b4684
 	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
   .then(function(data) {
@@ -266,6 +272,15 @@ function callBrowseAlbums(SearchString) {
 	spotifyApi.searchAlbums(SearchString, {limit: 10})
   .then(function(data) {
     console.log(data);
+    var album1url = "https://embed.spotify.com/?uri=";
+     for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album1url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -276,6 +291,15 @@ function callMyAlbums(userid)
 	spotifyApi.getMySavedAlbums()
   .then(function(data) {
     console.log(data);
+    var album2url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album2url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -286,6 +310,15 @@ function callFeaturedAlbums()
 	spotifyApi.getNewReleases({limit: 10})
   .then(function(data) {
     console.log(data);
+    var album3url = "https://embed.spotify.com/?uri=";
+    for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.tracks.items[i-1])
+    	{
+    		node.src = album3url + data.tracks.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -299,7 +332,7 @@ function callBrowseTracks(SearchString)
     var track1url = "https://embed.spotify.com/?uri=";
     for(i=1;i<=10;i++)
     {
-    	var node = document.getElementById("i" + i);
+    	node = document.getElementById("i" + i);
     	if(data.tracks.items[i-1])
     	{
     		node.src = track1url + data.tracks.items[i-1].uri;
@@ -318,10 +351,10 @@ spotifyApi.getMySavedTracks()
      var track2url = "https://embed.spotify.com/?uri=";
     for(i=1;i<=10;i++)
     {
-    	var node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
+    	node = document.getElementById("i" + i);
+    	if(data.items[i-1].track.uri)
     	{
-    		node.src = track2url + data.tracks.items[i-1].uri;
+    		node.src = track2url + data.items[i-1].track.uri;
     	}
     }
   }, function(err) {
