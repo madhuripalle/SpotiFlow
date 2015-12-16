@@ -170,6 +170,7 @@ function RemoveSearchResults() {
 	hideme("SearchResults");
 	unhideme("SelectionOptions");
 	currentpage="SelectOptions";
+	UnloadSpinners();
 }
 
 
@@ -204,7 +205,7 @@ function callSampleTrackAnalysis(trackid)
 }
 
 function callGetSelfData() {
-	spotifyApi.setAccessToken('BQCmwWobslq7NyEYzgkWKwNLg96VsuU1oLCn9Rchh4ilxW4B1RAeJIeZ0hcNC0ZEXhzAG2sSUGlZoFAjoOqJEPPPuW9EJyaV5og8n0DMy7kr7-kgIgK8Y9W4Qk3TTrJPLh3sUX_JKybOauEyi5Ucf2GT4-U7RK6iT-_yRmktfxcSltKP_rYJz_1A1bPE0eiTFxY-vDNEtIVSdiisOb53VfSK6HBVj70YvV9F4NXdqZR9fYjuqJnUXPnPPHfTpik3rLMEnjrKy5yh18zYY1SkhvgIUs-9mA');
+	spotifyApi.setAccessToken('BQBCPSsl9BVoxQjEsqnXgXX_uCr9njLx02D7mwMSKY0282aqrAEmAOb-zTTMDnvt6raQv6KqmGlfApnz7Bc4Ef66rQICjoxhkMysKdNTKzr2B-4n6c07LY_QiwGBFPNdfdeguWgGMwz8oKOSBBtV-0HITQn1q0yQX2U3oANWhelgmHmlC4crd4o68-CT4KwJDuHQG6eRv1r8tybL5NlG3Hl4T3_SF7ZC4MZq58JvJYw8g3K5UwhZ97gSD_3wBkoFbkWyRShOci9F0vZlvjfcp8dn-DB-jmZcWh810OBX1n8Sx4iOqcdGOd4k2O49vN4');
 	spotifyApi.getMe()
   .then(function(data) {
     console.log(data);
