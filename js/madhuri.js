@@ -217,11 +217,8 @@ function callTrackAnalysis(trackid, callback)
 
 function callGetSelfData() {
 
-	spotifyApi.setAccessToken('BQCmwWobslq7NyEYzgkWKwNLg96VsuU1oLCn9Rchh4ilxW4B1RAeJIeZ0hcNC0ZEXhzAG2sSUGlZoFAjoOqJEPPPuW9EJyaV5og8n0DMy7kr7-kgIgK8Y9W4Qk3TTrJPLh3sUX_JKybOauEyi5Ucf2GT4-U7RK6iT-_yRmktfxcSltKP_rYJz_1A1bPE0eiTFxY-vDNEtIVSdiisOb53VfSK6HBVj70YvV9F4NXdqZR9fYjuqJnUXPnPPHfTpik3rLMEnjrKy5yh18zYY1SkhvgIUs-9mA');
-	
-	// when doing on localhost
-	//spotifyApi.setAccessToken(access_token)
-
+	spotifyApi.setAccessToken('BQD6EJknnyBx5znEH8a93di4zaXjHPVd9n9pQ6bBKzAjhYiTjl39cvn5P8MZtTGC0H8atIXFgpkjK3mAOA_XsEZME41IG2ov5WQBPhXVQlmvpc3zlNZUu8tKkAXh_Wm6W8ev4sZT7ekeyb6wCGr75IJkA7QA3PPWRwnvX8SdJkdeMY2ZK2bvGliZ9ouR5954WstK8KrW4CBN8rDosXIEG1sHn4yY16Av4hrabsNFV2NIjHlIu0sJPabKk6GevvSidFvcXeT1hlfYuciUTy5uMvnUprm8irOtQw');
+	//spotifyApi.setAccessToken(accestoken);
 	spotifyApi.getMe()
   .then(function(data) {
     console.log(data);
@@ -244,6 +241,15 @@ function callFeaturedPlaylists()
 spotifyApi.getFeaturedPlaylists({limit: 10})
   .then(function(data) {
     console.log(data);
+    var playlist3url = "https://embed.spotify.com/?uri=";
+     for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.playlists.items[i-1])
+    	{
+    		node.src = playlist3url + data.playlists.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -253,6 +259,15 @@ function callBrowsePlaylists(SearchString) {
 	spotifyApi.searchPlaylists(SearchString, {limit: 10})
   .then(function(data) {
     console.log(data);
+    var playlist1url = "https://embed.spotify.com/?uri=";
+     for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.playlists.items[i-1])
+    	{
+    		node.src = playlist1url + data.playlists.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -262,6 +277,15 @@ function callMyPlaylists(userid) {
 	spotifyApi.getUserPlaylists(userid ,{limit: 10})
   .then(function(data) {
     console.log(data);
+    var playlist2url = "https://embed.spotify.com/?uri=";
+     for(i=1;i<=10;i++)
+    {
+    	node = document.getElementById("i" + i);
+    	if(data.items[i-1])
+    	{
+    		node.src = playlist2url + data.items[i-1].uri;
+    	}
+    }
   }, function(err) {
     console.error(err);
   });
@@ -275,9 +299,9 @@ function callBrowseAlbums(SearchString) {
      for(i=1;i<=10;i++)
     {
     	node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
+    	if(data.albums.items[i-1])
     	{
-    		node.src = album1url + data.tracks.items[i-1].uri;
+    		node.src = album1url + data.albums.items[i-1].uri;
     	}
     }
   }, function(err) {
@@ -294,9 +318,9 @@ function callMyAlbums(userid)
     for(i=1;i<=10;i++)
     {
     	node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
+    	if(data.albums.items[i-1])
     	{
-    		node.src = album2url + data.tracks.items[i-1].uri;
+    		node.src = album2url + data.albums.items[i-1].uri;
     	}
     }
   }, function(err) {
@@ -313,9 +337,9 @@ function callFeaturedAlbums()
     for(i=1;i<=10;i++)
     {
     	node = document.getElementById("i" + i);
-    	if(data.tracks.items[i-1])
+    	if(data.albums.items[i-1])
     	{
-    		node.src = album3url + data.tracks.items[i-1].uri;
+    		node.src = album3url + data.albums.items[i-1].uri;
     	}
     }
   }, function(err) {

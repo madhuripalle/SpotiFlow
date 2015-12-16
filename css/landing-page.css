@@ -66,6 +66,8 @@ h6 {
 .divstyle {
     text-align: center;
     vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .centerdiv {
