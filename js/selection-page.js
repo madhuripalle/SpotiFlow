@@ -9,6 +9,8 @@ var durationPlaylist = 600;
 
 //Modal selected attibutes
 var flowattr = [];
+var flowname;
+var durationSet;
 
 $("#durationbtn").on('switchChange.bootstrapSwitch',function(event,state){
 	console.log(state);
@@ -47,7 +49,7 @@ $('#attrpriorityid-modal input[type=checkbox]').change(function(){
 $('#durationsetbtn').on('click',function(e){
 	e.preventDefault();
 
-	var durationSet = computeDuration();
+	durationSet = computeDuration();
 	console.log(durationSet);
 
 	if(durationSet >= durationPlaylist){
@@ -80,6 +82,7 @@ function chooseBactrian (){
 	$('.cocktaillabel').addClass('text-muted');
 	$('.label2').addClass('text-muted');
 	$('#chooseagain').show();
+	flowname = "Bactrian";
 }
 
 function chooseCocktail() {
@@ -90,6 +93,7 @@ function chooseCocktail() {
 	$('.bactrianlabel').addClass('text-muted');
 	$('.label2').addClass('text-muted');
 	$('#chooseagain').show();
+	flowname = "Ambient";
 }
 
 function chooseDromedary() {
@@ -101,7 +105,7 @@ function chooseDromedary() {
 	$('.descendlabel').addClass('text-muted');
 	$('.ascendlabel').addClass('text-muted');
 	$('#chooseagain').show();
-
+	flowname = "Dromedary";
 }
 
 function chooseDescend() {
@@ -113,7 +117,7 @@ function chooseDescend() {
 	$('.dromelabel').addClass('text-muted');
 	$('.ascendlabel').addClass('text-muted');
 	$('#chooseagain').show();
-
+	flowname = "Descending";
 }
 
 function chooseAscend() {
@@ -125,7 +129,7 @@ function chooseAscend() {
 	$('.descendlabel').addClass('text-muted');
 	$('.dromelabel').addClass('text-muted');
 	$('#chooseagain').show();
-
+	flowname = "Ascending";
 }
 
 
@@ -171,6 +175,19 @@ function attributesSelectFunc() {
 	//close the modal after apply
 	$("#modal-flow-attr").modal('hide');
 	
+}
+
+function applyFlow(){
+    $('#modal-edit-group-name').modal('hide');
+    //showAlert('success', '<strong>Changes saved!</strong> "'+groupnameOld+'" has been renamed "'+groupnameNew+'".', 'Undo name change');
+    refreshCurrentPlaylist();
+
+    if (flowname == "Dromedary")  dromedary(currentPlaylistTracks, flowattr);
+    if (flowname == "Descending") descendingIncline(currentPlaylistTracks, attributes);
+    if (flowname == "Ascending")  ascendingIncline(currentPlaylistTracks, attributes);
+    //if (flowname == )
+
+    $('#gotospotify-modal').modal('show');
 }
 
 

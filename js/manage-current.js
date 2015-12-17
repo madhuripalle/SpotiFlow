@@ -103,7 +103,7 @@ function refreshCurrentPlaylistFirstTime(user, playlist) {
 	var hasNext = spotifyApi.getPlaylistTracks(user, playlist, options)
 	.then(function(data) {
 			console.log('getPlaylistTracks called and data returned');
-			currentPlaylistTracks.concat(data.items);
+			currentPlaylistTracks = data.items;
 			console.log(currentPlaylistTracks.length);
 			currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
 			hasNext = (data.next != null);
@@ -145,7 +145,8 @@ function refreshCurrentPlaylist() {
 	var hasNext = spotifyApi.getPlaylistTracks(userid, currentPlaylistId, options)
 	.then(function(data) {
 			console.log('getPlaylistTracks called and data returned');
-			currentPlaylistTracks.concat(data.items);
+			currentPlaylistTracks = data.items;
+			console.log(data);
 			console.log(currentPlaylistTracks.length);
 			currentPlaylistDuration += GetPlaylistDuration(currentPlaylistTracks);
 			return (data.next != null);
@@ -193,10 +194,9 @@ function albumTracksCallback(data){
 function GetPlaylistDuration(playlistTracks) {
 	var duration = 0.0;
 
-	if(playlistTracks.length > 0){
-	for (var i in playlistTracks) {
+	for (var i = 0; i < playlistTracks.length; i++) {
+		console.log('i: '+i);
 		duration += playlistTracks[i].track.duration_ms / 1000;
-	}
 	}
 	return duration;
 };

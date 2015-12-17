@@ -50,7 +50,7 @@
                 playlist_id = response.id;
                 SetCurrentPlaylistId(playlist_id);
                 refreshCurrentPlaylistFirstTime(user_id, playlist_id); 
-                              
+                setInterval(refreshCurrentPlaylist, 3000);
             },
             error: function(err) {
                 console.log('Error', err);

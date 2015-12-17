@@ -11,7 +11,7 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 
 	// remaining elements of sortTracks are to be removed from playlistTracks
 	var uris = {uris: []}
-	for (t in playlistTracks){
+	for (t = 0; t < playlistTracks.length; t++){
 		uris.uris.push(playlistTracks[t].track.uri);
 	}
 	spotifyApi.removeTracksFromPlaylist(userid, currentPlaylistId, uris);
@@ -20,7 +20,7 @@ var TruncatePlaylist = function(playlistTracks, durationSecs, durationAttrs) {
 
 // Insertion sort reorders the actual spotify playlist
 var ReorderPlaylist = function(playlistTracksWithIdx){
-	for(var new_idx in playlistTracksWithIdx){
+	for(var new_idx = 0; idx <  playlistTracksWithIdx.length; new_idx++){
 		var idx = playlistTracksWithIdx[new_idx].track.idx;
 		if(idx > new_idx) {
 			spotifyApi.reorderTracksInPlaylist(userid, currentPlaylistId, idx, new_idx, rtipCallback);
@@ -48,9 +48,9 @@ var Bactrian = function(playlistTracks, durationSecs, durationAttrs) {
 
 	// Iterate thru tracks and request analysis data for each
 	// add data to new field in each track
-	for (var idx in playlistTracks){
+	for (var idx = 0; idx < playlistTracks.length; idx++){
 		//currentIdx = idx;
-		//^nvm define callback inside this loop
+		//^nvm define callback = 0;side this loop
 
 		var addTrackProfile = function(data) {
 			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
@@ -60,7 +60,7 @@ var Bactrian = function(playlistTracks, durationSecs, durationAttrs) {
 						   addTrackProfile
 						   );
 		
-		// if necessary, store original playlist idx in track object
+		// if necessary, store original playlist idx in idx <  track object
 		playlistTracks[idx].track['idx'] = idx; //+1?
 
 
@@ -75,7 +75,7 @@ var Ambient = function(playlistTracks, durationSecs, durationAttrs) {};
  */
 
 var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs) {
-	for (var idx in playlistTracks){
+	for (var idx = 0; idx < playlistTracks.length; idx++){
 		var addTrackProfile = function(data) {
 			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
@@ -95,7 +95,7 @@ var Descending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs
 };
 
 var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs) {
-	for (var idx in playlistTracks){
+	for (var idx = 0; idx < playlistTracks.length; idx++){
 		var addTrackProfile = function(data) {
 			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
@@ -114,7 +114,7 @@ var Ascending = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 };
 
 var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs){
-	for (var idx in playlistTracks){
+	for (var idx = 0; idx < playlistTracks.length; idx++){
 		var addTrackProfile = function(data) {
 			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
@@ -150,7 +150,7 @@ var Dromedary = function(playlistTracks, flowAttrs, durationSecs, durationAttrs)
 };
 
 var BrianTest = function(playlistTracks, flowAttrs, durationSecs, durationAttrs){
-	for (var idx in playlistTracks){
+	for (var idx = 0; idx <  playlistTracks.length; idx++){
 		var addTrackProfile = function(data) {
 			playlistTracks[idx].track['audio_summary'] = data.response.songs[0].audio_summary;
 		};
