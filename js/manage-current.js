@@ -12,10 +12,11 @@ function SetCurrentPlaylistId(playlistId){
 	currentPlaylistId = playlistId;
 };
 
-function AddResultToCurrent(resultURI, choice) {
+function AddResultToCurrent(resultURI, choice, useridother) {
 	//var params = resultURI.split(":");
 	var uris = [];
 	var getalbumid = resultURI.split(":");
+	var getplaylistid = resultURI.split(":");
 
 	if (choice == "Tracks"){
 
@@ -43,6 +44,33 @@ function AddResultToCurrent(resultURI, choice) {
 				}, function(err) {
 				console.error(err);
 			});
+		}
+		else{
+				spotifyApi.getPlaylistTracks(useridother, getplaylistid[4])
+				.then(function(data) {
+				console.log(data);
+				console.log("playlist id is " + getplaylistid[2]);
+				var length = data.total;
+				console.log("length is" + length);
+				if(length>100)
+					length=100;
+				var index;
+				for(index=0;index<length;index++)
+				{
+					if(data.items[index].track.uri)
+					{
+						uris.push(data.items[index].track.uri);
+					}
+
+					else
+						uris.push(data.items[index].track.uri);
+				}
+				spotifyApi.addTracksToPlaylist(userid, currentPlaylistId, uris);
+
+				}, function(err) {
+				console.error(err);
+			});
+
 		}
 	}
 };

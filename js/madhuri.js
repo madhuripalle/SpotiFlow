@@ -19,6 +19,7 @@ var lastSearchSubTab = null;
 
 var ids = {};
 var trackidstemp = [];
+var useridstemp = [];
 var text="";
 
 var userid;
@@ -93,8 +94,19 @@ function processAdd(elementid)
 		if(i==choice)
 		{
 			var trackuritemp = trackidstemp[i-1];
+			if(useridstemp[i-1])
+			{
+			var usertemp = useridstemp[i-1];
+			console.log("usertemp is " + usertemp);
+			console.log("tracktempuri is " + trackuritemp);
 			ids[trackuritemp] = val;
-			AddResultToCurrent(trackuritemp, val);
+			AddResultToCurrent(trackuritemp, val, usertemp);
+			}	
+			else
+			{
+			ids[trackuritemp] = val;
+			AddResultToCurrent(trackuritemp, val, "", "");
+			}
 		}
 	}
 		console.log(ids);
@@ -176,6 +188,7 @@ function callNextResults() {
 function callOffsetResults() {
 	LoadSpinners(10);
 	trackidstemp = [];
+	useridstemp = [];
 	console.log(lastSearchBrowseTab);
 	console.log(lastSearchSubTab);
 	if(lastSearchBrowseTab=="Browse Playlists") {
@@ -594,6 +607,7 @@ function populateItems(items, useTrackUri)
 				node.src = embedurl + items[i-1].uri;
 				var temp = items[i-1].uri;
 				trackidstemp[i-1] = temp;
+				useridstemp[i-1] = items[i-1].owner.id;
 				unhideme(divid);
 			}
 		} else {
